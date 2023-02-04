@@ -1,16 +1,9 @@
-import React, {useEffect, useState} from "react";
-import { getRestaurants } from "../apiCalls";
+import React from "react";
+
 import MenuPreviewCard from "../MenuPreviewCard/MenuPreviewCard";
 import './RestaurantMenuContainer.css'
 
-const RestaurantMenuContainer = () => {
-  const [restaurants, setRestaurants] = useState([])
-
-  useEffect(()=> {
-    getRestaurants().then(data => {
-      console.log("DATA", data.data)
-      setRestaurants(data.data)})
-  }, [])
+const RestaurantMenuContainer = ({restaurants}) => {
 
   const restaurantsArray = restaurants.map(restaurant => {
     return (
