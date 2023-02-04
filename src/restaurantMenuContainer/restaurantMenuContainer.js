@@ -6,13 +6,13 @@ const RestaurantMenuContainer = () => {
 
   useEffect(()=> {
     getRestaurants().then(data=> {
-      console.log("DATA", data)
-      setRestaurants(data)})
+      console.log("DATA", data.data)
+      setRestaurants(data.data)})
   }, [])
 
   return (
     <section>
-      <h1>restaurantMenuContainer</h1>
+      <h1>RestaurantMenuContainer</h1>
     </section>
   )
 }
