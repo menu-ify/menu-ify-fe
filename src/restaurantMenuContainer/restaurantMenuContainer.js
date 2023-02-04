@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { getRestaurants } from "../apiCalls";
 import MenuPreviewCard from "../MenuPreviewCard/MenuPreviewCard";
+import './RestaurantMenuContainer.css'
 
 const RestaurantMenuContainer = () => {
   const [restaurants, setRestaurants] = useState([])
@@ -21,8 +22,9 @@ const RestaurantMenuContainer = () => {
     )
   })
   return (
-    <section>
-      <h1>RestaurantMenuContainer</h1>
+    <section className="restaurantMenuContainer">
+      <h1>Welcome! 👋</h1>
+      <p>Select a restaurant to get started</p>
       {restaurantsArray}
     </section>
   )
