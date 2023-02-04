@@ -7,7 +7,7 @@ const RestaurantMenuContainer = () => {
   const [restaurants, setRestaurants] = useState([])
 
   useEffect(()=> {
-    getRestaurants().then(data=> {
+    getRestaurants().then(data => {
       console.log("DATA", data.data)
       setRestaurants(data.data)})
   }, [])
