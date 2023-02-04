@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 // import { Counter } from '../features/counter/Counter';
 import './App.css';
 import { getRestaurants } from "../apiCalls";
-import RestaurantMenuContainer from '../RestaurantMenuContainer/RestaurantMenuContainer';
+import RestaurantMenuContainer from '../RestaurantMenuContainer/RestaurantMenuContainer.js';
 
 
 const App = () => {
