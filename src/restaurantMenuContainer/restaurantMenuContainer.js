@@ -15,6 +15,7 @@ const RestaurantMenuContainer = () => {
   const restaurantsArray = restaurants.map(restaurant => {
     return (
       <MenuPreviewCard
+        key= {restaurant.attributes.id}
         restaurantName = {restaurant.attributes.name}
         restaurantDescription = {restaurant.attributes.description}
         restaurantLogo = {restaurant.attributes.logo}
