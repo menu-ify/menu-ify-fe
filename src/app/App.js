@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 // import logo from '../../src/logo.svg'
 // import { Counter } from '../features/counter/Counter';
 import './App.css';
+import RestaurantPreviewContainer from '../RestaurantPreviewContainer/RestaurantPreviewContainer';
 import { getRestaurants } from "../apiCalls";
-import RestaurantMenuContainer from '../RestaurantMenuContainer/RestaurantMenuContainer.js';
 
 
 const App = () => {
@@ -16,7 +16,8 @@ const App = () => {
   }, [])
   return (
     <div className="App">
-      <RestaurantMenuContainer restaurants={restaurants}/>
+      <h1>TEST</h1>
+      <RestaurantPreviewContainer restaurants={restaurants}/>
     </div>
   );
 }
