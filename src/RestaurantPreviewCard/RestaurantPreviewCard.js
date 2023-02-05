@@ -1,6 +1,6 @@
 import React from "react";
 
-const MenuPreviewCard = ({restaurantName, restaurantDescription, restaurantLogo }) => {
+const RestaurantPreviewCard = ({restaurantName, restaurantDescription, restaurantLogo }) => {
 
   return (
     <section>
@@ -11,4 +11,4 @@ const MenuPreviewCard = ({restaurantName, restaurantDescription, restaurantLogo 
   )
 }
 
-export default MenuPreviewCard
+export default RestaurantPreviewCard

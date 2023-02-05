@@ -1,11 +1,11 @@
 import React from "react";
-import MenuPreviewCard from "../MenuPreviewCard/MenuPreviewCard";
+import RestaurantPreviewCard from "../RestaurantPreviewCard/RestaurantPreviewCard";
 import './RestaurantPreviewContainer.css'
 
 const RestaurantPreviewContainer = ({restaurants}) => {
   const restaurantsArray = restaurants.map(restaurant => {
     return (
-      <MenuPreviewCard
+      <RestaurantPreviewCard
         key = {restaurant.id}
         restaurantName = {restaurant.attributes.name}
         restaurantDescription = {restaurant.attributes.description}
