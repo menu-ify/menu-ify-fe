@@ -1,6 +1,6 @@
 import React from "react";
 
-import MenuPreviewCard from "../MenuPreviewCard/MenuPreviewCard";
+import MenuPreviewCard from "../menuPreviewCard/MenuPreviewCard";
 import './RestaurantMenuContainer.css'
 
 const RestaurantMenuContainer = ({restaurants}) => {
