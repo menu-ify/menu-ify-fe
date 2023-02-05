@@ -15,7 +15,7 @@ const RestaurantPreviewContainer = ({restaurants}) => {
   })
   return (
     <section className="restaurantMenuContainer">
-      <h1 className="rpc-title">Welcome!</h1>
+      <h1 className="rpc-title">Welcome! 👋</h1>
       <p className="rpc-instructions">Select a restaurant to get started</p>
       {restaurantsArray}
     </section>
