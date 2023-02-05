@@ -1,0 +1,7 @@
+.navbar-background {
+  background-color: #FFB700;
+  border-radius: 10% 60% 10% 60%;
+  height: 15vh;
+  width: 100vw;
+  max-width: 500px;
+}
