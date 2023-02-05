@@ -2,16 +2,14 @@ import React, {useEffect, useState} from 'react';
 // import { Counter } from '../features/counter/Counter';
 import './App.css';
 import { getRestaurants } from "../apiCalls";
-import RestaurantMenuContainer from '../RestaurantMenuContainer/RestaurantMenuContainer';
+import RestaurantMenuContainer from '../RestaurantMenuContainer/ComponentRestaurantMenuContainer';
 
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
 
   useEffect(()=> {
-    getRestaurants().then(data => {
-      console.log("DATA", data.data)
-      setRestaurants(data.data)})
+    getRestaurants().then(data => setRestaurants(data.data))
   }, [])
   return (
     <div className="App">
