@@ -4,11 +4,10 @@ import MenuPreviewCard from "../MenuPreviewCard/MenuPreviewCard";
 import './RestaurantMenuContainer.css'
 
 const RestaurantMenuContainer = ({restaurants}) => {
-
   const restaurantsArray = restaurants.map(restaurant => {
     return (
       <MenuPreviewCard
-        key = {restaurant.attributes.id}
+        key = {restaurant.id}
         restaurantName = {restaurant.attributes.name}
         restaurantDescription = {restaurant.attributes.description}
         restaurantLogo = {restaurant.attributes.logo}
