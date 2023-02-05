@@ -1,25 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 // import logo from '../../src/logo.svg'
 // import { Counter } from '../features/counter/Counter';
-import './App.css';
-import RestaurantPreviewContainer from '../RestaurantPreviewContainer/RestaurantPreviewContainer';
-import { getRestaurants } from "../apiCalls";
+import './App.css'
+import RestaurantPreviewContainer from '../RestaurantPreviewContainer/RestaurantPreviewContainer'
+import { getData } from "../apiCalls"
+import { Route, Routes } from 'react-router-dom'
 
+// const URLMenuItems = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/:restaurant_id/menu_items"
+const URLRestaurants = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io//api/v1/restaurants"
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
+  // const [menuItems, setMenuItems] = useState([])
 
-  useEffect(()=> {
-    getRestaurants().then(data => {
-      console.log("DATA", data.data)
-      setRestaurants(data.data)})
+  useEffect(() => {
+    getData(URLRestaurants).then(data => {
+      console.log('RESTAURANTS', data)
+      setRestaurants(data.data)
+    })
+
+    // getData(URLMenuItems).then(data => {
+    //   console.log("MENU ITEMS", data)
+    //   setMenuItems(data.data)
+    // })
   }, [])
+
   return (
-    <div className="App">
-      <h1>TEST</h1>
-      <RestaurantPreviewContainer restaurants={restaurants}/>
-    </div>
-  );
+    <main className="App">
+      <h1 className="app-title">Menu-ify</h1>
+      <Routes>
+        <Route path="/"
+          element={<RestaurantPreviewContainer restaurants={restaurants} />}
+        />
+        {/* <Route path="/*" element={<pageNotFound />} /> */}
+      </Routes>
+    </main>
+  )
 }
 
-export default App;
+export default App
