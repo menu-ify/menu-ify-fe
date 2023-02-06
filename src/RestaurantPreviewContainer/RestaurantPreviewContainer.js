@@ -7,6 +7,7 @@ const RestaurantPreviewContainer = ({restaurants}) => {
     return (
       <RestaurantPreviewCard
         key = {restaurant.id}
+        id = {restaurant.id}
         restaurantName = {restaurant.attributes.name}
         restaurantDescription = {restaurant.attributes.description}
         restaurantLogo = {restaurant.attributes.logo}

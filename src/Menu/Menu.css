@@ -1,4 +1,8 @@
-.restaurantMenuContainer {
+.menu-container {
+  width: 100%;
+}
+
+.category-container {
   background-color: rgba(255, 183, 0, 0.3);
   width: 100%;
   border-radius: 60px 7px 60px 0px;
@@ -6,10 +10,9 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 10%;
+  margin-bottom: 10%;
 }
 
-.rpc-title {
+.category-title {
   font-size: 4vh;
-  margin-bottom: -2.5%;
 }
-
