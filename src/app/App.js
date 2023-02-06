@@ -36,7 +36,7 @@ const App = () => {
         <Route path="/restaurant/:id"
           element={<Menu/>}
         />
-        {/* <Route path="/*" element={<PageNotFound />} /> */}
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </main>
   )
