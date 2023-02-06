@@ -7,7 +7,7 @@
   align-items: center;
   padding-bottom: 10%;
   position: absolute;
-  bottom: 2vh;
+  top: 13vh;
   /* Height may need to change based on the header size */
   height: 70%;
 
@@ -79,6 +79,6 @@
 @media (max-width: 800px) {
   .not-found{
     width: 100%;
-    min-height: 75%;
+    height: 75%;
   }
 }
