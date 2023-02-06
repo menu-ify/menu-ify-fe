@@ -20,7 +20,7 @@ const NotFound = () => {
           </div>
           <h2 className="NFC-title">Explore more menus</h2>
           <p className="NFC-description">
-            Tap or click the link above for other restaurants.
+            Tap or click for other restaurants
           </p>
         </section>
       </NavLink>
