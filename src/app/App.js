@@ -5,6 +5,7 @@ import RestaurantPreviewContainer from '../RestaurantPreviewContainer/Restaurant
 import Menu from '../Menu/Menu'
 import { getData } from "../apiCalls"
 import { Route, Routes } from 'react-router-dom'
+import NotFound from '../NotFound/NotFound'
 
 //const URLMenuItems = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/:restaurant_id/menu_items"
 const URLRestaurants = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io//api/v1/restaurants"
