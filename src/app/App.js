@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-// import logo from '../../src/logo.svg'
 // import { Counter } from '../features/counter/Counter';
 import './App.css'
 import RestaurantPreviewContainer from '../RestaurantPreviewContainer/RestaurantPreviewContainer'
+import Menu from '../Menu/Menu'
 import { getData } from "../apiCalls"
 import { Route, Routes } from 'react-router-dom'
 
-// const URLMenuItems = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/:restaurant_id/menu_items"
+//const URLMenuItems = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/:restaurant_id/menu_items"
 const URLRestaurants = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io//api/v1/restaurants"
 
 const App = () => {
@@ -31,6 +31,9 @@ const App = () => {
       <Routes>
         <Route path="/"
           element={<RestaurantPreviewContainer restaurants={restaurants} />}
+        />
+        <Route path="/restaurant/:id"
+          element={<Menu/>}
         />
         {/* <Route path="/*" element={<pageNotFound />} /> */}
       </Routes>
