@@ -1,12 +1,32 @@
 import "./navBar.css"
+import React, { useState } from "react"
+import Dropdown from "./Dropdown"
 
-export function NavBar() {
+export default function NavBar() {
+  const [menuStatus, setMenuStatus] = useState(false)
+  // this should use our Redux store to track the menu's open/close state, navlinks, etc since navbar is visible on all app pages
+
+  const restaurantName = "Testaurant Name"
+
   return (
-    <div className="navbar-background">
-      <header>{restaurantName}</header>
-      <span className="material-symbols-outlined">
-        menu
-      </span>
-    </div>
+    <>
+      <div className="frame">
+        <header className="name">{restaurantName}</header>
+        <button className="menu" onClick={() => {
+          console.log('click')
+          setMenuStatus(!menuStatus)
+        }}>
+          {!menuStatus && <span className="material-symbols-outlined icon">
+            menu
+          </span>
+          }
+          {menuStatus && <span className="material-symbols-outlined icon">
+            close
+          </span>
+          }
+        </button>
+        {menuStatus && <Dropdown />}
+      </div>
+    </>
   )
 }
