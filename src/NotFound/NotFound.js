@@ -7,7 +7,7 @@ const NotFound = () => {
     <div className="not-found">
       <h1 className="nf-title">404</h1>
       <h2 className="nf-instructions">
-        Restaurant Not Found
+        Page Not Found
       </h2>
       <NavLink to={`/`} className="container-link">
         <section className="error-card-container">
