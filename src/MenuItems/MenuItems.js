@@ -1,13 +1,16 @@
-import React from "react";
+import React from "react"
 import './MenuItems.css'
 
-const MenuItems = ({key, name, description, image, price}) => {
+const MenuItems = ({ key, name, description, image, price }) => {
   return (
-    <section>
-      <img src={image} alt={name}/>
-      <p>{name}</p>
-      <p>${price}</p>
-      <p>{description}</p>
+    <section className="menu-item-container">
+      <div className="menu-image-container">
+        <img src={image} alt={name} className="menu-item-image" />
+      </div>
+      <div className="menu-item-container-info">
+        <p className="menu-item-name">{name} - ${price}</p>
+        <p className="menu-item-description">{description}</p>
+      </div>
 
     </section>
   )

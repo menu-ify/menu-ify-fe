@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
-import { useParams } from "react-router";
-import { getData } from "../apiCalls";
-import MenuItems from "../MenuItems/MenuItems";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { getData } from "../apiCalls"
+import MenuItems from "../MenuItems/MenuItems"
 import './Menu.css'
 
 const Menu = () => {
   const [menuItems, setMenuItems] = useState([])
-  const { id } = useParams();
+  const { id } = useParams()
   //When we have the actauly server the end point will be 
   //`http://localhost:3001/api/v1/restaurants/${id}/menu_items`
-  useEffect(()=> {
+  useEffect(() => {
     getData("https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/200/menu_items")
-      .then(data=>{
+      .then(data => {
         console.log(data.data)
         setMenuItems(data.data)
       })
@@ -24,27 +24,35 @@ const Menu = () => {
   const filteredMenuItems = (category) => filterByCategory(category).map(menuItems => {
     return (
       <MenuItems
-        key = {menuItems.id}
-        name = {menuItems.attributes.name}
-        image = {menuItems.attributes.image}
-        price = {menuItems.attributes.price}
-        description = {menuItems.attributes.description}
+        key={menuItems.id}
+        name={menuItems.attributes.name}
+        image={menuItems.attributes.image}
+        price={menuItems.attributes.price}
+        description={menuItems.attributes.description}
       />
 
     )
   })
   return (
-    <section>
-      <h2>Appetizers</h2>
-      <section>{filteredMenuItems("appetizer")}</section>
-      <h2>Entrees</h2>
-      <section>{filteredMenuItems("entree")}</section>
-      <h2>Draft Beer</h2>
-      <section>{filteredMenuItems("draft beer")}</section>
-      <h2>Cocktails</h2>
-      <section>{filteredMenuItems("cocktail")}</section>
+    <section className="menu-container">
+      <div className="category-container">
+        <h2 className="category-title">Appetizers</h2>
+        <section>{filteredMenuItems("appetizer")}</section>
+      </div>
+      <div className="category-container">
+        <h2 className="category-title">Entrees</h2>
+        <section>{filteredMenuItems("entree")}</section>
+      </div>
+      <div className="category-container">
+        <h2 className="category-title">Draft Beer</h2>
+        <section>{filteredMenuItems("draft beer")}</section>
+      </div>
+      <div className="category-container">
+        <h2 className="category-title">Cocktails</h2>
+        <section>{filteredMenuItems("cocktail")}</section>
+      </div>
     </section>
   )
-  }
+}
 
 export default Menu
