@@ -5,6 +5,7 @@ import RestaurantPreviewContainer from '../RestaurantPreviewContainer/Restaurant
 import Menu from '../Menu/Menu'
 import { getData } from "../apiCalls"
 import { Route, Routes } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
 
 //const URLMenuItems = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/:restaurant_id/menu_items"
 const URLRestaurants = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io//api/v1/restaurants"
@@ -27,7 +28,7 @@ const App = () => {
 
   return (
     <main className="App">
-      <h1 className="app-title">Menuify</h1>
+      <NavBar />
       <Routes>
         <Route path="/"
           element={<RestaurantPreviewContainer restaurants={restaurants} />}

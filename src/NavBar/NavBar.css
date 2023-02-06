@@ -1,0 +1,45 @@
+.frame {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  top: 0;
+  background-color: #FFB700;
+  border-radius: 10px 60px 10px 60px;
+  height: 100px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.name {
+  flex: 0 1 auto;
+  position: absolute;
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2em;
+  text-align: center;
+  color: rgb(40, 44, 52);
+  left: 40%;
+  transform: translateX(-50%);
+}
+
+.menu {
+  flex: 0 1 auto;
+  margin-left: auto;
+  margin-right: 10%;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 250ms;
+}
+
+.menu:hover {
+  background: #c99000;
+  transition-duration: 250ms;
+}
+
+.icon {
+  font-size: 2.5em;
+}
