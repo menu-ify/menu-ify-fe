@@ -4,7 +4,6 @@ import './RestaurantPreviewContainer.css'
 
 const RestaurantPreviewContainer = ({restaurants}) => {
   const restaurantsArray = restaurants.map(restaurant => {
-    console.log(restaurant.id)
     return (
       <RestaurantPreviewCard
         key = {restaurant.id}

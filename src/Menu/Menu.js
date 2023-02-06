@@ -16,11 +16,11 @@ const Menu = () => {
         setMenuItems(data.data)
       })
   }, [id])
+
   const filterByCategory = (category) => {
-    console.log("CATEGORY", category)
-    console.log("MENUITEMS", menuItems)
     return menuItems.filter(menuItem => menuItem.attributes.category === category)
   }
+
   const filteredMenuItems = (category) => filterByCategory(category).map(menuItems => {
     return (
       <MenuItems
@@ -33,10 +33,6 @@ const Menu = () => {
 
     )
   })
-  // const entreeMenuItems = filterByCategory("entree")
-  // const draftBeerMenuItems = filterByCategory("draft beer")
-  // const cocktailMenuItems = filterByCategory("cocktail")
-
   return (
     <section>
       <h2>Appetizers</h2>

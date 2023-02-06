@@ -3,7 +3,6 @@ import "../RestaurantPreviewCard/RestaurantPreviewCard.css"
 import { NavLink } from "react-router-dom"
 
 const RestaurantPreviewCard = ({ restaurantName, restaurantDescription, restaurantLogo, id }) => {
-
   return (
     <section className="card-container">
       <div className="restaurant-image-container">
