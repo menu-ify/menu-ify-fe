@@ -17,7 +17,7 @@
             "id": 200,
             "name": "Tim's Tiki Bar",
             "description": "All the aloha you can eat",
-             "logo": "https://publicdomainvectors.org/photos/SteveLambert_Tiki_Bar.png"
+             "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/VacuumPacks-02.jpg/640px-VacuumPacks-02.jpg"
         }
     },
       {
@@ -27,7 +27,7 @@
               "id": 300,
               "name": "Ruthy's",
               "description": "Emotional support food for all the seasons of life",
-              "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Fried-Chicken-Set.jpg/640px-Fried-Chicken-Set.jpg"
+              "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Flickr_kb35_1644526369--Chicken_fried_steak.jpg/640px-Flickr_kb35_1644526369--Chicken_fried_steak.jpg"
           }
       }
   ]
