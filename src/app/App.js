@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <main className="App">
-      <h1 className="app-title">Menu-ify</h1>
+      <h1 className="app-title">Menuify</h1>
       <Routes>
         <Route path="/"
           element={<RestaurantPreviewContainer restaurants={restaurants} />}
