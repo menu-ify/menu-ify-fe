@@ -37,11 +37,11 @@ const Menu = () => {
     <section>
       <h2>Appetizers</h2>
       <section>{filteredMenuItems("appetizer")}</section>
-      <h2>Entree</h2>
+      <h2>Entrees</h2>
       <section>{filteredMenuItems("entree")}</section>
       <h2>Draft Beer</h2>
       <section>{filteredMenuItems("draft beer")}</section>
-      <h2>Cocktail</h2>
+      <h2>Cocktails</h2>
       <section>{filteredMenuItems("cocktail")}</section>
     </section>
   )
