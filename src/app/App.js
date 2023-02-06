@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import RestaurantPreviewContainer from '../RestaurantPreviewContainer/RestaurantPreviewContainer';
 import { getRestaurants } from "../apiCalls";
-import NavBar from "../navBar/navBar.js"
+import NavBar from "../navBar/NavBar.js"
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
@@ -16,7 +16,7 @@ const App = () => {
   }, [])
   return (
     <div className="App">
-      {NavBar}
+      <NavBar />
       <h1>TEST</h1>
       <RestaurantPreviewContainer restaurants={restaurants}/>
     </div>
