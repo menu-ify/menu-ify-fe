@@ -5,10 +5,11 @@
   position: relative;
   top: 0;
   background-color: #FFB700;
-  border-radius: 10px 60px 10px 60px;
+  border-radius: 60px 10px 60px 10px;
   height: 100px;
   width: 100%;
   max-width: 800px;
+  margin-bottom: 1vh;;
 }
 
 .name {
