@@ -29,7 +29,7 @@ export default function Dropdown() {
           <button className="dropdown__button" onClick={() => {
             console.log('Menu 1 clicked')
           }}>
-            Menu 1
+            Pho Kyah
           </button>
         </li>
       </NavLink>
@@ -38,7 +38,7 @@ export default function Dropdown() {
           <button className="dropdown__button" onClick={() => {
             console.log('Menu 2 clicked')
           }}>
-            Menu 2
+            Tim's Tiki Bar
           </button>
         </li>
       </NavLink>
@@ -47,7 +47,7 @@ export default function Dropdown() {
           <button className="dropdown__button" onClick={() => {
             console.log('Menu 3 clicked')
           }}>
-            Menu 3
+            Ruthy's
           </button>
         </li>
       </NavLink>
