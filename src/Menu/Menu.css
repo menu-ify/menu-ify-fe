@@ -5,7 +5,7 @@
 .category-container {
   background-color: rgba(255, 183, 0, 0.3);
   width: 100%;
-  border-radius: 60px 7px 60px 0px;
+  border-radius: 60px 7px 60px 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
