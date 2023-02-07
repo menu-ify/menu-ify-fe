@@ -34,7 +34,7 @@ const App = () => {
           element={<RestaurantPreviewContainer restaurants={restaurants} />}
         />
         <Route path="/restaurant/:id"
-          element={<Menu/>}
+          element={<Menu restaurants={restaurants}/>}
         />
         <Route path="/*" element={<NotFound />} />
       </Routes>
