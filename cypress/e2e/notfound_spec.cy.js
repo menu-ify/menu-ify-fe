@@ -3,8 +3,8 @@ describe('404 Error page', () => {
     cy.visit('http://localhost:3000/socks')
   })
   it('should only be visible on undesignated routes', () => {
+    // May need to further explore how to stub responses for these. //
     cy.get('.nf-title').should('be.visible')
-    // Should I intercept and stub a response right here with the restaurant data? Probably so...//
     cy.visit('http://localhost:3000/')
     cy.get('.rpc-title').should('be.visible')
     cy.visit('http://localhost:3000/potatoes')
