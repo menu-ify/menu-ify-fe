@@ -1,7 +1,7 @@
 import React from "react"
 import './MenuItems.css'
 
-const MenuItems = ({ key, name, description, image, price }) => {
+const MenuItems = ({ name, description, image, price }) => {
   return (
     <section className="menu-item-container">
       <div className="menu-image-container">

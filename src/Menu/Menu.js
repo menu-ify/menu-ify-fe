@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
 import MenuItems from "../MenuItems/MenuItems"
+import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 
-const Menu = () => {
+const Menu = ({ restaurants }) => {
+  const checkIfValid = (id) => {
+   return restaurants.find(restaurant => restaurant.id === Number(id))
+  }
   const [menuItems, setMenuItems] = useState([])
   const { id } = useParams()
+  const isValidId = checkIfValid(id)
   //When we have the actauly server the end point will be 
   //`http://localhost:3001/api/v1/restaurants/${id}/menu_items`
   useEffect(() => {
@@ -34,6 +39,8 @@ const Menu = () => {
     )
   })
   return (
+    <>
+      {isValidId ? (
     <section className="menu-container">
       <div className="category-container">
         <h2 className="category-title">Appetizers</h2>
@@ -51,7 +58,9 @@ const Menu = () => {
         <h2 className="category-title">Cocktails</h2>
         <section>{filteredMenuItems("cocktail")}</section>
       </div>
-    </section>
+    </section>)
+    : (<NotFound/>)}
+    </>
   )
 }
 
