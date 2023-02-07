@@ -4,6 +4,7 @@ describe('404 Error page', () => {
   })
   it('should only be visible on undesignated routes', () => {
     cy.get('.nf-title').should('be.visible')
+    // Should I intercept and stub a response right here with the restaurant data? Probably so...//
     cy.visit('http://localhost:3000/')
     cy.get('.rpc-title').should('be.visible')
     cy.visit('http://localhost:3000/potatoes')
@@ -19,7 +20,7 @@ describe('404 Error page', () => {
     cy.visit('http://localhost:3000/restaurant/socks')
     cy.get('.NFC-description').contains('Tap or click for other restaurants')
   })
-  it.only('should have a header with a title and dropdown menu', () => {
+  it('should have a header with a title and dropdown menu', () => {
     cy.get('.name').contains('Menuify')
     cy.get('.material-symbols-outlined').click()
     cy.get('[href="/"] > .dropdown__menu-item > .dropdown__button')
