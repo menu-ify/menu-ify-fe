@@ -22,7 +22,7 @@ const Admin = ({ setAdminSelections }) => {
     } else if (selectedAction === "Add new menu item") {
       console.log("Add new")
       setAdminSelections({ selectedRestaurant: selectedRestaurant, selectedAction: selectedAction })
-      navigate("/add-menu-item")
+      navigate("/admin/add-menu-item")
     } else {
       console.log("Delete existing")
       setAdminSelections({ selectedRestaurant: selectedRestaurant, selectedAction: selectedAction })
