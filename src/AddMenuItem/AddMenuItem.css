@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.add-item-container {
+  background-color: rgba(255, 183, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  border-radius: 60px 7px 60px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10%;
+  flex-grow: 1;
+}
