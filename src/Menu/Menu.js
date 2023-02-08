@@ -7,7 +7,7 @@ import './Menu.css'
 
 const Menu = ({ restaurants }) => {
   const checkIfValid = (id) => {
-   return restaurants.find(restaurant => restaurant.id === Number(id))
+    return restaurants.find(restaurant => restaurant.id === Number(id))
   }
   const [menuItems, setMenuItems] = useState([])
   const { id } = useParams()
@@ -41,25 +41,25 @@ const Menu = ({ restaurants }) => {
   return (
     <>
       {isValidId ? (
-    <section className="menu-container">
-      <div className="category-container">
-        <h2 className="category-title">Appetizers</h2>
-        <section>{filteredMenuItems("appetizer")}</section>
-      </div>
-      <div className="category-container">
-        <h2 className="category-title">Entrees</h2>
-        <section>{filteredMenuItems("entree")}</section>
-      </div>
-      <div className="category-container">
-        <h2 className="category-title">Draft Beer</h2>
-        <section>{filteredMenuItems("draft beer")}</section>
-      </div>
-      <div className="category-container">
-        <h2 className="category-title">Cocktails</h2>
-        <section>{filteredMenuItems("cocktail")}</section>
-      </div>
-    </section>)
-    : (<NotFound/>)}
+        <section className="menu-container">
+          <div className="category-container">
+            <h2 className="category-title">Appetizers</h2>
+            <section>{filteredMenuItems("appetizer")}</section>
+          </div>
+          <div className="category-container">
+            <h2 className="category-title">Entrees</h2>
+            <section>{filteredMenuItems("entree")}</section>
+          </div>
+          <div className="category-container">
+            <h2 className="category-title">Draft Beer</h2>
+            <section>{filteredMenuItems("draft beer")}</section>
+          </div>
+          <div className="category-container">
+            <h2 className="category-title">Cocktails</h2>
+            <section>{filteredMenuItems("cocktail")}</section>
+          </div>
+        </section>)
+        : (<NotFound />)}
     </>
   )
 }
