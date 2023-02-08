@@ -32,14 +32,15 @@
 }
 
 .container-link {
-  color: black;
+  color: rgb(51, 51, 51, .95);
   display: flex;
   justify-content: center;
 }
 
 .container-link:link {
   text-decoration: none;
-  color: black;
+  /* color: black; */
+  color: rgb(51, 51, 51, .95);
 }
 
 .NFC-description {

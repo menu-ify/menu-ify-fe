@@ -4,8 +4,8 @@
   flex-direction: column;
   width: 35vw;
   align-items: center;
-  font-family: 'Playfair Display', serif;
   margin-bottom: 25px;
+  color: rgb(51, 51, 51, .95);
 }
 
 .app-title {
