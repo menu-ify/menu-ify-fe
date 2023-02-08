@@ -2,8 +2,8 @@ describe('404 Error page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/socks')
   })
+
   it('should only be visible on undesignated routes', () => {
-    // May need to further explore how to stub responses for these. //
     cy.get('.nf-title').should('be.visible')
     cy.visit('http://localhost:3000/')
     cy.get('.rpc-title').should('be.visible')
@@ -19,25 +19,26 @@ describe('404 Error page', () => {
     cy.get('.NFC-title').contains('Explore more menus')
     cy.visit('http://localhost:3000/restaurant/socks')
     cy.get('.NFC-description').contains('Tap or click for other restaurants')
+    const url = '/undesignated-route'
+    cy.request({ url, failOnStatusCode: false }).its('status', { timeout: 0 })
+    cy.get('.nf-title').should('be.visible')
   })
+
   it('should have a header with a title and dropdown menu', () => {
     cy.get('.name').contains('Menuify')
     cy.get('.material-symbols-outlined').click()
-    cy.get('[href="/"] > .dropdown__menu-item > .dropdown__button')
-      .contains('Home')
-    cy.get('[href="/admin"] > .dropdown__menu-item > .dropdown__button')
-      .contains('Admin')
-    cy.get('[href="/restaurant/100"] > .dropdown__menu-item > .dropdown__button')
-      .contains('Pho Kyah')
-    cy.get('[href="/restaurant/200"] > .dropdown__menu-item > .dropdown__button')
-      .contains("Tim's Tiki Bar")
-    cy.get('[href="/restaurant/300"] > .dropdown__menu-item > .dropdown__button')
-      .contains("Ruthy's")
+    cy.get('[href="/"] > .dropdown__menu-item > .dropdown__button').contains('Home')
+    cy.get('[href="/admin"] > .dropdown__menu-item > .dropdown__button').contains('Admin')
+    cy.get('[href="/restaurant/100"] > .dropdown__menu-item > .dropdown__button').contains('Pho Kyah')
+    cy.get('[href="/restaurant/200"] > .dropdown__menu-item > .dropdown__button').contains("Tim's Tiki Bar")
+    cy.get('[href="/restaurant/300"] > .dropdown__menu-item > .dropdown__button').contains("Ruthy's")
   })
+
   it('should have an error message', () => {
     cy.get('.nf-title').contains('404')
     cy.get('.nf-instructions').contains('Page Not Found')
   })
+
   it('should have an image', () => {
     cy.get('.error-image').should(
       'have.attr',
@@ -50,6 +51,7 @@ describe('404 Error page', () => {
       'Sorry We Are Closed sign hanging in a restaurant window'
     )
   })
+  
   it('should have a link to the welcome page', () => {
     cy.get('.error-card-container').click()
     cy.url().should('eq', 'http://localhost:3000/')
