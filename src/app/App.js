@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import { Counter } from '../features/counter/Counter';
 import './App.css'
 import RestaurantPreviewContainer from '../RestaurantPreviewContainer/RestaurantPreviewContainer'
 import Menu from '../Menu/Menu'
@@ -11,7 +10,7 @@ import Admin from "../Admin/Admin"
 import DeleteMenuItem from '../DeleteMenuItem/DeleteMenuItem'
 
 //const URLMenuItems = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/:restaurant_id/menu_items"
-const URLRestaurants = "https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io//api/v1/restaurants"
+const URLRestaurants = "https://menu-ify-be.herokuapp.com/api/v1/restaurants"
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
