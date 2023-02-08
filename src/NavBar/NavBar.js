@@ -6,7 +6,7 @@ export default function NavBar() {
   const [menuStatus, setMenuStatus] = useState(false)
   // maybe this should use our Redux store to track the menu's open/close state, navlinks, etc since navbar is visible on all app pages
 
-  const restaurantName = "Menuify"
+  // const restaurantName = "Menuify"
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function NavBar() {
         {menuStatus && <Dropdown />}
 
         <div className="nav-title-container">
-          <header className="name">{restaurantName}</header>
+          <h1 className="name1">Menu</h1><h1 className="name2">ify</h1>
         </div>
 
       </div>
