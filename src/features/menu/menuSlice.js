@@ -1,23 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-  menu: []
-}
-
 export const menuSlice = createSlice({
   name: "menu",
-  initialState,
+  initialState: {
+    menu: ["test", "test"]
+  },
   reducers: {
-    saveBook: (state, action) => {
-      state.savedBooks.push(action.payload);
-    },
-    deleteBook: (state, action) => {
-      state.savedBooks = state.savedBooks.filter(
-        (book) => book !== action.payload
-      );
+    updateMenu: (state, action) => {
+      console.log("ACTION", action)
+      state.menu = action.payload
     },
   },
 });
-
-export const { saveBook, deleteBook } = saveBookSlice.actions;
-export default saveBookSlice.reducer;
+export const selectMenu = (state) => state.menu.value
+export const { updateMenu } = menuSlice.actions;
+export default menuSlice.reducer;
