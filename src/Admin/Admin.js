@@ -97,9 +97,9 @@ const Admin = ({ setAdminSelections }) => {
               value={selectedAction}
               onChange={event => setSelectedAction(event.target.value)}
             >
-              <option id={100}>None selected</option>
-              <option id={200}>Add new menu item</option>
-              <option id={300}>Delete existing menu item</option>
+              <option>None selected</option>
+              <option>Add new menu item</option>
+              <option>Delete existing menu item</option>
             </select>
             {actionFieldAlert()}
           </div>
