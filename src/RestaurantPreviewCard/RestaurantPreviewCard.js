@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 
 const RestaurantPreviewCard = ({ restaurantName, restaurantDescription, restaurantLogo, id }) => {
   return (
+<NavLink to={`/restaurant/${id}`} className="nav-link-container">
     <section className="card-container">
       <div className="restaurant-image-container">
         <img src={restaurantLogo} alt={restaurantName} className="restaurant-image" />
@@ -13,6 +14,7 @@ const RestaurantPreviewCard = ({ restaurantName, restaurantDescription, restaura
       </NavLink>
       <p className="RPC-description">{restaurantDescription}</p>
     </section>
+ </NavLink>
   )
 }
 
