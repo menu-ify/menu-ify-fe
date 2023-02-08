@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom"
+// import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import "../Admin/Admin.css"
 
 const Admin = ({ setAdminSelections }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const [selectedAction, setSelectedAction] = useState("")
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const submitForm = (event) => {
     event.preventDefault()
@@ -21,11 +22,11 @@ const Admin = ({ setAdminSelections }) => {
     } else if (selectedAction === "Add new menu item") {
       console.log("Add new")
       setAdminSelections({ selectedRestaurant: selectedRestaurant, selectedAction: selectedAction })
-      history.push("/add-menu-item")
+      navigate("/add-menu-item")
     } else {
       console.log("Delete existing")
       setAdminSelections({ selectedRestaurant: selectedRestaurant, selectedAction: selectedAction })
-      history.push("/delete")
+      navigate("/admin/delete")
     }
   }
   return (
