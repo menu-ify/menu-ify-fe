@@ -43,7 +43,7 @@ const App = () => {
           element={<Menu restaurants={restaurants} />}
         />
         {/* <Route path="/admin/add-menu-item"
-          element={<AddMenuItem />}
+          element={<AddMenuItem adminSelections={adminSelections}/>}
         /> */}
         <Route path="/admin/delete"
           element={<DeleteMenuItem adminSelections={adminSelections} />}

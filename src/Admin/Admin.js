@@ -7,6 +7,15 @@ const Admin = ({ setAdminSelections }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const [selectedAction, setSelectedAction] = useState("")
   const navigate = useNavigate()
+  const restaurantId = () => {
+    if (selectedRestaurant === "Pho Kyah") {
+      return 100
+    } else if (selectedRestaurant === "Tim's Tiki Bar") {
+      return 200
+    } else {
+      return 300
+    }
+  }
 
   const submitForm = (event) => {
     event.preventDefault()
@@ -21,13 +30,24 @@ const Admin = ({ setAdminSelections }) => {
       console.log("Admin form is not complete")
     } else if (selectedAction === "Add new menu item") {
       console.log("Add new")
-      setAdminSelections({ selectedRestaurant: selectedRestaurant, selectedAction: selectedAction })
+      setAdminSelections(
+        {
+          selectedRestaurant: selectedRestaurant,
+          selectedAction: selectedAction,
+          restaurantId: restaurantId()
+        })
       navigate("/add-menu-item")
     } else {
       console.log("Delete existing")
-      setAdminSelections({ selectedRestaurant: selectedRestaurant, selectedAction: selectedAction })
+      setAdminSelections(
+        {
+          selectedRestaurant: selectedRestaurant,
+          selectedAction: selectedAction,
+          restaurantId: restaurantId()
+        })
       navigate("/admin/delete")
     }
+    console.log("ADMIN ADMIN SELECGTIONS", { selectedRestaurant: selectedRestaurant, selectedAction: selectedAction, restaurantId: restaurantId() })
   }
 
   const restaurantFieldAlert = () => {
@@ -77,9 +97,9 @@ const Admin = ({ setAdminSelections }) => {
               value={selectedAction}
               onChange={event => setSelectedAction(event.target.value)}
             >
-              <option>None selected</option>
-              <option>Add new menu item</option>
-              <option>Delete existing menu item</option>
+              <option id={100}>None selected</option>
+              <option id={200}>Add new menu item</option>
+              <option id={300}>Delete existing menu item</option>
             </select>
             {actionFieldAlert()}
           </div>
