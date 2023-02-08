@@ -14,7 +14,8 @@
 }
 
 .nav-link {
-  color: black
+  /* color: black */
+  color: rgb(51, 51, 51, .95);
 }
 
 .nav-link:link {
