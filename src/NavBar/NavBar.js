@@ -8,9 +8,15 @@ export default function NavBar() {
 
   // const restaurantName = "Menuify"
 
+const closeModal = () => {
+ if (menuStatus) {
+  setMenuStatus(!menuStatus)
+ }
+}
+
   return (
     <>
-      <div className="frame">
+      <div className="frame" onClick={() => closeModal()}>
         <div className="button-container">
           <button className="menu" onClick={() => {
             console.log('click')
