@@ -49,7 +49,7 @@ const App = () => {
               element={<RestaurantPreviewContainer restaurants={restaurants} />}
             />
             <Route path="/restaurant/:id"
-              element={<Menu restaurants={restaurants} />}
+              element={<Menu error={error} setError={setError} restaurants={restaurants} />}
             />
             {/* <Route path="/admin/add-menu-item"
           element={<AddMenuItem adminSelections={adminSelections}/>}

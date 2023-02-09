@@ -19,6 +19,10 @@ const Menu = ({ restaurants }) => {
         console.log(data.data)
         setMenuItems(data.data)
       })
+      .catch(error => {
+        console.log("Fetch error: ", error)
+        setError(error)
+      })
   }, [id])
 
   const filterByCategory = (category) => {
