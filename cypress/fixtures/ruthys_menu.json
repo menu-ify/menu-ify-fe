@@ -1,0 +1,147 @@
+{
+  "data": [
+    {
+      "id": 20,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 200,
+        "name": "Hang 10",
+        "description": "Full-bodied brew with 10% ABV",
+        "tags": ["gluten"],
+        "category": "draft beer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 9.0
+      }
+    },
+    {
+      "id": 21,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Mac and Cheese",
+        "description": "The special sauce helps it slide down",
+        "tags": ["dairy", "gluten"],
+        "category": "appetizer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 9.0
+      }
+    },
+    {
+      "id": 22,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Fried Chicken and Taters",
+        "description": "Fried chicken, mashed potatoes, and gravy",
+        "tags": ["dairy"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 15.0
+      }
+    },
+    {
+      "id": 23,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Grandpa's Moonshine",
+        "description": "A blindingly good time!",
+        "tags": ["gluten free"],
+        "category": "cocktail",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 7.0
+      }
+    },
+    {
+      "id": 24,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Pasbt Red Ribbon",
+        "description": "The cheapest path to bad decisions",
+        "tags": ["gluten"],
+        "category": "draft beer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 2.0
+      }
+    },
+    {
+      "id": 25,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Biscuits and Gravy",
+        "description": "Flaky homemade biscuits slathered in white gravy with sausage",
+        "tags": ["gluten"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 11.0
+      }
+    },
+    {
+      "id": 26,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Chicken Fried Steak",
+        "description": "Tender slab of cow fried with the chickens and covered in gravy",
+        "tags": ["gluten"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 13.0
+      }
+    },
+    {
+      "id": 27,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Black Eyed Peas",
+        "description": "They sing, dance, rap and satisfy your hunger",
+        "tags": ["gluten free"],
+        "category": "appetizer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 10.0
+      }
+    },
+    {
+      "id": 28,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Fried Okra",
+        "description": "Crispy on the outside and slimy on the inside, just like Ma used to make",
+        "tags": ["gluten"],
+        "category": "appetizer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 5.0
+      }
+    },
+    {
+      "id": 29,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Roadkill Stew",
+        "description": "A savory blend of organic, free-range possom, raccoon, and polecate, marinated in automotive juices and lightly sprinkled with steamed kudzu",
+        "tags": ["gluten free"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 5.0
+      }
+    },
+    {
+      "id": 30,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 300,
+        "name": "Mystery Mojito",
+        "description": "We don't know what's in it and neither will you, but it'll give you a buzz!",
+        "tags": ["gluten", "nuts", "soy"],
+        "category": "cocktail",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 3.00
+      }
+    } 
+  ]
+}
