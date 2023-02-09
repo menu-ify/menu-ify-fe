@@ -26,6 +26,7 @@ const App = () => {
       .then(data => {
         console.log('RESTAURANTS', data)
         setRestaurants(data.data)
+        setError("")
       })
       .catch(error => {
         console.log("Fetch error: ", error)

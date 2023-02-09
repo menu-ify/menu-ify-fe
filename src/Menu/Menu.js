@@ -14,7 +14,7 @@ const Menu = ({ restaurants, setError }) => {
   const isValidId = checkIfValid(id)
 
   useEffect(() => {
-    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
+    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items1`)
       .then(data => {
         console.log(data.data)
         setMenuItems(data.data)
@@ -23,7 +23,7 @@ const Menu = ({ restaurants, setError }) => {
         console.log("Fetch error: ", error)
         setError(error)
       })
-  }, [id])
+  }, [id, setError])
 
   const filterByCategory = (category) => {
     return menuItems.filter(menuItem => menuItem.attributes.category === category)
