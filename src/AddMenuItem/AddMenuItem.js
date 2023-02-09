@@ -9,29 +9,42 @@ export default function AddMenuItem() {
   const [price, setPrice] = useState('')
   const [search, setSearch] = useState('')
   const [images, setImages] = useState(null)
+  const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('')
 
   useEffect(() => {
     if (images) return;
 
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
-    .then(data => {
-      setImages(data)
-    })
+      .then(data => {
+        setImages(data)
+      })
+      .then(() => {
+        console.log(images)
+      })
   })
 
-  const searchImages = async (search, images) => {
-    const data = await images
+  useEffect(() => {
+    if (!images) {
+      setSearchResults(<p>Error loading preview images, please refresh.</p>)
+    };
 
-    return data.forEach(image => {
-      if (image.attributes.description.includes(search)) {
-        return <img id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={(e) => {
-          setImage(e.target.id)
-            .then(console.log(image))
-        }} />
-      }
-    })
-  }
+    if (images) {
+      const isImagesArray = Array.isArray(images)
+      console.log('images is firing and is equal to:', images, 'isArray() equals', isImagesArray)
+
+      setSearchResults(
+        images.data.map(image => {
+          if (image.attributes.description.includes(search)) {
+            return <img key={image.id} id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={(e) => {
+              setImage(e.target.id)
+                .then(console.log(image))
+            }} />
+          }
+        })
+      )
+    }
+  }, [images])
 
   return (
     <div className="add-item-container">
@@ -51,14 +64,10 @@ export default function AddMenuItem() {
         <div>
           <input name="search" type="text" placeholder="Search for image..." onChange={(e) => {
             setSearch(e.target.value)
-              .then(() => {
-                return searchImages(search, images)
-              })
           }}></input>
-          <button>Search</button>
         </div>
         <div className="search-results">
-          {searchImages(search, images)}
+          {searchResults}
         </div>
         <MenuItems name={name} description={description} image={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png"} price={price}/>
       </form>
