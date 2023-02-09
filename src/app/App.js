@@ -21,9 +21,14 @@ const App = () => {
   // const [selectedAction, setSelectedAction] = useState("")
 
   useEffect(() => {
-    getData(URLRestaurants).then(data => {
-      console.log('RESTAURANTS', data)
-      setRestaurants(data.data)
+    getData(URLRestaurants)
+      .then(data => {
+        console.log('RESTAURANTS', data)
+        setRestaurants(data.data)
+      .catch(error => {
+        <NotFound/>
+        console.log("Fetch error: ", error)
+        })
     })
 
     // getData(URLMenuItems).then(data => {
