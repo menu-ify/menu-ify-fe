@@ -2,22 +2,17 @@ import React from "react";
 import './MenuItemDeleteCard.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { updateMenu, selectMenu } from "../features/menu/menuSlice"
+import { deleteData } from "../apiCalls"
 
-const MenuItemDeleteCard = () => {
-  const menu = useSelector(selectMenu);
-  console.log("THIS MENU", menu.menu)
-  const menuItemsArray = menu.menu.map((menuItems) => {
-    return (
-      <div>
-        <p>{menuItems.attributes.name}</p>
-      </div>
-    )})
-
+const MenuItemDeleteCard = ({ name, restaurantId, id }) => {
+  const handleDelete = (restaurantId, menuID) => {
+    deleteData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantId}/menu_items/${menuID}`)
+    } 
   return (
-    <>
-    <p>Menu item name</p>
-    {menuItemsArray}
-    </>
+    <div>
+      <p>{name}</p>
+      <button onClick={() => handleDelete(restaurantId, id)}>Delete</button>
+    </div>
   )
 }
 export default MenuItemDeleteCard

@@ -2,10 +2,11 @@ import React, { useEffect } from "react"
 import MenuItemDeleteCard from "../MenuItemDeleteCard/MenuItemDeleteCard"
 import { updateMenu, selectMenu } from "../features/menu/menuSlice"
 import { useSelector, useDispatch } from 'react-redux';
-import { getData } from "../apiCalls"
+import { getData, deleteData } from "../apiCalls"
 
 const DeleteMenuItem = ({ adminSelections }) => {
   const menu = useSelector(selectMenu);
+  console.log("MENU", menu)
   const dispatch = useDispatch();
   useEffect(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${adminSelections.restaurantId}/menu_items`)
@@ -16,9 +17,11 @@ const DeleteMenuItem = ({ adminSelections }) => {
 
   const menuItemsArray = menu.map((menuItems)=> {
     return (
-      <div>
-        <p>{menuItems.attributes.name}</p>
-      </div>
+      <MenuItemDeleteCard
+        name={menuItems.attributes.name}
+        id={menuItems.id}
+        restaurantID={menuItems.attributes.restaurant_id}
+      />
     )
   })
   console.log(adminSelections)
