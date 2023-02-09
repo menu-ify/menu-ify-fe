@@ -72,7 +72,7 @@
 .menu {
   flex: 0 1 auto;
   margin-left: auto;
-  margin-right: 10%;
+  margin-right: 8%;
   background: none;
   border: none;
   border-radius: 5px;
@@ -86,13 +86,13 @@
   transition-duration: 250ms;
 }
 
+
 .icon {
   font-size: 2.5em;
+  font-weight: bold;
   opacity: .9;
+  color: white
 }
-
-
-
 
 .name2 {
   animation: spin-wobble 1s ease-out forwards;
