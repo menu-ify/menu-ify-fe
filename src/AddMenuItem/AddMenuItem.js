@@ -44,7 +44,7 @@ export default function AddMenuItem() {
         })
       )
     }
-  }, [images])
+  }, [search])
 
   return (
     <div className="add-item-container">
