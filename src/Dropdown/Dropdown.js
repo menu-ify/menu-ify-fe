@@ -11,25 +11,17 @@ export default function Dropdown() {
           <button className="dropdown__button" onClick={() => {
             console.log('Home clicked')
           }}>
-            Home
+            <big><b style={{ letterSpacing: '4px' }}>All restaurants</b></big>
           </button>
         </li>
       </NavLink>
-      <NavLink to={`/admin`}>
-        <li className="dropdown__menu-item">
-          <button className="dropdown__button" onClick={() => {
-            console.log('Admin clicked')
-          }}>
-            Admin
-          </button>
-        </li>
-      </NavLink>
+      
       <NavLink to={`/restaurant/100`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
             console.log('Menu 1 clicked')
           }}>
-            Pho Kyah
+           <i>Pho Kyah</i>
           </button>
         </li>
       </NavLink>
@@ -38,7 +30,7 @@ export default function Dropdown() {
           <button className="dropdown__button" onClick={() => {
             console.log('Menu 2 clicked')
           }}>
-            Tim's Tiki Bar
+           <i> Tim's Tiki Bar</i>
           </button>
         </li>
       </NavLink>
@@ -47,7 +39,16 @@ export default function Dropdown() {
           <button className="dropdown__button" onClick={() => {
             console.log('Menu 3 clicked')
           }}>
-            Ruthy's
+           <i>Ruthy's</i>
+          </button>
+        </li>
+      </NavLink>
+      <NavLink to={`/admin`}>
+        <li className="dropdown__menu-item">
+          <button className="dropdown__button" onClick={() => {
+            console.log('Admin clicked')
+          }}>
+           <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
           </button>
         </li>
       </NavLink>
