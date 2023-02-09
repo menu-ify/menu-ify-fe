@@ -6,6 +6,7 @@ describe('The NavBar component', () => {
     cy.get('.name1').contains('Menu')
     cy.get('.name2').contains('ify')
     cy.get('.material-symbols-outlined').click()
+    cy.intercept(url, { fixture: '../fixtures/restaurant_data.json' })
     cy.get('.active > .dropdown__menu-item > .dropdown__button > big > b').contains('All restaurants')
     cy.get('[href="/admin"] > .dropdown__menu-item > .dropdown__button').contains('Admin')
     cy.get('[href="/restaurant/100"] > .dropdown__menu-item > .dropdown__button').contains('Pho Kyah')
