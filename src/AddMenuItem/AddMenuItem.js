@@ -14,14 +14,20 @@ export default function AddMenuItem() {
   useEffect(() => {
     if (images) return;
 
-    const searchableImages = getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
+    getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
     .then(data => {
       setImages(data)
     })
   })
 
-  const searchImages = () => {
+  const searchImages = async (search, images) => {
+    const data = await images
 
+    return images.forEach(image => {
+      if (image.attributes.description.includes(search)) {
+        return <img id={image.id} src={image.attributes.logo} alt={image.attributes.description} />
+      }
+    })
   }
 
   return (
@@ -42,11 +48,14 @@ export default function AddMenuItem() {
         <div>
           <input name="search" type="text" placeholder="Search for image..." onChange={(e) => {
             setSearch(e.target.value)
+              .then(() => {
+                return searchImages(search, images)
+              })
           }}></input>
           <button>Search</button>
         </div>
         <div className="search-results">
-          {getSearchResults(search, searchableImages) && }
+          {}
         </div>
         <MenuItems name={name} description={description} image={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png"} price={price}/>
       </form>
