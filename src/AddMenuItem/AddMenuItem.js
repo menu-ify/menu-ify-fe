@@ -23,9 +23,12 @@ export default function AddMenuItem() {
   const searchImages = async (search, images) => {
     const data = await images
 
-    return images.forEach(image => {
+    return data.forEach(image => {
       if (image.attributes.description.includes(search)) {
-        return <img id={image.id} src={image.attributes.logo} alt={image.attributes.description} />
+        return <img id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={(e) => {
+          setImage(e.target.id)
+            .then(console.log(image))
+        }} />
       }
     })
   }
@@ -55,7 +58,7 @@ export default function AddMenuItem() {
           <button>Search</button>
         </div>
         <div className="search-results">
-          {}
+          {searchImages(search, images)}
         </div>
         <MenuItems name={name} description={description} image={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png"} price={price}/>
       </form>
