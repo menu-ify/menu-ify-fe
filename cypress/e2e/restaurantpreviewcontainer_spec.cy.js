@@ -13,4 +13,11 @@ describe('RestaurantPreviewContainer', () => {
     cy.get(':nth-child(3) > .card-container > .nav-link > .RPC-title').contains('Pho Kyah')
     cy.get(':nth-child(3) > .card-container > .RPC-description').contains('Experimental Asian fusion gastropub')
   })
+
+  it("should havea a card for Tim's Tiki Bar", () => {
+    cy.get(':nth-child(4) > .card-container').should('be.visible')
+    cy.get(':nth-child(4) > .card-container > .restaurant-image-container > .restaurant-image').should('have.attr', 'src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/VacuumPacks-02.jpg/640px-VacuumPacks-02.jpg')
+    cy.get(':nth-child(4) > .card-container > .nav-link > .RPC-title').contains("Tim's Tiki Bar")
+    cy.get(':nth-child(4) > .card-container > .RPC-description').contains('All the aloha you can eat')
+  })
 })
