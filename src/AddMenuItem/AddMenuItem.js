@@ -10,7 +10,7 @@ export default function AddMenuItem() {
   const [search, setSearch] = useState('')
   const [images, setImages] = useState(null)
   const [searchResults, setSearchResults] = useState(null)
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
 
   useEffect(() => {
     if (images) return;
@@ -37,8 +37,9 @@ export default function AddMenuItem() {
       setSearchResults(
         images.data.map(image => {
           if (image.attributes.description.includes(search)) {
-            return <img key={image.id} id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={(e) => {
-              setImage(e.target.id)
+            return <img className="image-preview" key={image.id} id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={() => {
+              setImage(image.attributes.logo)
+              console.log(image.attributes.description)
             }} />
           }
         })
@@ -73,7 +74,7 @@ export default function AddMenuItem() {
         <div className="search-results">
           {searchResults}
         </div>
-        <MenuItems name={name} description={description} image={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png"} price={price}/>
+        <MenuItems name={name} description={description} image={image} price={price}/>
       </form>
     </div>
   )
