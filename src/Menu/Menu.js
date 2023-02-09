@@ -5,7 +5,7 @@ import MenuItems from "../MenuItems/MenuItems"
 import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 
-const Menu = ({ restaurants }) => {
+const Menu = ({ restaurants, setError }) => {
   const checkIfValid = (id) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
