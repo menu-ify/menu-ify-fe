@@ -1,5 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// const initialState = {
+//   menuItems: []
+// }
+// const menuReducer = (state = initialState, action) => {
+// switch (action.type) {
+//   case "DELETE_MENU_ITEM":
+//     return {
+
+//     }
+//   default: 
+//   return state
+// }
+// }
 export const menuSlice = createSlice({
   name: "menu",
   initialState: {
