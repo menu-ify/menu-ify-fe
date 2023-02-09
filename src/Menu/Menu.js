@@ -14,7 +14,7 @@ const Menu = ({ restaurants, setError }) => {
   const isValidId = checkIfValid(id)
 
   useEffect(() => {
-    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items1`)
+    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
         console.log(data.data)
         setMenuItems(data.data)
