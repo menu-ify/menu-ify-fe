@@ -17,10 +17,11 @@ export default function AddMenuItem() {
 
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
       .then(data => {
+        console.log('attempted to fetch AddMenuItem preview images', data)
         setImages(data)
       })
       .then(() => {
-        console.log(images)
+        console.log('images data fetched from AddMenuItem GET request', images)
       })
   })
 
@@ -38,13 +39,16 @@ export default function AddMenuItem() {
           if (image.attributes.description.includes(search)) {
             return <img key={image.id} id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={(e) => {
               setImage(e.target.id)
-                .then(console.log(image))
             }} />
           }
         })
       )
     }
   }, [search])
+
+  useEffect(() => {
+    console.log(image)
+  })
 
   return (
     <div className="add-item-container">
