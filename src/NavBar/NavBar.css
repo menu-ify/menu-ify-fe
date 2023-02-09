@@ -4,7 +4,8 @@
   /* justify-content: flex-start; */
   position: relative;
   top: 0;
-  background-color: #FFB700;
+  /* background-color: #FFB700; */
+  background-color: rgb(255, 183, 0, 0.9);
   border-radius: 60px 7px 60px 7px;
   height: 12vh;
   width: 100%;
@@ -32,16 +33,37 @@
   justify-content: center;
 }
 
-.name {
-  flex: 0 1 auto;
-  position: absolute;
+.name1 {
+  /* flex: 0 1 auto; */
+  /* position: absolute; */
   font-family: 'Playfair Display';
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 800;
   /* font-size: 2em; */
   font-size: 5vh;
   text-align: center;
-  color: rgb(40, 44, 52);
+  /* color: rgb(40, 44, 52); */
+  /* color: #00C682; */
+  /* color: rgb(0, 198, 130, 0.9); */
+  color: rgb(51, 51, 51, .95);
+  /* color: #006775; */
+  padding-bottom: 5%;
+  /* left: 40%; */
+  /* transform: translateX(-50%); */
+}
+
+.name2 {
+  /* flex: 0 1 auto; */
+  /* position: absolute; */
+  font-family: 'Playfair Display';
+  /* transform: rotate(15deg); */
+  /* font-style: normal; */
+  font-weight: 800;
+  /* font-size: 2em; */
+  font-size: 5vh;
+  text-align: center;
+  /* color: rgb(40, 44, 52); */
+  color: white;
   padding-bottom: 5%;
   /* left: 40%; */
   /* transform: translateX(-50%); */
@@ -65,4 +87,28 @@
 
 .icon {
   font-size: 2.5em;
+  opacity: .9;
+}
+
+
+
+
+.name2 {
+  animation: spin-wobble 1s ease-out forwards;
+}
+
+@keyframes spin-wobble {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+    animation-timing-function: ease-in;
+  }
+  70% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(375deg);
+  }
 }

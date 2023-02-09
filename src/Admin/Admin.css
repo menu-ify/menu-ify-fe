@@ -1,0 +1,63 @@
+.admin-instructions-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 95%;
+  padding-left: 2%;
+  padding-right: 2%;
+  text-align: left;
+  color: rgb(51, 51, 51, .95);
+}
+
+.form-select {
+  width: fit-content;
+  padding: 1%;
+  font-size: 2.75vh;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 16px;
+  outline: 0;
+  border: none;
+  font-weight: 100;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.admin-button {
+  padding: 2%;
+  width: fit-content;
+  font-size: 2.75vh;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 16px;
+  outline: 0;
+  border: none;
+  font-weight: 100;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.admin-button:hover {
+  color: #ffb700;
+  transition-duration: 250ms;
+}
+
+.rpc-instructions {
+  font-weight: 100;
+  font-size: 2.75vh;
+  color: rgb(51, 51, 51, .95);
+}
+
+.input-alert-container {
+  display: flex;
+  /* align-items: center; */
+}
