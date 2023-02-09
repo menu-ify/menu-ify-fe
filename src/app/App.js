@@ -25,11 +25,11 @@ const App = () => {
       .then(data => {
         console.log('RESTAURANTS', data)
         setRestaurants(data.data)
+      })
       .catch(error => {
         <NotFound/>
         console.log("Fetch error: ", error)
-        })
-    })
+      })
 
     // getData(URLMenuItems).then(data => {
     //   console.log("MENU ITEMS", data)
