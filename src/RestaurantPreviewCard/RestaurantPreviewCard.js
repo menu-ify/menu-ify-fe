@@ -9,9 +9,9 @@ const RestaurantPreviewCard = ({ restaurantName, restaurantDescription, restaura
       <div className="restaurant-image-container">
         <img src={restaurantLogo} alt={restaurantName} className="restaurant-image" />
       </div>
-      <NavLink to={`/restaurant/${id}`} className="nav-link">
+      <div to={`/restaurant/${id}`} className="nav-link">
         <h2 className="RPC-title">{restaurantName}</h2>
-      </NavLink>
+      </div>
       <p className="RPC-description">{restaurantDescription}</p>
     </section>
  </NavLink>

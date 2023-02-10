@@ -19,7 +19,7 @@ export default function Dropdown() {
       <NavLink to={`/restaurant/100`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
-            console.log('Menu 1 clicked')
+           // console.log('Menu 1 clicked')
           }}>
            <i>Pho Kyah</i>
           </button>
@@ -28,7 +28,7 @@ export default function Dropdown() {
       <NavLink to={`/restaurant/200`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
-            console.log('Menu 2 clicked')
+            //console.log('Menu 2 clicked')
           }}>
            <i> Tim's Tiki Bar</i>
           </button>
@@ -37,7 +37,7 @@ export default function Dropdown() {
       <NavLink to={`/restaurant/300`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
-            console.log('Menu 3 clicked')
+            //console.log('Menu 3 clicked')
           }}>
            <i>Ruthy's</i>
           </button>
