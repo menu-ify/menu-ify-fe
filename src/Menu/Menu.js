@@ -7,7 +7,7 @@ import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 import { setInitialMenu } from "../features/menu/menuSlice"
 
-const Menu = ({ restaurants }) => {
+const Menu = ({ restaurants, setError }) => {
   const menuItems = useSelector((state)=> state.menu)
   const dispatch = useDispatch();
   const checkIfValid = (id) => {
