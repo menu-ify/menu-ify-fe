@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
@@ -7,11 +7,16 @@ import NotFound from "../NotFound/NotFound"
 // import { updateMenu, selectMenu } from "../features/menu/menuSlice";
 // import { updateMenu } from "../features/menu/menuSlice";
 import './Menu.css'
-import {setInitialMenu} from "../features/menu/menuSlice"
-// import { useSelector, useDispatch } from "react-redux"
+import { setInitialMenu } from "../features/menu/menuSlice"
+import { store } from "../app/store";
+
+const menuItems = store.getState().menu.menuItems
+console.log(menuItems)
 
 const Menu = ({ restaurants }) => {
-  const [ menuItems, setMenuItems ] = useState([]);
+  // const [ menuItems, setMenuItems ] = useState([]);
+  // const menuItems = useSelector((state)=> state.menuItems)
+  console.log("MENU ITEMS", menuItems)
   const dispatch = useDispatch();
   const checkIfValid = (id) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
@@ -21,7 +26,8 @@ const Menu = ({ restaurants }) => {
   useEffect(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
-        setMenuItems(data.data)
+        console.log(data.data)
+        // setMenuItems(data.data)
         dispatch(setInitialMenu(data.data))
       })
   }, [id])

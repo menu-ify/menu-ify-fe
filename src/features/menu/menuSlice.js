@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-//import { createSlice, createAction } from "@reduxjs/toolkit"
 import { deleteData } from "../../apiCalls"
 
-const initialState = []
+const initialState = {
+  menuItems: []
+}
 
 const menuSlice = createSlice({
-  name: "menu",
+  name: "menuItems",
   initialState,
   reducers: {
     addMenuItem: (state, action) => {
@@ -15,6 +16,8 @@ const menuSlice = createSlice({
       return state.filter(menuItem => menuItem.id !== action.payload)
     },
     setInitialMenu: (state, action) => {
+      console.log("action.payload", action.payload)
+      console.log("STORE", store)
       return action.payload
     },
   }
@@ -35,5 +38,6 @@ export const deleteMenuItemAsync = (restaurantid, menuId) => dispatch => {
   // dispatch(menuSlice.actions.deleteMenuItem(id))
 }
 
+// export const selectMenu = (state) => state.menuItems.menu
 export const { addMenuItem, setInitialMenu, deleteMenuItem } = menuSlice.actions
 export default menuSlice.reducer
