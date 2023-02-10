@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useMemo } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
@@ -15,15 +15,16 @@ const Menu = ({ restaurants }) => {
   }
   const { id } = useParams()
   const isValidId = checkIfValid(id)
-  useEffect(() => {
+  useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
-        console.log(data.data)
+        console.log("DATA", data.data)
         dispatch(setInitialMenu(data.data))
       })
-  }, [id])
+  }, [id, dispatch])
 
   const filterByCategory = (category) => {
+    console.log("MENUITEM", menuItems)
     return menuItems.filter(menuItem => menuItem.attributes.category === category)
   }
 

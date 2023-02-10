@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { deleteData } from "../../apiCalls"
 
-const initialState = {
-  menuItems: []
-}
+const initialState = []
 
 const menuSlice = createSlice({
   name: "menuItems",
