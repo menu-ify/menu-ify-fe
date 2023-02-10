@@ -1,10 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import menuReducer from '../features/menu/menuSlice'
+import { configureStore } from "@reduxjs/toolkit"
+// import menuReducer from "./menuSlice"
+import menuReducer from "../features/menu/menuSlice"
+import thunk from "redux-thunk"
 
 export const store = configureStore({
   reducer: {
-    menu: menuReducer,
+    menu: menuReducer
   },
-});
+  middleware: [thunk]
+})
 
 
+
+// export default store

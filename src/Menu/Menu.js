@@ -1,14 +1,17 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
 import MenuItems from "../MenuItems/MenuItems"
 import NotFound from "../NotFound/NotFound"
-import { updateMenu, selectMenu } from "../features/menu/menuSlice";
+// import { updateMenu, selectMenu } from "../features/menu/menuSlice";
+// import { updateMenu } from "../features/menu/menuSlice";
 import './Menu.css'
+import {setInitialMenu} from "../features/menu/menuSlice"
+// import { useSelector, useDispatch } from "react-redux"
 
 const Menu = ({ restaurants }) => {
-  const menu = useSelector(selectMenu);
+  const [ menuItems, setMenuItems ] = useState([]);
   const dispatch = useDispatch();
   const checkIfValid = (id) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
@@ -18,12 +21,13 @@ const Menu = ({ restaurants }) => {
   useEffect(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
-        dispatch(updateMenu(data.data))
+        setMenuItems(data.data)
+        dispatch(setInitialMenu(data.data))
       })
-  }, [id, dispatch])
+  }, [id])
 
   const filterByCategory = (category) => {
-    return menu.filter(menuItem => menuItem.attributes.category === category)
+    return menuItems.filter(menuItem => menuItem.attributes.category === category)
   }
 
   const filteredMenuItems = (category) => filterByCategory(category).map(menuItems => {

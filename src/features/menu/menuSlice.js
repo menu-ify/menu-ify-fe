@@ -1,17 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction } from "@reduxjs/toolkit"
+import { deleteData } from "../../apiCalls"
 
-export const menuSlice = createSlice({
+const initialState = []
+
+const menuSlice = createSlice({
   name: "menu",
-  initialState: {
-    menu: []
-  },
+  initialState,
   reducers: {
-    updateMenu: (state, action) => {
-      console.log("action.payload", action.payload)
-      return action.payload
+    addMenuItem: (state, action) => {
+      return [...state, action.payload]
     },
-  },
-});
-export const selectMenu = (state) => state.menu
-export const { updateMenu } = menuSlice.actions;
-export default menuSlice.reducer;
+    deleteMenuItem: (state, action) => {
+      return state.filter(menuItem => menuItem.id !== action.payload)
+    },
+    setInitialMenu: (action) => {
+      return action.payload
+    }
+  }
+})
+
+export const deleteMenuItemThunk = (restaurantId, menuId) => async dispatch => {
+  await deleteData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantId}/menu_items/${menuId}`)
+  // dispatch(menuSlice.actions.deleteMenuItem(id))
+  dispatch(menuSlice.reducerdeleteMenuItem(menuId))
+}
+
+export const { addMenuItem, setInitialMenu } = menuSlice.actions
+export default menuSlice.reducer
