@@ -15,16 +15,20 @@ const Menu = ({ restaurants }) => {
   }
   const { id } = useParams()
   const isValidId = checkIfValid(id)
+
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
         console.log("DATA", data.data)
         dispatch(setInitialMenu(data.data))
       })
-  }, [id, dispatch])
+      .catch(error => {
+        console.log("Fetch error: ", error)
+        setError(error)
+      })
+  }, [id, dispatch, setError])
 
   const filterByCategory = (category) => {
-    console.log("MENUITEM", menuItems)
     return menuItems.filter(menuItem => menuItem.attributes.category === category)
   }
 
