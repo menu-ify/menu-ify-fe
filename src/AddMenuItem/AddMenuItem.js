@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import "./AddMenuItem.css"
 import MenuItems from '../MenuItems/MenuItems'
-import { getData, postData } from '../apiCalls'
+import { getData } from '../apiCalls'
+// import { postData } from '../apiCalls'
 
 export default function AddMenuItem() {
   const [name, setName] = useState('')
