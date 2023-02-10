@@ -16,8 +16,6 @@ const menuSlice = createSlice({
       return state.filter(menuItem => menuItem.id !== action.payload)
     },
     setInitialMenu: (state, action) => {
-      console.log("action.payload", action.payload)
-      console.log("STORE", store)
       return action.payload
     },
   }
