@@ -1,6 +1,6 @@
 import React from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { deleteMenuItemThunk } from "../features/menu/menuSlice"
+import { useDispatch } from "react-redux"
+import { deleteMenuItemAsync } from "../features/menu/menuSlice"
 
 const DeleteMenuItem = ({ adminSelections }) => {
   console.log(adminSelections)
@@ -9,15 +9,17 @@ const DeleteMenuItem = ({ adminSelections }) => {
   const handleDelete = (e) => {
     e.preventDefault()
     let menuId = e.target.id
-    let restaurantId = e.target.restaurantId
+    let restaurantId = e.target.name
+    console.log("e.target.restaurantid", e.target.name)
+    console.log("e.target.id", e.target.id)
     console.log("MADE IT TO HANDLE DELETE")
-    dispatch(deleteMenuItemThunk(menuId, restaurantId))
+    dispatch(deleteMenuItemAsync(restaurantId, menuId))
   }
 
   return (
     <div>
       <h1>Delete View</h1>
-      <button id={38} restaurantid={100} onClick={(event) => handleDelete(event)}>Delete</button>
+      <button id={38} name={100} onClick={(event) => handleDelete(event)}>Delete</button>
     </div>
   )
 }
