@@ -36,7 +36,8 @@
 .name1 {
   /* flex: 0 1 auto; */
   /* position: absolute; */
-  font-family: 'Playfair Display';
+  font-family: 'Anton', sans-serif;
+
   /* font-style: normal; */
   font-weight: 800;
   /* font-size: 2em; */
@@ -55,7 +56,8 @@
 .name2 {
   /* flex: 0 1 auto; */
   /* position: absolute; */
-  font-family: 'Playfair Display';
+  font-family: 'Anton', sans-serif;
+
   /* transform: rotate(15deg); */
   /* font-style: normal; */
   font-weight: 800;
