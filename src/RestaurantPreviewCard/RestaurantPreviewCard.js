@@ -15,7 +15,7 @@ const RestaurantPreviewCard = ({ restaurantName, restaurantDescription, restaura
       <p className="RPC-description">{restaurantDescription}</p>
     </section>
  </NavLink>
-  )
+  )   
 }
 
 export default RestaurantPreviewCard
