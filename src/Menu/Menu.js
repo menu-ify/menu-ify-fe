@@ -5,22 +5,25 @@ import MenuItems from "../MenuItems/MenuItems"
 import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 
-const Menu = ({ restaurants }) => {
+const Menu = ({ restaurants, setError }) => {
   const checkIfValid = (id) => {
-    return restaurants.find(restaurant => restaurant.id === Number(id))
+    return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
   const [menuItems, setMenuItems] = useState([])
   const { id } = useParams()
   const isValidId = checkIfValid(id)
-  //When we have the actauly server the end point will be 
-  //`http://localhost:3001/api/v1/restaurants/${id}/menu_items`
+
   useEffect(() => {
-    getData("https://a1ecae6b-2320-4cd4-91ed-7da641c93480.mock.pstmn.io/api/v1/restaurants/200/menu_items")
+    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
         console.log(data.data)
         setMenuItems(data.data)
       })
-  }, [id])
+      .catch(error => {
+        console.log("Fetch error: ", error)
+        setError(error)
+      })
+  }, [id, setError])
 
   const filterByCategory = (category) => {
     return menuItems.filter(menuItem => menuItem.attributes.category === category)
