@@ -1,0 +1,68 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form__input {
+  width: 80%;
+  margin-top: 16px;
+}
+
+.add-item-container {
+  background-color: rgba(255, 183, 0, 0.3);
+  width: 100%;
+
+  border-radius: 60px 7px 60px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10%;
+  flex-grow: 1;
+}
+
+.confirm-modal {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: center;
+  width: 30vw;
+  height: 20vh;
+  background-color: rgba(241, 255, 47, 0.95);
+  border-radius: 5px;
+  border: 2px solid rgba(255, 183, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-preview {
+  margin-top: 16px;
+  border-radius: 5px;
+  width: 90%;
+}
+
+.image-preview:hover {
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 25%);
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 87%);
+  border-radius: 5px;
+  max-height: 280px;
+  overflow-y: scroll;
+  border: none;
+  margin: 8px;
+}
+
+.form-header {
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 0;
+}
