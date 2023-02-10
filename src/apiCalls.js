@@ -12,9 +12,9 @@ function getData(url) {
         throw Error(response.statusText)
       }
     })
-    .catch(error => {
-      console.log("Fetch error: ", error)
-    })
+    // .catch(error => {
+    //   console.log("Fetch error: ", error)
+    // })
 }
 
 function deleteData(url) {
