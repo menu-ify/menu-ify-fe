@@ -7,9 +7,7 @@ const MenuItemDeleteCard = ({name, restaurantId, id}) => {
   const dispatch = useDispatch()
   const handleDelete = (e) => {
     e.preventDefault()
-    let menuId = e.target.id
-    let restaurantId = e.target.name
-    dispatch(deleteMenuItemAsync(restaurantId, menuId))
+    dispatch(deleteMenuItemAsync(restaurantId, id))
   }
   return (
     <section>
