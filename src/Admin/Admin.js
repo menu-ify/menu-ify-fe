@@ -55,7 +55,7 @@ const Admin = ({ setAdminSelections }) => {
       selectedRestaurant === "None selected" || !selectedRestaurant
     ) {
       return (
-        <span style={{ color: "rgba(255, 0, 0, 0.9)", fontSize: "5vh" }}>*</span>
+        <span style={{ color: "rgba(255, 0, 0, 0.8)", fontSize: "3vh" }}>*</span>
       )
     }
   }
@@ -66,7 +66,7 @@ const Admin = ({ setAdminSelections }) => {
       !selectedAction
     ) {
       return (
-        <span style={{ color: "rgba(255, 0, 0, 0.9)", fontSize: "5vh" }}>*</span>
+        <span style={{ color: "rgba(255, 0, 0, 0.8)", fontSize: "3vh" }}>*</span>
       )
     }
   }
