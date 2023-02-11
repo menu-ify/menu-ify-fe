@@ -62,7 +62,8 @@ const Menu = ({ restaurants, setError }) => {
             <section>{filteredMenuItems("cocktail")}</section>
           </div>
         </section>)
-        : (<NotFound />)}
+        : (<NotFound />)
+        }
     </>
   )
 }
