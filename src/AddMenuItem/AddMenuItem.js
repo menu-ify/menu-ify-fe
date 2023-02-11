@@ -18,7 +18,7 @@ export default function AddMenuItem({ adminSelections }) {
   const [category, setCategory] = useState('')
   const [confirmModal, setConfirmModal] = useState(false)
   const restaurantName = adminSelections.selectedRestaurant
-  const restaurantId =  adminSelections.restaurantId
+  const restaurantId = adminSelections.restaurantId
   // console.log("restaurantId", restaurantId.restaurantId)
 
   const clearForm = () => {
@@ -31,11 +31,9 @@ export default function AddMenuItem({ adminSelections }) {
 
   const submitNewItem = (event) => {
     event.preventDefault()
-    //error handle that everything is completed
     if (
       name &&
       description &&
-      // price !== 0 &&
       price >= 0 &&
       image &&
       category &&
@@ -48,15 +46,12 @@ export default function AddMenuItem({ adminSelections }) {
         name: name,
         description: description,
         tags: "No tags added",
-        category: category, 
+        category: category,
         image: image,
         price: price,
       }
-      console.log("REST ID",restaurantId)
+      console.log("REST ID", restaurantId)
       dispatch(addMenuItemAsync(newMenuItem, restaurantId))
-      // then, post new store to backend to update menu
-      //       modal could have loading animation during this time?
-      // when response is recieved, display modal text confirming menu update and clear form
       clearForm()
       setConfirmModal(true)
     } else {
@@ -66,7 +61,6 @@ export default function AddMenuItem({ adminSelections }) {
 
   useEffect(() => {
     if (images) return
-
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
       .then(data => {
         console.log('attempted to fetch AddMenuItem preview images', data)
@@ -122,11 +116,11 @@ export default function AddMenuItem({ adminSelections }) {
             value={category}
             onChange={event => setCategory(event.target.value)}
           >
-            <option> Category...</option>
-            <option> appetizer</option>
-            <option> entree</option>
-            <option> draft beer</option>
-            <option> cocktail</option>
+            <option>Category...</option>
+            <option>appetizer</option>
+            <option>entree</option>
+            <option>draft beer</option>
+            <option>cocktail</option>
 
           </select>
 
