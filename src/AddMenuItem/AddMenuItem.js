@@ -91,6 +91,11 @@ export default function AddMenuItem({ adminSelections }) {
             className="form-select"
           >
             <option> Category...</option>
+            <option> Appetizer</option>
+            <option> Entree</option>
+            <option> Draft Beer</option>
+            <option> Cocktail</option>
+
           </select>
 
         </div>
@@ -98,7 +103,6 @@ export default function AddMenuItem({ adminSelections }) {
         <input className="form__input" name="name" type="text" placeholder="Enter name..." value={name} onChange={(e) => {
           setName(e.target.value)
         }}></input>
-
 
 
         <input className="form__input" name="price" type="text" placeholder="Enter price..." value={price} onChange={(e) => {
@@ -114,7 +118,7 @@ export default function AddMenuItem({ adminSelections }) {
         }}></input>
 
         <div className='search-button-container'>
-          <button className='search-button'>Start search</button>
+          <button className='search-button'>Start image search</button>
         </div>
 
         <h3 className="form-header">Search results</h3>
