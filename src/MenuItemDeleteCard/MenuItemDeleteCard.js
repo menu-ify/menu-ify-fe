@@ -10,9 +10,9 @@ const MenuItemDeleteCard = ({name, restaurantId, id}) => {
     dispatch(deleteMenuItemAsync(restaurantId, id))
   }
   return (
-    <section>
-      <p>{name}</p>
-      <button onClick={(event) => handleDelete(event)}>Delete</button>
+    <section className="delete-card">
+      <p className="restaurant-name">{name}</p>
+      <button className="delete-button" onClick={(event) => handleDelete(event)}>Delete</button>
     </section>
   )
 }

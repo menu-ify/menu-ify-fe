@@ -13,7 +13,6 @@ const DeleteMenuItem = ({ adminSelections }) => {
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${adminSelections.restaurantId}/menu_items`)
       .then(data => {
-        console.log("DATA", data.data)
         dispatch(setInitialMenu(data.data))
       })
       .catch(error => {
@@ -32,7 +31,7 @@ const DeleteMenuItem = ({ adminSelections }) => {
       )
     })
   return (
-    <div>
+    <div className="delete-container">
       <h2>Delete any menu items: </h2>
       {menuItemsArray}
     </div>
