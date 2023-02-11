@@ -29,7 +29,7 @@ const Menu = ({ restaurants, setError }) => {
   }, [id, dispatch, setError])
 
   const filterByCategory = (category) => {
-    return menuItems.filter(menuItem => menuItem.attributes.category === category)
+    return menuItems.filter(menuItem => menuItem.attributes.category.toLowerCase() === category.toLowerCase())
   }
 
   const filteredMenuItems = (category) => filterByCategory(category).map(menuItems => {

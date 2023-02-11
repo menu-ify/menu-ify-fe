@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { deleteData } from "../../apiCalls"
+import { deleteData, postData } from "../../apiCalls"
 
 const initialState = []
 
@@ -33,6 +33,16 @@ export const deleteMenuItemAsync = (restaurantid, menuId) => dispatch => {
     })
   // dispatch(menuSlice.actions.deleteMenuItem(id))
 }
+
+export const addMenuItemAsync = (newMenuItem, restaurantId) => dispatch => {
+  console.log("ADD SLICE", newMenuItem, restaurantId)
+  postData(newMenuItem, `https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantId}/menu_items`)
+    .then(response => {
+      console.log("POST DATA RESPONSE", response)
+      dispatch(addMenuItem(response))
+    })
+}
+
 
 // export const selectMenu = (state) => state.menuItems.menu
 export const { addMenuItem, setInitialMenu, deleteMenuItem } = menuSlice.actions

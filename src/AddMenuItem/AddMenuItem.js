@@ -2,18 +2,24 @@ import React, { useState, useEffect } from 'react'
 import "./AddMenuItem.css"
 import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
+import { useDispatch } from "react-redux"
+import { addMenuItemAsync } from "../features/menu/menuSlice"
 // import { postData } from '../apiCalls'
 
 export default function AddMenuItem({ adminSelections }) {
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
+  const [price, setPrice] = useState(0)
   const [search, setSearch] = useState('')
   const [images, setImages] = useState(null)
   const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
+  const [category, setCategory] = useState('')
   const [confirmModal, setConfirmModal] = useState(false)
   const restaurantName = adminSelections.selectedRestaurant
+  const restaurantId =  adminSelections.restaurantId
+  // console.log("restaurantId", restaurantId.restaurantId)
 
   const clearForm = () => {
     setName('')
@@ -25,12 +31,37 @@ export default function AddMenuItem({ adminSelections }) {
 
   const submitNewItem = (event) => {
     event.preventDefault()
-    // first, update Redux store with new item
-    // then, post new store to backend to update menu
-    //       modal could have loading animation during this time?
-    // when response is recieved, display modal text confirming menu update and clear form
-    clearForm()
-    setConfirmModal(true)
+    //error handle that everything is completed
+    if (
+      name &&
+      description &&
+      // price !== 0 &&
+      price >= 0 &&
+      image &&
+      category &&
+      category !== "Category..." &&
+      restaurantId
+    ) {
+      // first, update Redux store with new item
+
+      const newMenuItem = {
+        name: name,
+        description: description,
+        tags: "No tags added",
+        category: category, 
+        image: image,
+        price: price,
+      }
+      console.log("REST ID",restaurantId)
+      dispatch(addMenuItemAsync(newMenuItem, restaurantId))
+      // then, post new store to backend to update menu
+      //       modal could have loading animation during this time?
+      // when response is recieved, display modal text confirming menu update and clear form
+      clearForm()
+      setConfirmModal(true)
+    } else {
+      console.log("ADD ITEM FORM IS NOT COMPLETE")
+    }
   }
 
   useEffect(() => {
@@ -87,14 +118,15 @@ export default function AddMenuItem({ adminSelections }) {
           </select> */}
 
           <select
-            placeholder='Restaurant'
             className="form-select"
+            value={category}
+            onChange={event => setCategory(event.target.value)}
           >
             <option> Category...</option>
-            <option> Appetizer</option>
-            <option> Entree</option>
-            <option> Draft Beer</option>
-            <option> Cocktail</option>
+            <option> appetizer</option>
+            <option> entree</option>
+            <option> draft beer</option>
+            <option> cocktail</option>
 
           </select>
 
@@ -105,7 +137,7 @@ export default function AddMenuItem({ adminSelections }) {
         }}></input>
 
 
-        <input className="form__input" name="price" type="text" placeholder="Enter price..." value={price} onChange={(e) => {
+        <input className="form__input" name="price" type="number" placeholder="Enter number for price..." value={price} onChange={(e) => {
           setPrice(e.target.value)
         }}></input>
 
@@ -128,7 +160,9 @@ export default function AddMenuItem({ adminSelections }) {
 
         <h3>Preview</h3>
         <MenuItems name={name} description={description} image={image} price={price} />
-        <button className="admin-button" onClick={(event) => { submitNewItem(event) }}>Add new menu item</button>
+        <div className="search-button-container">
+          <button className="admin-button" onClick={(event) => { submitNewItem(event) }}>Add new menu item</button>
+        </div>
       </form>
 
       {confirmModal &&
