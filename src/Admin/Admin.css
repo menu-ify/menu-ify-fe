@@ -13,12 +13,13 @@
   padding-right: 2%;
   text-align: left;
   color: rgb(51, 51, 51, .95);
+
 }
 
 .form-select {
   width: fit-content;
   padding: 1%;
-  font-size: 2.75vh;
+  font-size: 2.5vh;
   margin-right: 10px;
   margin-left: 10px;
   border-radius: 16px;
@@ -28,12 +29,14 @@
   background-color: rgba(255, 255, 255, 0.5);
   padding-top: 5px;
   padding-bottom: 5px;
+  height: fit-content;
+  margin-top: 2%;
 }
 
 .admin-button {
   padding: 2%;
   width: fit-content;
-  font-size: 2.75vh;
+  font-size: 2.5vh;
   cursor: pointer;
   margin-right: 10px;
   margin-left: 10px;
@@ -55,9 +58,15 @@
   font-weight: 100;
   font-size: 2.75vh;
   color: rgb(51, 51, 51, .95);
+  width: 90%;
+  margin-bottom: 2%;
 }
 
 .input-alert-container {
   display: flex;
+  height: auto;
+  padding: 0;
+  margin: 0;
   /* align-items: center; */
 }
+
