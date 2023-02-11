@@ -51,13 +51,14 @@
   padding-bottom: 5%;
   /* left: 40%; */
   /* transform: translateX(-50%); */
+  letter-spacing: .1vw;
 }
 
 .name2 {
   /* flex: 0 1 auto; */
   /* position: absolute; */
   font-family: 'Anton', sans-serif;
-
+  letter-spacing: .1vw;
   /* transform: rotate(15deg); */
   /* font-style: normal; */
   font-weight: 800;

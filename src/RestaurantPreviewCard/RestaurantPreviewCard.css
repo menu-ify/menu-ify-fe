@@ -6,6 +6,7 @@
   margin-bottom: 2%;
   /* color: rgb(51, 51, 51, .95); */
 
+  letter-spacing: .1vw;
 }
 
 .nav-link {
@@ -19,7 +20,6 @@
 .RPC-description {
   font-size: 2.75vh;
   font-style: italic;
-
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
   margin: 0;
@@ -27,6 +27,7 @@
   margin-top: 2%;
   margin-bottom: 2%;
   /* color: rgb(51, 51, 51, .95); */
+  
 }
 
 .card-container {
@@ -36,6 +37,7 @@
   margin-bottom: 7%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   /* padding: 2% */
+
 }
 
 .card-container:hover {
