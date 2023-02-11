@@ -57,7 +57,6 @@ const App = () => {
             <Route path="/admin"
               element={<Admin setAdminSelections={setAdminSelections}/>}
             />
-            <Route path="/error" element={<NotFound />} status={404} />
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
         </main>)
