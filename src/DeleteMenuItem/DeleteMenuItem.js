@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { setInitialMenu } from "../features/menu/menuSlice"
 import MenuItemDeleteCard from "../MenuItemDeleteCard/MenuItemDeleteCard"
 import { getData } from "../apiCalls"
+import { useNavigate } from "react-router-dom"
 import './DeleteMenuItem.css'
 
 const DeleteMenuItem = ({ adminSelections }) => {
+  const navigate = useNavigate()
   const menuItems = useSelector((state)=> state.menu)
   console.log(adminSelections)
   const dispatch = useDispatch()
@@ -16,11 +18,11 @@ const DeleteMenuItem = ({ adminSelections }) => {
         console.log("DATA", data.data)
         dispatch(setInitialMenu(data.data))
       })
-      // .catch(error => {
-      //   console.log("Fetch error: ", error)
-      //   setError(error)
-      // })
-  }, [adminSelections.restaurantId, dispatch])
+      .catch(error => {
+        console.log("Fetch error: ", error)
+        navigate("/error")
+      })
+  }, [adminSelections.restaurantId, dispatch, navigate])
 
   const menuItemsArray = menuItems.map((menuItem)=> {
     return (
@@ -28,7 +30,7 @@ const DeleteMenuItem = ({ adminSelections }) => {
         key={menuItem.id}
         id={menuItem.id}
         name={menuItem.attributes.name}
-        restaurantId={menuItem.attributes.restaurant_id}
+        restaurantID={menuItem.attributes.restaurant_id}
       />
       )
     })

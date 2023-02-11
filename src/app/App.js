@@ -42,7 +42,11 @@ const App = () => {
               element={<RestaurantPreviewContainer restaurants={restaurants} />}
             />
             <Route path="/restaurant/:id"
-              element={<Menu error={error} setError={setError} restaurants={restaurants} />}
+              element={<Menu
+                error={error}
+                setError={setError}
+                restaurants={restaurants}
+              />}
             />
             <Route path="/admin/add-menu-item"
               element={<AddMenuItem adminSelections={adminSelections}/>}
@@ -51,10 +55,9 @@ const App = () => {
               element={<DeleteMenuItem adminSelections={adminSelections} />}
             />
             <Route path="/admin"
-              element={<Admin
-                setAdminSelections={setAdminSelections}
-              />}
+              element={<Admin setAdminSelections={setAdminSelections}/>}
             />
+            <Route path="/error" element={<NotFound />} status={404} />
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
         </main>)
