@@ -17,10 +17,7 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([])
   const [adminSelections, setAdminSelections] = useState({})
   const [error, setError] = useState('')
-  // const [menuItems, setMenuItems] = useState([])
-  // const [selectedRestaurant, setSelectedRestaurant] = useState("")
-  // const [selectedAction, setSelectedAction] = useState("")
-
+  
   useEffect(() => {
     getData(URLRestaurants)
       .then(data => {
@@ -32,11 +29,6 @@ const App = () => {
         console.log("Fetch error: ", error)
         setError(error)
       })
-
-    // getData(URLMenuItems).then(data => {
-    //   console.log("MENU ITEMS", data)
-    //   setMenuItems(data.data)
-    // })
   }, [])
 
   return (
