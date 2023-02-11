@@ -3,7 +3,7 @@ import './MenuItemDeleteCard.css'
 import { useDispatch } from "react-redux"
 import { deleteMenuItemAsync } from "../features/menu/menuSlice"
 
-const MenuItemDeleteCard = () => {
+const MenuItemDeleteCard = ({name, restaurantId, id}) => {
   const dispatch = useDispatch()
   const handleDelete = (e) => {
     e.preventDefault()
@@ -13,7 +13,7 @@ const MenuItemDeleteCard = () => {
   }
   return (
     <section>
-      <p>Menu Item Name</p>
+      <p>{name}</p>
       <button onClick={(event) => handleDelete(event)}>Delete</button>
     </section>
   )

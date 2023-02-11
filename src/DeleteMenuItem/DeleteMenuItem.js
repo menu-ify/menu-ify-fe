@@ -1,7 +1,8 @@
 import React, { useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { deleteMenuItemAsync } from "../features/menu/menuSlice"
+import { deleteMenuItemAsync, setInitialMenu } from "../features/menu/menuSlice"
 import MenuItemDeleteCard from "../MenuItemDeleteCard/MenuItemDeleteCard"
+import { getData } from "../apiCalls"
 import './DeleteMenuItem.css'
 
 const DeleteMenuItem = ({ adminSelections }) => {
