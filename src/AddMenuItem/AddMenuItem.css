@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  
+
 }
 
 .form__input {
@@ -35,19 +35,34 @@
 
 .confirm-modal {
   position: absolute;
-  top: 125vh;
   left: center;
-  z-index: 1;
+  z-index: 100;
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 25vh;
   text-align: center;
   background-color: rgb(0, 0, 0, 0.9);
   color: white;
   font-size: 2.75vh;
   font-family: roboto, sans-serif;
-  padding: 10%
+  padding: 100%; 
+  padding-top: 25%;
+  width: 50%;
+  top: 0;
+  height: 100% 
+
+ /* position: absolute;
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 100vh;
+background-color: rgb(0, 0, 0, 0.9);
+color: white;
+font-size: 2.75vh;
+font-family: roboto, sans-serif;
+padding: 10%;
+margin: 0;
+top: 0 */
+
 }
 
 .image-preview {
@@ -73,18 +88,18 @@
   height: 35vh;
 }
 
-.form-header {
-  /* margin-top: 8px;
+/* .form-header {
+  margin-top: 8px;
   margin-bottom: 0;
-  padding: 0; */
-}
+  padding: 0;
+} */
 
 .add-select {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 2%;
-  /* margin-left: 2%; */
+  margin: 0;
+  margin-left: 2%;
 }
 
 h3 {
@@ -110,6 +125,10 @@ h3 {
   padding-bottom: 5px;
   margin-top: 2%;
   margin-left: 2%;
+}
+
+.search-button:hover {
+  color: #ffb700;
 }
 
 .search-button-container {

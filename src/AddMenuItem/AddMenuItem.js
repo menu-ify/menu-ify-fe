@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react'
 import "./AddMenuItem.css"
 import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
+import { useDispatch } from "react-redux"
+import { addMenuItemAsync } from "../features/menu/menuSlice"
 // import { postData } from '../apiCalls'
 
 export default function AddMenuItem({ adminSelections }) {
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -12,8 +15,21 @@ export default function AddMenuItem({ adminSelections }) {
   const [images, setImages] = useState(null)
   const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
+  const [category, setCategory] = useState('')
   const [confirmModal, setConfirmModal] = useState(false)
+  const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const restaurantName = adminSelections.selectedRestaurant
+  let restaurantId = adminSelections.restaurantId
+  const [message, setMessage] = useState('')
+  const selectedRestaurantId = () => {
+    if (selectedRestaurant === "Pho Kyah") {
+      return 100
+    } else if (selectedRestaurant === "Tim's Tiki Bar") {
+      return 200
+    } else {
+      return 300
+    }
+  }
 
   const clearForm = () => {
     setName('')
@@ -25,22 +41,46 @@ export default function AddMenuItem({ adminSelections }) {
 
   const submitNewItem = (event) => {
     event.preventDefault()
-    // first, update Redux store with new item
-    // then, post new store to backend to update menu
-    //       modal could have loading animation during this time?
-    // when response is recieved, display modal text confirming menu update and clear form
-    clearForm()
-    setConfirmModal(true)
+    if (!restaurantId) {
+      restaurantId = selectedRestaurantId()
+      console.log("WAS MISSING ID", restaurantId)
+    }
+    if (
+      name &&
+      description &&
+      price >= 0 &&
+      image &&
+      category &&
+      category !== "Category..." &&
+      restaurantId
+    ) {
+      const newMenuItem = {
+        name: name,
+        description: description,
+        tags: "No tags added",
+        category: category,
+        image: image,
+        price: price,
+      }
+      dispatch(addMenuItemAsync(newMenuItem, restaurantId))
+      clearForm()
+      setMessage('Menu item added! 🎉')
+      setConfirmModal(true)
+      window.scrollTo(0, 0)
+    } else {
+      setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
+      setConfirmModal(true)
+      window.scrollTo(0, 0)
+    }
   }
 
   useEffect(() => {
     if (images) return
-
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
       .then(data => {
-        console.log('attempted to fetch AddMenuItem preview images', data)
         setImages(data)
       })
+
   })
 
   useEffect(() => {
@@ -52,8 +92,6 @@ export default function AddMenuItem({ adminSelections }) {
       const filteredSearch = images.data.filter(image => {
         return image.attributes.description.includes(search)
       })
-
-      console.log('filteredSearch:', filteredSearch)
 
       if (filteredSearch.length > 0) {
         setSearchResults(filteredSearch.map(image => {
@@ -76,25 +114,31 @@ export default function AddMenuItem({ adminSelections }) {
       </h3>
       <form className="form">
 
+        {!restaurantId && <div className="add-select">
+          <select className="form-select"
+            value={selectedRestaurant}
+            onChange={event => setSelectedRestaurant(event.target.value)}
+          >
+            <option>Restaurant</option>
+            <option>Pho Kyah</option>
+            <option>Tim's Tiki Bar</option>
+            <option>Ruthy's</option>
+          </select>
+        </div>}
+
+
         <div className="add-select">
 
-          {/* <select
-
-            placeholder='Restaurant'
-            className="form-select"
-          >
-            <option>Restaurant...</option>
-          </select> */}
-
           <select
-            placeholder='Restaurant'
             className="form-select"
+            value={category}
+            onChange={event => setCategory(event.target.value)}
           >
-            <option> Category...</option>
-            <option> Appetizer</option>
-            <option> Entree</option>
-            <option> Draft Beer</option>
-            <option> Cocktail</option>
+            <option>Category...</option>
+            <option>appetizer</option>
+            <option>entree</option>
+            <option>draft beer</option>
+            <option>cocktail</option>
 
           </select>
 
@@ -105,7 +149,7 @@ export default function AddMenuItem({ adminSelections }) {
         }}></input>
 
 
-        <input className="form__input" name="price" type="text" placeholder="Enter price..." value={price} onChange={(e) => {
+        <input className="form__input" name="price" type="number" placeholder="Enter number for price..." value={price} onChange={(e) => {
           setPrice(e.target.value)
         }}></input>
 
@@ -127,13 +171,20 @@ export default function AddMenuItem({ adminSelections }) {
         </div>
 
         <h3>Preview</h3>
+
         <MenuItems name={name} description={description} image={image} price={price} />
-        <button className="admin-button" onClick={(event) => { submitNewItem(event) }}>Add new menu item</button>
+
+        <div className="search-button-container">
+          <button className="search-button" onClick={(event) => { submitNewItem(event) }}>Add new menu item</button>
+        </div>
+
       </form>
 
       {confirmModal &&
         <div className="confirm-modal">
-          <p>Menu item submitted!</p>
+          <p>{message}</p>
+          {/* <NavLink to="/admin"><p>Click to start over</p></NavLink>
+          <p>or</p> */}
           <button
             className="admin-button"
             onClick={() => { setConfirmModal(false) }}>Close
