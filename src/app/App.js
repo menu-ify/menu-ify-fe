@@ -17,10 +17,7 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([])
   const [adminSelections, setAdminSelections] = useState({})
   const [error, setError] = useState('')
-  // const [menuItems, setMenuItems] = useState([])
-  // const [selectedRestaurant, setSelectedRestaurant] = useState("")
-  // const [selectedAction, setSelectedAction] = useState("")
-
+  
   useEffect(() => {
     getData(URLRestaurants)
       .then(data => {
@@ -32,11 +29,6 @@ const App = () => {
         console.log("Fetch error: ", error)
         setError(error)
       })
-
-    // getData(URLMenuItems).then(data => {
-    //   console.log("MENU ITEMS", data)
-    //   setMenuItems(data.data)
-    // })
   }, [])
 
   return (
@@ -50,7 +42,11 @@ const App = () => {
               element={<RestaurantPreviewContainer restaurants={restaurants} />}
             />
             <Route path="/restaurant/:id"
-              element={<Menu error={error} setError={setError} restaurants={restaurants} />}
+              element={<Menu
+                error={error}
+                setError={setError}
+                restaurants={restaurants}
+              />}
             />
             <Route path="/admin/add-menu-item"
               element={<AddMenuItem adminSelections={adminSelections}/>}
@@ -59,9 +55,7 @@ const App = () => {
               element={<DeleteMenuItem adminSelections={adminSelections} />}
             />
             <Route path="/admin"
-              element={<Admin
-                setAdminSelections={setAdminSelections}
-              />}
+              element={<Admin setAdminSelections={setAdminSelections}/>}
             />
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
