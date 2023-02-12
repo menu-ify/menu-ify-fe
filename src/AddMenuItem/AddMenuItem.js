@@ -11,17 +11,28 @@ export default function AddMenuItem({ adminSelections }) {
   const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState('')
   const [search, setSearch] = useState('')
   const [images, setImages] = useState(null)
   const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
   const [category, setCategory] = useState('')
   const [confirmModal, setConfirmModal] = useState(false)
+  const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const restaurantName = adminSelections.selectedRestaurant
-  const restaurantId = adminSelections.restaurantId
+  let restaurantId = adminSelections.restaurantId
   const [message, setMessage] = useState('')
-  // console.log("restaurantId", restaurantId.restaurantId)
+  const selectedRestaurantId = () => {
+    if (selectedRestaurant === "Pho Kyah") {
+      return 100
+    } else if (selectedRestaurant === "Tim's Tiki Bar") {
+      return 200
+    } else {
+      return 300
+    }
+  }
+
+
 
   const clearForm = () => {
     setName('')
@@ -33,6 +44,10 @@ export default function AddMenuItem({ adminSelections }) {
 
   const submitNewItem = (event) => {
     event.preventDefault()
+    if (!restaurantId) {
+      restaurantId = selectedRestaurantId()
+      console.log("WAS MISSING ID", restaurantId)
+    }
     if (
       name &&
       description &&
@@ -104,15 +119,20 @@ export default function AddMenuItem({ adminSelections }) {
       </h3>
       <form className="form">
 
-        <div className="add-select">
-
-          {/* <select
-
-            placeholder='Restaurant'
-            className="form-select"
+        {!restaurantId && <div className="add-select">
+          <select className="form-select"
+            value={selectedRestaurant}
+            onChange={event => setSelectedRestaurant(event.target.value)}
           >
-            <option>Restaurant...</option>
-          </select> */}
+            <option>Restaurant</option>
+            <option>Pho Kyah</option>
+            <option>Tim's Tiki Bar</option>
+            <option>Ruthy's</option>
+          </select>
+        </div>}
+
+
+        <div className="add-select">
 
           <select
             className="form-select"
@@ -165,8 +185,8 @@ export default function AddMenuItem({ adminSelections }) {
       {confirmModal &&
         <div className="confirm-modal">
           <p>{message}</p>
-         <NavLink to="/admin"><p>Click to start over</p></NavLink>
-         <p>or</p>
+          {/* <NavLink to="/admin"><p>Click to start over</p></NavLink>
+          <p>or</p> */}
           <button
             className="admin-button"
             onClick={() => { setConfirmModal(false) }}>Close
