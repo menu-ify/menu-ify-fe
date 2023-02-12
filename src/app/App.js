@@ -36,7 +36,7 @@ const App = () => {
       {error ?
         (<NotFound />)
         : (<main className="App">
-          <NavBar />
+          <NavBar restaurants={restaurants}/>
           <Routes>
             <Route path="/"
               element={<RestaurantPreviewContainer restaurants={restaurants} />}
@@ -49,13 +49,13 @@ const App = () => {
               />}
             />
             <Route path="/admin/add-menu-item"
-              element={<AddMenuItem adminSelections={adminSelections}/>}
+              element={<AddMenuItem adminSelections={adminSelections} restaurants={restaurants}/>}
             />
             <Route path="/admin/delete"
               element={<DeleteMenuItem adminSelections={adminSelections} />}
             />
             <Route path="/admin"
-              element={<Admin setAdminSelections={setAdminSelections}/>}
+              element={<Admin setAdminSelections={setAdminSelections} restaurants={restaurants}/>}
             />
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
