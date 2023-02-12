@@ -38,7 +38,7 @@ const App = () => {
       .then(data => {
         setRestaurants(data.data)
       })
-  }, [restaurants]) // Add this line to make sure the hook runs whenever the `restaurants` state changes
+  }, []) // Add this line to make sure the hook runs whenever the `restaurants` state changes
 
 
   return (
