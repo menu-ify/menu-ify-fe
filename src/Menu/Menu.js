@@ -1,5 +1,5 @@
 import React, { useMemo } from "react"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
 import MenuItems from "../MenuItems/MenuItems"
@@ -8,8 +8,8 @@ import './Menu.css'
 import { setInitialMenu } from "../features/menu/menuSlice"
 
 const Menu = ({ restaurants, setError }) => {
-  const menuItems = useSelector((state)=> state.menu)
-  const dispatch = useDispatch();
+  const menuItems = useSelector((state) => state.menu)
+  const dispatch = useDispatch()
   const checkIfValid = (id) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
@@ -19,17 +19,15 @@ const Menu = ({ restaurants, setError }) => {
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
-        console.log("DATA", data.data)
         dispatch(setInitialMenu(data.data))
       })
       .catch(error => {
-        console.log("Fetch error: ", error)
         setError(error)
       })
   }, [id, dispatch, setError])
 
   const filterByCategory = (category) => {
-    return menuItems.filter(menuItem => menuItem.attributes.category === category)
+    return menuItems.filter(menuItem => menuItem.attributes && menuItem.attributes.category.toLowerCase() === category.toLowerCase())
   }
 
   const filteredMenuItems = (category) => filterByCategory(category).map(menuItems => {
@@ -65,7 +63,7 @@ const Menu = ({ restaurants, setError }) => {
           </div>
         </section>)
         : (<NotFound />)
-        }
+      }
     </>
   )
 }
