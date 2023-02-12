@@ -22,7 +22,7 @@ describe('The Pho Kyah add menu item page', () => {
     cy.get('.menu-item-name').contains('- $')
   })
 
-  it.only('should add menu items to the Pho Kyah menu', () => {
+  it('should add menu items to the Pho Kyah menu', () => {
     cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants', {
       fixture: '../fixtures/restaurant_data.json',
     })
