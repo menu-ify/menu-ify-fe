@@ -39,6 +39,18 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     return null;
   }
 
+  const restaurantOptions = () => {
+    return restaurants.map((restaurant) => {
+      return (
+        <option
+          key={restaurant.id}
+        >
+          {restaurant.attributes.name}
+        </option>
+      )
+    })
+  }
+
   const clearForm = () => {
     setName('')
     setPrice('')
@@ -127,9 +139,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
             onChange={event => setSelectedRestaurant(event.target.value)}
           >
             <option>Restaurant</option>
-            <option>Pho Kyah</option>
-            <option>Tim's Tiki Bar</option>
-            <option>Ruthy's</option>
+            {restaurantOptions()}
           </select>
         </div>}
 
