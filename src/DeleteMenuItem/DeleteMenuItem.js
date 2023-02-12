@@ -4,12 +4,14 @@ import { setInitialMenu } from "../features/menu/menuSlice"
 import MenuItemDeleteCard from "../MenuItemDeleteCard/MenuItemDeleteCard"
 import { getData } from "../apiCalls"
 import './DeleteMenuItem.css'
+import { useNavigate } from "react-router-dom"
 
 const DeleteMenuItem = ({ adminSelections }) => {
-  const menuItems = useSelector((state)=> state.menu)
-  console.log(adminSelections)
+  const restaurantID = adminSelections.restaurantId
+  const navigate = useNavigate()
+  const menuItems = useSelector((state) => state.menu)
   const dispatch = useDispatch()
-  
+
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${adminSelections.restaurantId}/menu_items`)
       .then(data => {
@@ -20,7 +22,7 @@ const DeleteMenuItem = ({ adminSelections }) => {
       })
   }, [adminSelections.restaurantId, dispatch])
 
-  const menuItemsArray = menuItems.map((menuItem)=> {
+  const menuItemsArray = menuItems.map((menuItem) => {
     return (
       <MenuItemDeleteCard
         key={menuItem.id}
@@ -28,13 +30,20 @@ const DeleteMenuItem = ({ adminSelections }) => {
         name={menuItem.attributes.name}
         restaurantId={menuItem.attributes.restaurant_id}
       />
-      )
-    })
+    )
+  })
+
   return (
-    <div className="delete-container">
-      <h2>Delete any menu items: </h2>
-      {menuItemsArray}
-    </div>
+    <>
+      {restaurantID ?
+        (<div className="delete-container">
+          <h2 className="rpc-title">Admin View</h2>
+          <h3 className="rpc-instructions">Delete menu items for {adminSelections.selectedRestaurant}: </h3>
+          {menuItemsArray}
+        </div>)
+        : navigate("/admin")
+      }
+    </>
   )
 }
 
