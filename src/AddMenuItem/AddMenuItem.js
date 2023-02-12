@@ -4,6 +4,7 @@ import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
 import { useDispatch } from "react-redux"
 import { addMenuItemAsync } from "../features/menu/menuSlice"
+import { NavLink } from 'react-router-dom'
 // import { postData } from '../apiCalls'
 
 export default function AddMenuItem({ adminSelections }) {
@@ -19,6 +20,7 @@ export default function AddMenuItem({ adminSelections }) {
   const [confirmModal, setConfirmModal] = useState(false)
   const restaurantName = adminSelections.selectedRestaurant
   const restaurantId = adminSelections.restaurantId
+  const [message, setMessage] = useState('')
   // console.log("restaurantId", restaurantId.restaurantId)
 
   const clearForm = () => {
@@ -53,9 +55,14 @@ export default function AddMenuItem({ adminSelections }) {
       console.log("REST ID", restaurantId)
       dispatch(addMenuItemAsync(newMenuItem, restaurantId))
       clearForm()
+      setMessage('Menu item added! 🎉')
       setConfirmModal(true)
+      window.scrollTo(0, 0)
     } else {
+      setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
       console.log("ADD ITEM FORM IS NOT COMPLETE")
+      setConfirmModal(true)
+      window.scrollTo(0, 0)
     }
   }
 
@@ -66,6 +73,7 @@ export default function AddMenuItem({ adminSelections }) {
         console.log('attempted to fetch AddMenuItem preview images', data)
         setImages(data)
       })
+
   })
 
   useEffect(() => {
@@ -161,7 +169,9 @@ export default function AddMenuItem({ adminSelections }) {
 
       {confirmModal &&
         <div className="confirm-modal">
-          <p>Menu item submitted!</p>
+          <p>{message}</p>
+         <NavLink to="/admin"><p>Click to start over</p></NavLink>
+         <p>or</p>
           <button
             className="admin-button"
             onClick={() => { setConfirmModal(false) }}>Close
