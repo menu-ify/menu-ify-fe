@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "../RestaurantAdmin/RestaurantAdmin.css"
 import { postData, deleteData, getData } from "../apiCalls"
 

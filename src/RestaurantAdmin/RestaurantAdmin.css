@@ -14,16 +14,16 @@
   margin: 0; */
 
   position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 300px;
-height: 300px;
-font-family: roboto, sans-serif;
-background-color: rgba(0, 0, 0, 0.9);
-color: white;
-text-align: center;
-border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  font-family: roboto, sans-serif;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  text-align: center;
+  border-radius: 15px;
 }
 
 .delete-restaurant-card {
