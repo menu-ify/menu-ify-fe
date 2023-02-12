@@ -14,16 +14,33 @@ const RestaurantAdmin = ({ restaurants }) => {
   const [link, setLink] = useState("")
   const [message, setMessage] = useState("")
 
+  // const restaurantDeleteCards = () => {
+  //   return restaurants.map((restaurant) => {
+  //     return (
+  //       <div key={restaurant.id} className="delete-restaurant-card">
+  //         <h3>{restaurant.attributes.name}</h3>
+  //         <button
+  //           id={restaurant.id}
+  //           className="search-button">
+  //           onClick={(event) => handleDelete(event)}
+  //           >
+  //           Delete
+  //         </button>
+  //       </div>
+  //     )
+  //   })
+  // }
+
   const restaurantDeleteCards = () => {
     return restaurants.map((restaurant) => {
       return (
         <div key={restaurant.id} className="delete-restaurant-card">
           <h3>{restaurant.attributes.name}</h3>
           <button
-            // id={restaurant.id}
-            // className="search-button">
-            // onClick={(event) => handleDelete(event)}
-            >
+            id={restaurant.id}
+            className="search-button"
+            onClick={(event) => handleDelete(event)}
+          >
             Delete
           </button>
         </div>
