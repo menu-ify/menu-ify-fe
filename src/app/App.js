@@ -18,7 +18,7 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([])
   const [adminSelections, setAdminSelections] = useState({})
   const [error, setError] = useState('')
-  
+
   useEffect(() => {
     getData(URLRestaurants)
       .then(data => {
@@ -32,12 +32,21 @@ const App = () => {
       })
   }, [])
 
+
+  useEffect(() => {
+    getData(URLRestaurants)
+      .then(data => {
+        setRestaurants(data.data)
+      })
+  }, [restaurants]) // Add this line to make sure the hook runs whenever the `restaurants` state changes
+
+
   return (
     <>
       {error ?
         (<NotFound />)
         : (<main className="App">
-          <NavBar restaurants={restaurants}/>
+          <NavBar restaurants={restaurants} />
           <Routes>
             <Route path="/"
               element={<RestaurantPreviewContainer restaurants={restaurants} />}
@@ -50,16 +59,16 @@ const App = () => {
               />}
             />
             <Route path="/admin/add-menu-item"
-              element={<AddMenuItem adminSelections={adminSelections} restaurants={restaurants}/>}
+              element={<AddMenuItem adminSelections={adminSelections} restaurants={restaurants} />}
             />
             <Route path="/admin/delete"
               element={<DeleteMenuItem adminSelections={adminSelections} />}
             />
-             <Route path="/admin/restaurant"
-              element={<RestaurantAdmin setAdminSelections={setAdminSelections} restaurants={restaurants}/>}
+            <Route path="/admin/restaurant"
+              element={<RestaurantAdmin setAdminSelections={setAdminSelections} restaurants={restaurants} setRestaurants={setRestaurants} URLRestaurants={URLRestaurants} />}
             />
             <Route path="/admin"
-              element={<Admin setAdminSelections={setAdminSelections} restaurants={restaurants}/>}
+              element={<Admin setAdminSelections={setAdminSelections} restaurants={restaurants} />}
             />
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
