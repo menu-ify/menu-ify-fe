@@ -1,0 +1,14 @@
+.preview-margin {
+  margin-top: 5%;
+}
+
+.restaurant-admin-error-message {
+  font-family: roboto, sans-serif;
+}
+
+.delete-restaurant-card {
+  width: 90%;
+  background-color: gray;
+  margin: 5%;
+  padding: 2%
+}
