@@ -4,7 +4,6 @@ import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
 import { useDispatch } from "react-redux"
 import { addMenuItemAsync } from "../features/menu/menuSlice"
-import { NavLink } from 'react-router-dom'
 // import { postData } from '../apiCalls'
 
 export default function AddMenuItem({ adminSelections }) {
@@ -32,8 +31,6 @@ export default function AddMenuItem({ adminSelections }) {
     }
   }
 
-
-
   const clearForm = () => {
     setName('')
     setPrice('')
@@ -57,8 +54,6 @@ export default function AddMenuItem({ adminSelections }) {
       category !== "Category..." &&
       restaurantId
     ) {
-      // first, update Redux store with new item
-
       const newMenuItem = {
         name: name,
         description: description,
@@ -176,10 +171,13 @@ export default function AddMenuItem({ adminSelections }) {
         </div>
 
         <h3>Preview</h3>
+
         <MenuItems name={name} description={description} image={image} price={price} />
+
         <div className="search-button-container">
-          <button className="admin-button" onClick={(event) => { submitNewItem(event) }}>Add new menu item</button>
+          <button className="search-button" onClick={(event) => { submitNewItem(event) }}>Add new menu item</button>
         </div>
+
       </form>
 
       {confirmModal &&

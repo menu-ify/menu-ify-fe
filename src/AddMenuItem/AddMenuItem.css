@@ -88,19 +88,18 @@ top: 0 */
   height: 35vh;
 }
 
-.form-header {
-  /* margin-top: 8px;
+/* .form-header {
+  margin-top: 8px;
   margin-bottom: 0;
-  padding: 0; */
-}
+  padding: 0;
+} */
 
 .add-select {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin: 0;
-  /* margin-top: 2%;
-  margin-left: 2%; */
+  margin-left: 2%;
 }
 
 h3 {
@@ -126,6 +125,10 @@ h3 {
   padding-bottom: 5px;
   margin-top: 2%;
   margin-left: 2%;
+}
+
+.search-button:hover {
+  color: #ffb700;
 }
 
 .search-button-container {
