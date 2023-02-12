@@ -52,7 +52,6 @@ export default function AddMenuItem({ adminSelections }) {
         image: image,
         price: price,
       }
-      console.log("REST ID", restaurantId)
       dispatch(addMenuItemAsync(newMenuItem, restaurantId))
       clearForm()
       setMessage('Menu item added! 🎉')
@@ -60,7 +59,6 @@ export default function AddMenuItem({ adminSelections }) {
       window.scrollTo(0, 0)
     } else {
       setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
-      console.log("ADD ITEM FORM IS NOT COMPLETE")
       setConfirmModal(true)
       window.scrollTo(0, 0)
     }
@@ -70,7 +68,6 @@ export default function AddMenuItem({ adminSelections }) {
     if (images) return
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
       .then(data => {
-        console.log('attempted to fetch AddMenuItem preview images', data)
         setImages(data)
       })
 
@@ -85,8 +82,6 @@ export default function AddMenuItem({ adminSelections }) {
       const filteredSearch = images.data.filter(image => {
         return image.attributes.description.includes(search)
       })
-
-      console.log('filteredSearch:', filteredSearch)
 
       if (filteredSearch.length > 0) {
         setSearchResults(filteredSearch.map(image => {

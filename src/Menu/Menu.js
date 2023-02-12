@@ -19,11 +19,9 @@ const Menu = ({ restaurants, setError }) => {
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
-        console.log("DATA", data.data)
         dispatch(setInitialMenu(data.data))
       })
       .catch(error => {
-        console.log("Fetch error: ", error)
         setError(error)
       })
   }, [id, dispatch, setError])

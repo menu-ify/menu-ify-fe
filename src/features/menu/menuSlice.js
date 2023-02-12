@@ -28,17 +28,14 @@ const menuSlice = createSlice({
 export const deleteMenuItemAsync = (restaurantid, menuId) => dispatch => {
   deleteData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantid}/menu_items/${menuId}`)
     .then(data=> {
-      console.log("DATADELETE", data)
       dispatch(deleteMenuItem(menuId))
     })
   // dispatch(menuSlice.actions.deleteMenuItem(id))
 }
 
 export const addMenuItemAsync = (newMenuItem, restaurantId) => dispatch => {
-  console.log("ADD SLICE", newMenuItem, restaurantId)
   postData(newMenuItem, `https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantId}/menu_items`)
     .then(response => {
-      console.log("POST DATA RESPONSE", response)
       dispatch(addMenuItem(response))
     })
 }
