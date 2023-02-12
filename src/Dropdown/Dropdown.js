@@ -5,19 +5,18 @@ import "./Dropdown.css"
 
 export default function Dropdown({ restaurants }) {
   const restaurantLinks = restaurants.map((restaurant) => {
-    console.log("RESTAURANT", restaurant)
     return (
-    <NavLink to={`/restaurant/${restaurant.id}`}>
-    <li className="dropdown__menu-item">
-      <button 
-      className="dropdown__button" 
-      // onClick={() => {}}
-      >
-       <i>{restaurant.attributes.name}</i>
-      </button>
-    </li>
-  </NavLink>
-  )
+      <NavLink key={restaurant.id} to={`/restaurant/${restaurant.id}`}>
+        <li className="dropdown__menu-item">
+          <button
+            className="dropdown__button"
+          // onClick={() => {}}
+          >
+            <i>{restaurant.attributes.name}</i>
+          </button>
+        </li>
+      </NavLink>
+    )
   })
 
   return (
@@ -25,7 +24,6 @@ export default function Dropdown({ restaurants }) {
       <NavLink to={`/`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
-            console.log('Home clicked')
           }}>
             <big><b style={{ letterSpacing: '4px' }}>All restaurants</b></big>
           </button>
@@ -39,10 +37,10 @@ export default function Dropdown({ restaurants }) {
           <button className="dropdown__button" onClick={() => {
             console.log('Admin clicked')
           }}>
-           <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
+            <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
           </button>
         </li>
-      </NavLink> 
+      </NavLink>
 
       {/* <NavLink to={`/restaurant/100`}>
         <li className="dropdown__menu-item">

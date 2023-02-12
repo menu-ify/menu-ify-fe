@@ -8,21 +8,21 @@ const Admin = ({ setAdminSelections, restaurants }) => {
   const [selectedAction, setSelectedAction] = useState("")
   const navigate = useNavigate()
 
-  const restaurantId = () => {
-    if (selectedRestaurant === "Pho Kyah") {
-      return 100
-    } else if (selectedRestaurant === "Tim's Tiki Bar") {
-      return 200
-    } else {
-      return 300
+  console.log(restaurants)
+
+  const getRestaurantId = (restaurantName) => {
+    for (const restaurant of restaurants) {
+      if (restaurant.attributes.name === restaurantName) {
+        return restaurant.id;
+      }
     }
+    return null;
   }
 
   const restaurantOptions = () => {
     return restaurants.map((restaurant) => {
       return (
         <option
-          value={Number(restaurant.id)}
           key={restaurant.id}
         >
           {restaurant.attributes.name}
@@ -45,7 +45,7 @@ const Admin = ({ setAdminSelections, restaurants }) => {
         {
           selectedRestaurant: selectedRestaurant,
           selectedAction: selectedAction,
-          restaurantId: restaurantId()
+          restaurantId: getRestaurantId(selectedRestaurant)
         })
       navigate("/admin/add-menu-item")
     } else {
@@ -53,7 +53,7 @@ const Admin = ({ setAdminSelections, restaurants }) => {
         {
           selectedRestaurant: selectedRestaurant,
           selectedAction: selectedAction,
-          restaurantId: restaurantId()
+          restaurantId: getRestaurantId(selectedRestaurant)
         })
       navigate("/admin/delete")
     }
