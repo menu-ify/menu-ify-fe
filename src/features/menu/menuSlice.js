@@ -28,9 +28,11 @@ const menuSlice = createSlice({
 export const deleteMenuItemAsync = (restaurantid, menuId) => dispatch => {
   deleteData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantid}/menu_items/${menuId}`)
     .then(data=> {
-      dispatch(deleteMenuItem(menuId))
+      if (data.message === 'Menu item has successfully been deleted at this restaurant') {
+        console.log("DATADELETE", data)
+        dispatch(deleteMenuItem(menuId))
+      }
     })
-  // dispatch(menuSlice.actions.deleteMenuItem(id))
 }
 
 export const addMenuItemAsync = (newMenuItem, restaurantId) => dispatch => {
