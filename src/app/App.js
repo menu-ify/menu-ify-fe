@@ -36,7 +36,7 @@ const App = () => {
       {error ?
         (<NotFound />)
         : (<main className="App">
-          <NavBar />
+          <NavBar restaurants={restaurants}/>
           <Routes>
             <Route path="/"
               element={<RestaurantPreviewContainer restaurants={restaurants} />}

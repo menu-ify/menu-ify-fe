@@ -3,7 +3,22 @@ import "./Dropdown.css"
 
 // This component will need access to the data storing all menus so it can update them dynamically.
 
-export default function Dropdown() {
+export default function Dropdown({ restaurants }) {
+  const restaurantLinks = restaurants.map((restaurant) => {
+    return (
+    <NavLink to={`/restaurant/${restaurant.id}`}>
+    <li className="dropdown__menu-item">
+      <button 
+      className="dropdown__button" 
+      // onClick={() => {}}
+      >
+       <i>{restaurant.name}</i>
+      </button>
+    </li>
+  </NavLink>
+  )
+  })
+
   return (
     <ul className="dropdown">
       <NavLink to={`/`}>
@@ -16,7 +31,9 @@ export default function Dropdown() {
         </li>
       </NavLink>
       
-      <NavLink to={`/restaurant/100`}>
+      {restaurantLinks}
+
+      {/* <NavLink to={`/restaurant/100`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
            // console.log('Menu 1 clicked')
@@ -25,6 +42,7 @@ export default function Dropdown() {
           </button>
         </li>
       </NavLink>
+
       <NavLink to={`/restaurant/200`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
@@ -51,7 +69,8 @@ export default function Dropdown() {
            <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
           </button>
         </li>
-      </NavLink>
+      </NavLink> */}
+
     </ul>
   )
 }
