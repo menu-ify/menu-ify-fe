@@ -9,7 +9,7 @@
 }
 .restaurant-name {
   font-weight: 100;
-  font-size: 2.75vh;
+  font-size: 2.5vh;
   color: rgb(51, 51, 51, .95);
   margin-bottom: 2%;
   font-family: 'Roboto', sans-serif;
@@ -19,7 +19,7 @@
   margin-left: 5%;
   margin-bottom: 2%;
   width: fit-content;
-  font-size: 2.75vh;
+  font-size: 2.5vh;
   cursor: pointer;
   border-radius: 16px;
   outline: 0;
