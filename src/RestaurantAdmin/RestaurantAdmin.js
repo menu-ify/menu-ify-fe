@@ -13,10 +13,10 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
     return restaurants.map((restaurant) => {
       return (
         <div key={restaurant.id} className="delete-restaurant-card">
-          <h3>{restaurant.attributes.name}</h3>
+          <h3 className="delete-header">{restaurant.attributes.name}</h3>
           <button
             id={restaurant.id}
-            className="search-button"
+            className="delete-button"
             onClick={(event) => handleDelete(event)}
           >
             Delete
@@ -86,60 +86,74 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   }
 
   return (
-    <section className="restaurantMenuContainer">
-      <h2 className="rpc-title">Admin View</h2>
-      <p className="rpc-instructions">Add a restaurant</p>
+    <>
+      <section className="restaurantMenuContainer">
+        <h2 className="rpc-title">Admin View</h2>
+        <p className="rpc-instructions">Add a restaurant</p>
 
-      {message && <div className="restaurant-admin-error-message" onClick={() => clearInputs()}><div className="text-container">{message}</div></div>}
+        {message &&
+          <div
+            className="restaurant-admin-error-message text-container"
+            onClick={() => clearInputs()}>
+            <div
+              className="text-container"
+            >
+              {message}
+            </div >
+            Click to close
+          </div>}
 
-      <input
-        value={name}
-        onChange={(e) => { setName(e.target.value) }}
-        placeholder="Enter name"
-        className="form__input"
-      >
-      </input>
+        <input
+          value={name}
+          onChange={(e) => { setName(e.target.value) }}
+          placeholder="Enter name..."
+          className="form__input"
+        >
+        </input>
 
-      <input
-        value={description}
-        onChange={(e) => { setDescription(e.target.value) }}
-        placeholder="Enter description"
-        className="form__input"
-      >
-      </input>
+        <input
+          value={description}
+          onChange={(e) => { setDescription(e.target.value) }}
+          placeholder="Enter description..."
+          className="form__input"
+        >
+        </input>
 
-      <input
-        value={link}
-        onChange={(e) => { setLink(e.target.value) }}
-        placeholder="Enter link to image"
-        className="form__input"
-      >
-      </input>
+        <input
+          value={link}
+          onChange={(e) => { setLink(e.target.value) }}
+          placeholder="Enter URL to image..."
+          className="form__input"
+        >
+        </input>
 
-      <h3>Preview</h3>
-      
-      <section className="card-container preview-margin">
-        <div className="restaurant-image-container">
-          <img src={link} alt={name} className="restaurant-image" />
+        <h3>Preview</h3>
+
+        <section className="card-container preview-margin">
+          <div className="restaurant-image-container">
+            <img src={link} alt={name} className="restaurant-image" />
+          </div>
+          <div className="nav-link">
+            <h2 className="RPC-title">{name}</h2>
+          </div>
+          <p className="RPC-description">{description}</p>
+        </section>
+
+        <div className="search-button-container">
+          <button className="search-button"
+            onClick={(event) => { handleAdd(event) }}
+          >Add new restaurant</button>
         </div>
-        <div className="nav-link">
-          <h2 className="RPC-title">{name}</h2>
-        </div>
-        <p className="RPC-description">{description}</p>
       </section>
 
-      <div className="search-button-container">
-        <button className="search-button"
-          onClick={(event) => { handleAdd(event) }}
-        >Add new restaurant</button>
-      </div>
+      <section className="restaurantMenuContainer delete-margin">
+        <h2 className="rpc-title">Admin View</h2>
+        <p className="rpc-instructions">Delete a restaurant</p>
 
-      <p className="rpc-instructions">Delete a restaurant</p>
+        {restaurantDeleteCards()}
 
-      {restaurantDeleteCards()}
-
-    </section>
-
+      </section>
+    </>
   )
 }
 
