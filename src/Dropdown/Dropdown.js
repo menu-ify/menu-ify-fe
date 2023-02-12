@@ -5,6 +5,7 @@ import "./Dropdown.css"
 
 export default function Dropdown({ restaurants }) {
   const restaurantLinks = restaurants.map((restaurant) => {
+    console.log("RESTAURANT", restaurant)
     return (
     <NavLink to={`/restaurant/${restaurant.id}`}>
     <li className="dropdown__menu-item">
@@ -12,7 +13,7 @@ export default function Dropdown({ restaurants }) {
       className="dropdown__button" 
       // onClick={() => {}}
       >
-       <i>{restaurant.name}</i>
+       <i>{restaurant.attributes.name}</i>
       </button>
     </li>
   </NavLink>
@@ -30,8 +31,18 @@ export default function Dropdown({ restaurants }) {
           </button>
         </li>
       </NavLink>
-      
+
       {restaurantLinks}
+
+      <NavLink to={`/admin`}>
+        <li className="dropdown__menu-item">
+          <button className="dropdown__button" onClick={() => {
+            console.log('Admin clicked')
+          }}>
+           <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
+          </button>
+        </li>
+      </NavLink> 
 
       {/* <NavLink to={`/restaurant/100`}>
         <li className="dropdown__menu-item">

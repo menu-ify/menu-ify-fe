@@ -3,10 +3,11 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../Admin/Admin.css"
 
-const Admin = ({ setAdminSelections }) => {
+const Admin = ({ setAdminSelections, restaurants }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const [selectedAction, setSelectedAction] = useState("")
   const navigate = useNavigate()
+
   const restaurantId = () => {
     if (selectedRestaurant === "Pho Kyah") {
       return 100
@@ -17,19 +18,29 @@ const Admin = ({ setAdminSelections }) => {
     }
   }
 
+  const restaurantOptions = () => {
+    return restaurants.map((restaurant) => {
+      return (
+        <option
+          value={Number(restaurant.id)}
+          key={restaurant.id}
+        >
+          {restaurant.attributes.name}
+        </option>
+      )
+    })
+  }
+
   const submitForm = (event) => {
     event.preventDefault()
-    console.log("MADE IT TO SUBMIT FORM")
     if (
       selectedRestaurant === "None selected" ||
       selectedAction === "None selected" ||
       !selectedRestaurant ||
       !selectedAction
     ) {
-      // we might use the error component here
-      console.log("Admin form is not complete")
+      console.log("ADMIN FORM ERROR")
     } else if (selectedAction === "Add new menu item") {
-      console.log("Add new")
       setAdminSelections(
         {
           selectedRestaurant: selectedRestaurant,
@@ -38,7 +49,6 @@ const Admin = ({ setAdminSelections }) => {
         })
       navigate("/admin/add-menu-item")
     } else {
-      console.log("Delete existing")
       setAdminSelections(
         {
           selectedRestaurant: selectedRestaurant,
@@ -47,7 +57,6 @@ const Admin = ({ setAdminSelections }) => {
         })
       navigate("/admin/delete")
     }
-    console.log("ADMIN ADMIN SELECGTIONS", { selectedRestaurant: selectedRestaurant, selectedAction: selectedAction, restaurantId: restaurantId() })
   }
 
   const restaurantFieldAlert = () => {
@@ -83,10 +92,11 @@ const Admin = ({ setAdminSelections }) => {
               value={selectedRestaurant}
               onChange={event => setSelectedRestaurant(event.target.value)}
             >
-              <option>None selected</option>
-              <option>Pho Kyah</option>
+              <option key={Date.now()}>None selected</option>
+              {restaurantOptions()}
+              {/* <option>Pho Kyah</option>
               <option>Tim's Tiki Bar</option>
-              <option>Ruthy's</option>
+              <option>Ruthy's</option> */}
             </select>
             {restaurantFieldAlert()}
           </div>

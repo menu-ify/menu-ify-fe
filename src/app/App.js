@@ -55,7 +55,7 @@ const App = () => {
               element={<DeleteMenuItem adminSelections={adminSelections} />}
             />
             <Route path="/admin"
-              element={<Admin setAdminSelections={setAdminSelections}/>}
+              element={<Admin setAdminSelections={setAdminSelections} restaurants={restaurants}/>}
             />
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
