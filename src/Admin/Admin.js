@@ -94,9 +94,6 @@ const Admin = ({ setAdminSelections, restaurants }) => {
             >
               <option key={Date.now()}>None selected</option>
               {restaurantOptions()}
-              {/* <option>Pho Kyah</option>
-              <option>Tim's Tiki Bar</option>
-              <option>Ruthy's</option> */}
             </select>
             {restaurantFieldAlert()}
           </div>
