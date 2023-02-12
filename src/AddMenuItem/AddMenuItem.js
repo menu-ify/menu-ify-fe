@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import { addMenuItemAsync } from "../features/menu/menuSlice"
 // import { postData } from '../apiCalls'
 
-export default function AddMenuItem({ adminSelections }) {
+export default function AddMenuItem({ adminSelections, restaurants }) {
   const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -21,14 +21,22 @@ export default function AddMenuItem({ adminSelections }) {
   const restaurantName = adminSelections.selectedRestaurant
   let restaurantId = adminSelections.restaurantId
   const [message, setMessage] = useState('')
-  const selectedRestaurantId = () => {
-    if (selectedRestaurant === "Pho Kyah") {
-      return 100
-    } else if (selectedRestaurant === "Tim's Tiki Bar") {
-      return 200
-    } else {
-      return 300
+  // const selectedRestaurantId = () => {
+  //   if (selectedRestaurant === "Pho Kyah") {
+  //     return 100
+  //   } else if (selectedRestaurant === "Tim's Tiki Bar") {
+  //     return 200
+  //   } else {
+  //     return 300
+  //   }
+  // }
+  const getRestaurantId = (restaurantName) => {
+    for (const restaurant of restaurants) {
+      if (restaurant.attributes.name === restaurantName) {
+        return restaurant.id;
+      }
     }
+    return null;
   }
 
   const clearForm = () => {
@@ -42,8 +50,7 @@ export default function AddMenuItem({ adminSelections }) {
   const submitNewItem = (event) => {
     event.preventDefault()
     if (!restaurantId) {
-      restaurantId = selectedRestaurantId()
-      console.log("WAS MISSING ID", restaurantId)
+      restaurantId = getRestaurantId(selectedRestaurant)
     }
     if (
       name &&
