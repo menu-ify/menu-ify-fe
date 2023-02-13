@@ -42,7 +42,5 @@ export const addMenuItemAsync = (newMenuItem, restaurantId) => dispatch => {
     })
 }
 
-
-// export const selectMenu = (state) => state.menuItems.menu
 export const { addMenuItem, setInitialMenu, deleteMenuItem } = menuSlice.actions
 export default menuSlice.reducer

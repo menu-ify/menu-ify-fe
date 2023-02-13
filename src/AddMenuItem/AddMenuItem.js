@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import { addMenuItemAsync } from "../features/menu/menuSlice"
 // import { postData } from '../apiCalls'
 
-export default function AddMenuItem({ adminSelections }) {
+export default function AddMenuItem({ adminSelections, restaurants }) {
   const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -21,14 +21,34 @@ export default function AddMenuItem({ adminSelections }) {
   const restaurantName = adminSelections.selectedRestaurant
   let restaurantId = adminSelections.restaurantId
   const [message, setMessage] = useState('')
-  const selectedRestaurantId = () => {
-    if (selectedRestaurant === "Pho Kyah") {
-      return 100
-    } else if (selectedRestaurant === "Tim's Tiki Bar") {
-      return 200
-    } else {
-      return 300
+  // const selectedRestaurantId = () => {
+  //   if (selectedRestaurant === "Pho Kyah") {
+  //     return 100
+  //   } else if (selectedRestaurant === "Tim's Tiki Bar") {
+  //     return 200
+  //   } else {
+  //     return 300
+  //   }
+  // }
+  const getRestaurantId = (restaurantName) => {
+    for (const restaurant of restaurants) {
+      if (restaurant.attributes.name === restaurantName) {
+        return restaurant.id
+      }
     }
+    return null
+  }
+
+  const restaurantOptions = () => {
+    return restaurants.map((restaurant) => {
+      return (
+        <option
+          key={restaurant.id}
+        >
+          {restaurant.attributes.name}
+        </option>
+      )
+    })
   }
 
   const clearForm = () => {
@@ -42,8 +62,7 @@ export default function AddMenuItem({ adminSelections }) {
   const submitNewItem = (event) => {
     event.preventDefault()
     if (!restaurantId) {
-      restaurantId = selectedRestaurantId()
-      console.log("WAS MISSING ID", restaurantId)
+      restaurantId = getRestaurantId(selectedRestaurant)
     }
     if (
       name &&
@@ -75,13 +94,11 @@ export default function AddMenuItem({ adminSelections }) {
   }
 
   useEffect(() => {
-    if (images) return
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
       .then(data => {
         setImages(data)
       })
-
-  })
+  }, [])
 
   useEffect(() => {
     if (!images) {
@@ -120,9 +137,7 @@ export default function AddMenuItem({ adminSelections }) {
             onChange={event => setSelectedRestaurant(event.target.value)}
           >
             <option>Restaurant</option>
-            <option>Pho Kyah</option>
-            <option>Tim's Tiki Bar</option>
-            <option>Ruthy's</option>
+            {restaurantOptions()}
           </select>
         </div>}
 
@@ -183,8 +198,6 @@ export default function AddMenuItem({ adminSelections }) {
       {confirmModal &&
         <div className="confirm-modal">
           <p>{message}</p>
-          {/* <NavLink to="/admin"><p>Click to start over</p></NavLink>
-          <p>or</p> */}
           <button
             className="admin-button"
             onClick={() => { setConfirmModal(false) }}>Close
