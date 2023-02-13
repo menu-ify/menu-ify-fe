@@ -33,10 +33,10 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {
-        return restaurant.id;
+        return restaurant.id
       }
     }
-    return null;
+    return null
   }
 
   const restaurantOptions = () => {
@@ -200,8 +200,6 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       {confirmModal &&
         <div className="confirm-modal">
           <p>{message}</p>
-          {/* <NavLink to="/admin"><p>Click to start over</p></NavLink>
-          <p>or</p> */}
           <button
             className="admin-button"
             onClick={() => { setConfirmModal(false) }}>Close

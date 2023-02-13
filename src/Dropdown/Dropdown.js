@@ -35,13 +35,12 @@ export default function Dropdown({ restaurants }) {
       <NavLink to={`/admin`}>
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
-            console.log('Admin clicked')
           }}>
             <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
           </button>
         </li>
       </NavLink>
-      
+
     </ul>
   )
 }

@@ -13,10 +13,10 @@ const Admin = ({ setAdminSelections, restaurants }) => {
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {
-        return restaurant.id;
+        return restaurant.id
       }
     }
-    return null;
+    return null
   }
 
   const restaurantOptions = () => {
@@ -48,7 +48,7 @@ const Admin = ({ setAdminSelections, restaurants }) => {
           restaurantId: getRestaurantId(selectedRestaurant)
         })
       navigate("/admin/add-menu-item")
-    } else {
+    } else if (selectedAction === "Delete existing menu item") {
       setAdminSelections(
         {
           selectedRestaurant: selectedRestaurant,
@@ -56,6 +56,14 @@ const Admin = ({ setAdminSelections, restaurants }) => {
           restaurantId: getRestaurantId(selectedRestaurant)
         })
       navigate("/admin/delete")
+    } else if (selectedAction === "Add or delete restaurant") {
+      setAdminSelections(
+        {
+          selectedRestaurant: selectedRestaurant,
+          selectedAction: selectedAction,
+          restaurantId: getRestaurantId(selectedRestaurant)
+        })
+      navigate("/admin/restaurant")
     }
   }
 
@@ -107,6 +115,7 @@ const Admin = ({ setAdminSelections, restaurants }) => {
               <option>None selected</option>
               <option>Add new menu item</option>
               <option>Delete existing menu item</option>
+              <option>Add or delete restaurant</option>
             </select>
             {actionFieldAlert()}
           </div>
