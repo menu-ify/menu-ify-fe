@@ -104,7 +104,7 @@ describe('The add menu item page', () => {
     ).contains('Test')
   })
 
-  it.only("should add menu items to the Tim's menu", () => {
+  it("should add menu items to the Tim's menu", () => {
     cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants', {
       fixture: '../fixtures/restaurant_data.json',
     })
