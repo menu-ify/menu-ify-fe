@@ -1,46 +1,40 @@
-# Getting Started with Create React App and Redux
+## About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+The Menuify app allows restaurant owners to easily create mobile-friendly restaurant menus, because zooming in and out on a PDF menu can take away from the dining experience. This group project was completed in 2 1/2 weeks at the Turing School of Software and Design. Front- and Back-end teams collaborated on the design, development, and deployment processes throughout the course of the project. 
 
-## Available Scripts
+Restaurant owners can easily add/delete menus and individual menu items. While diners can easily find their desired menu with full-color images, descriptions, and prices. By placing QR codes on the tables, customers need only use their phone camera to access the menu.
 
-In the project directory, you can run:
+ - [Deployed front end and back end](UPDATE) 
+ - [Front-end repo](https://github.com/menu-ify/menu-ify-fe)
+ - [Back-end API repo](https://github.com/nalito223/api-todos)
 
-### `npm start`
+### Mobile preview
+![mobile-demo](https://user-images.githubusercontent.com/110144802/213944645-7789675b-7a54-462a-9427-850f3c84b0fa.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Desktop preview
+![desktop-preview](https://user-images.githubusercontent.com/110144802/213949876-52e8279a-6afd-4f81-886a-ce764a0f79bb.gif)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Tech highlights
+- React
+- Javascript
+- Express API
+- Html 
+- CSS
+- Node.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Libraries and frameworks
+- React Router
+- Cypress e2e testing
+- React Beautiful DND
+- Styled components 
+- React player 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation instructions
+1. [Clone the frontend repository](https://github.com/nalito223/todos)
+2. CD into the directory and run `yarn install`
+3. Run `npm start`
+4. [Clone the backend API respository](https://github.com/nalito223/api-todos)
+5. CD into the directory and run `npm install`
+6. Run `node server.js`
+7. Navigate to to your local server (listed in your terminal) in your web browser to view the live page
