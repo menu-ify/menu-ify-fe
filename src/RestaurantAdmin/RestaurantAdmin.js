@@ -100,7 +100,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
             >
               {message}
             </div >
-            Click to close
+            (Click to close)
           </div>}
 
         <input

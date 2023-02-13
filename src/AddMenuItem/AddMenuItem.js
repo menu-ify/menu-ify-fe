@@ -16,7 +16,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
   const [category, setCategory] = useState('')
-  const [confirmModal, setConfirmModal] = useState(false)
+  // const [confirmModal, setConfirmModal] = useState(false)
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const restaurantName = adminSelections.selectedRestaurant
   let restaurantId = adminSelections.restaurantId
@@ -57,6 +57,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     setDescription('')
     setSearch('')
     setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
+    setMessage("")
   }
 
   const submitNewItem = (event) => {
@@ -84,11 +85,14 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       dispatch(addMenuItemAsync(newMenuItem, restaurantId))
       clearForm()
       setMessage('Menu item added! 🎉')
-      setConfirmModal(true)
+      // setConfirmModal(true)
       window.scrollTo(0, 0)
+      setTimeout(() => {
+        clearForm()
+      }, 4000)
     } else {
       setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
-      setConfirmModal(true)
+      // setConfirmModal(true)
       window.scrollTo(0, 0)
     }
   }
@@ -131,6 +135,20 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       <h3 className="rpc-instructions">
         Build a new menu item for {restaurantName}:
       </h3>
+
+      {message &&
+          <div
+            className="restaurant-admin-error-message text-container"
+            onClick={() => clearForm()}>
+            <div
+              className="text-container"
+            >
+              {message}
+            </div >
+           (Click to close)
+          </div>}
+
+
       <form className="form">
 
         {!restaurantId && <div className="add-select">
@@ -197,14 +215,14 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
 
       </form>
 
-      {confirmModal &&
+      {/* {confirmModal &&
         <div className="confirm-modal">
           <p>{message}</p>
           <button
             className="admin-button"
             onClick={() => { setConfirmModal(false) }}>Close
           </button>
-        </div>}
+        </div>} */}
 
     </div>
   )

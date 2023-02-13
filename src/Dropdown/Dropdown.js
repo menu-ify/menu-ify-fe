@@ -32,12 +32,11 @@ export default function Dropdown({ restaurants }) {
       {restaurantLinks}
 
       {/* <NavLink to={`/admin`}> */}
-        <li className="dropdown__menu-item">
-          <button className="dropdown__button" onClick={() => {
-          }}>
-            <big><b style={{ letterSpacing: '4px' }}>Admin | Login</b></big>
-          </button>
-        </li>
+      <li className="dropdown__menu-item">
+        <button className="dropdown__button">
+          <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
+        </button>
+      </li>
       {/* </NavLink> */}
 
       <NavLink to="/admin/add-menu-item">
