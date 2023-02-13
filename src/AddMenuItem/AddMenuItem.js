@@ -94,13 +94,11 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   }
 
   useEffect(() => {
-    if (images) return
     getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
       .then(data => {
         setImages(data)
       })
-
-  })
+  }, [])
 
   useEffect(() => {
     if (!images) {
