@@ -3,7 +3,7 @@ The Menuify app allows restaurant owners to easily create mobile-friendly restau
 
 Restaurant owners can easily add/delete menus and individual menu items. While diners can easily find their desired menu with full-color images, descriptions, and prices. By placing QR codes on the tables, customers need only use their phone camera to access the menu.
 
- - [Deployed front end and back end](UPDATE) 
+ - [Deployed app](https://menu-ify.vercel.app/) 
  - [Front-end repo](https://github.com/menu-ify/menu-ify-fe)
  - [Back-end repo](https://github.com/menu-ify/menu-ify-rails-be)
  - [Back-end API repo](https://github.com/menu-ify/menu-ify-be-fastapi)
