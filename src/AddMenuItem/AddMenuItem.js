@@ -96,7 +96,9 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   const getSearchResults = async (event) => {
     event.preventDefault()
 
-    getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
+    console.log(search)
+
+    getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
         setImages(data)
         console.log('fetch results', data)
