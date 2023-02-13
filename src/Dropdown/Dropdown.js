@@ -10,7 +10,6 @@ export default function Dropdown({ restaurants }) {
         <li className="dropdown__menu-item">
           <button
             className="dropdown__button"
-          // onClick={() => {}}
           >
             <i>{restaurant.attributes.name}</i>
           </button>
@@ -32,14 +31,45 @@ export default function Dropdown({ restaurants }) {
 
       {restaurantLinks}
 
-      <NavLink to={`/admin`}>
+      {/* <NavLink to={`/admin`}> */}
         <li className="dropdown__menu-item">
           <button className="dropdown__button" onClick={() => {
           }}>
-            <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
+            <big><b style={{ letterSpacing: '4px' }}>Admin | Login</b></big>
+          </button>
+        </li>
+      {/* </NavLink> */}
+
+      <NavLink to="/admin/add-menu-item">
+        <li className="dropdown__menu-item">
+          <button
+            className="dropdown__button"
+          >
+            <i>Add menu item</i>
           </button>
         </li>
       </NavLink>
+
+      <NavLink to="/admin/delete">
+        <li className="dropdown__menu-item">
+          <button
+            className="dropdown__button"
+          >
+            <i>Delete menu item</i>
+          </button>
+        </li>
+      </NavLink>
+
+      <NavLink to="/admin/restaurant">
+        <li className="dropdown__menu-item">
+          <button
+            className="dropdown__button"
+          >
+            <i>Add or delete restaurant</i>
+          </button>
+        </li>
+      </NavLink>
+
 
     </ul>
   )

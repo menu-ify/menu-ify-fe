@@ -67,9 +67,9 @@ const App = () => {
             <Route path="/admin/restaurant"
               element={<RestaurantAdmin setAdminSelections={setAdminSelections} restaurants={restaurants} setRestaurants={setRestaurants} URLRestaurants={URLRestaurants} />}
             />
-            <Route path="/admin"
+            {/* <Route path="/admin"
               element={<Admin setAdminSelections={setAdminSelections} restaurants={restaurants} />}
-            />
+            /> */}
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
         </main>)

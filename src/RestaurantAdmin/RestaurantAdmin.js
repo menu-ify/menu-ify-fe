@@ -142,7 +142,8 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         <div className="search-button-container">
           <button className="search-button"
             onClick={(event) => { handleAdd(event) }}
-          >Add new restaurant</button>
+          >Add new restaurant
+          </button>
         </div>
       </section>
 
