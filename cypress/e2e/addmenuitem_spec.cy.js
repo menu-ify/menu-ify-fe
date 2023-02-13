@@ -62,11 +62,11 @@ describe('The add menu item page', () => {
     cy.get(':nth-child(12) > .search-button').click()
     cy.get('.confirm-modal > p').contains('Menu item added!')
     cy.get('.admin-button').click()
-    cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants', {
-      fixture: '../fixtures/restaurant_data.json',
-    })
-    cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants/100/menu_items', {
-      fixture: '../fixtures/after_post_pho_kyah_menu.json'
-    })
+    cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants/100/menu_items', { fixture: '../fixtures/after_post_pho_kyah_menu.json'})
+    cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants', { fixture: '../fixtures/restaurant_data.json'})
+    cy.visit('http://localhost:3000/restaurant/100/')
+    cy.get(':nth-child(1) > :nth-child(2) > :nth-child(3) > .menu-image-container > .menu-item-image').should('have.attr', 'src', 'https://mailtrap.io/wp-content/uploads/2020/06/testing_meme3.png')
+    cy.get(':nth-child(1) > :nth-child(2) > :nth-child(3) > .menu-item-container-info > .menu-item-name').contains('Test - $1')
+    cy.get(':nth-child(1) > :nth-child(2) > :nth-child(3) > .menu-item-container-info > .menu-item-description').contains('Test')
   })
 })
