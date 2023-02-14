@@ -25,14 +25,7 @@ const DeleteMenuItem = ({ restaurants }) => {
     })
   }
 
-  // const getRestaurantId = () => {
-  //   if (!selectedRestaurant || selectedRestaurant === "Select a restaurant...") { return }
-  //   const restaurant = restaurants.find((restaurant) => {
-  //     return restaurant.attributes.name === selectedRestaurant
-  //   })
-  //   setRestaurantId(restaurant.id)
-  // }
-
+ 
   const getRestaurantId = () => {
     if (!selectedRestaurant || selectedRestaurant === "Select a restaurant...") { return }
     const restaurant = restaurants.find((restaurant) => {
@@ -75,24 +68,6 @@ const DeleteMenuItem = ({ restaurants }) => {
       />
     )
   })
-
-  // const menuItemsArray = menuItems.map((menuItem) => {
-  //   getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantId}/menu_items`)
-  //     .then(data => {
-  //       dispatch(setInitialMenu(data.data))
-  //     }).then(() => {
-  //       return (
-  //         <MenuItemDeleteCard
-  //           key={menuItem.id}
-  //           id={menuItem.id}
-  //           name={menuItem.attributes.name}
-  //           restaurantId={menuItem.attributes.restaurant_id}
-  //         />
-  //       )
-
-  //     })
-   
-  // })
 
 
   return (
