@@ -83,6 +83,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
     setLink("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png")
     setMessage("")
     setSearch("")
+    setImageSearchResults([])
   }
   const searchImage = (event) => {
     event.preventDefault()
