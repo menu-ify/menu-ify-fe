@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import "./AddMenuItem.css"
 import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
@@ -93,35 +93,29 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     }
   }
 
-  useEffect(() => {
-    getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
+  const getSearchResults = async (event) => {
+    event.preventDefault()
+
+    console.log(search)
+
+    getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
         setImages(data)
+        console.log('fetch results', data)
+        return data
       })
-  }, [])
-
-  useEffect(() => {
-    if (!images) {
-      setSearchResults(<p>Error loading preview images, please refresh.</p>)
-    };
-
-    if (images) {
-      const filteredSearch = images.data.filter(image => {
-        return image.attributes.description.includes(search)
+      .then(data => {
+        if (data.results.length > 0) {
+          setSearchResults(data.results.map((image, index) => {
+            return <img className="image-preview" key={index} id={index} src={image} alt={`search result for "${search}"`} onClick={() => {
+              setImage(image)
+            }} />
+         }))
+        } else {
+          setSearchResults(<p>No Results Found</p>)
+        }
       })
-
-      if (filteredSearch.length > 0) {
-        setSearchResults(filteredSearch.map(image => {
-          return <img className="image-preview" key={image.id} id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={() => {
-            setImage(image.attributes.logo)
-          }} />
-        }))
-      }
-      else {
-        setSearchResults(<p>No results</p>)
-      }
-    }
-  }, [search, images])
+  }
 
   return (
     <div className="add-item-container">
@@ -177,12 +171,12 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         }}></input>
 
         <div className='search-button-container'>
-          <button className='search-button'>Start image search</button>
+          <button className='search-button' onClick={(event) => {getSearchResults(event)}}>Start image search</button>
         </div>
 
         <h3 className="form-header">Search results</h3>
         <div className="search-results">
-          {searchResults}
+          {images && searchResults}
         </div>
 
         <h3>Preview</h3>
