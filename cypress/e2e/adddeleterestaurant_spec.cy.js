@@ -52,9 +52,12 @@ describe('The add/delete restaurant user flow', () => {
     cy.get(':nth-child(6) > .delete-header').contains('test title')
     cy.intercept('DELETE', `${url}/400`, { fixture: '../fixtures/restaurant_data.json' })
     cy.get(':nth-child(6) > button').click()
+    cy.get('.restaurant-admin-error-message > .text-container').contains('Restaurant deleted')
+    cy.get('.restaurant-admin-error-message').click()
+    cy.get('.restaurant-admin-error-message').should('not.exist')
   })
 
-  it.only('should display the remaining restaurants after a restaurant is deleted', () => {
+  it('should display the remaining restaurants after a restaurant is deleted', () => {
     cy.get(':nth-child(5) > .delete-header').contains('Ruthy\'s')
     cy.get(':nth-child(6) > .delete-header').should('not.exist')
   })
