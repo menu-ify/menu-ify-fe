@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setInitialMenu } from "../features/menu/menuSlice"
 import MenuItemDeleteCard from "../MenuItemDeleteCard/MenuItemDeleteCard"
@@ -26,7 +26,17 @@ const DeleteMenuItem = ({ restaurants }) => {
   }
 
  
-  const getRestaurantId = () => {
+  // const getRestaurantId = () => {
+  //   if (!selectedRestaurant || selectedRestaurant === "Select a restaurant...") { return }
+  //   const restaurant = restaurants.find((restaurant) => {
+  //     return restaurant.attributes.name === selectedRestaurant
+  //   })
+  //   if (restaurant) {
+  //     setRestaurantId(restaurant.id)
+  //   }
+  // }
+
+  const getRestaurantId = useCallback(() => {
     if (!selectedRestaurant || selectedRestaurant === "Select a restaurant...") { return }
     const restaurant = restaurants.find((restaurant) => {
       return restaurant.attributes.name === selectedRestaurant
@@ -34,7 +44,7 @@ const DeleteMenuItem = ({ restaurants }) => {
     if (restaurant) {
       setRestaurantId(restaurant.id)
     }
-  }
+  }, [restaurants, selectedRestaurant])
 
   useEffect(() => {
     if (!selectedRestaurant) {
