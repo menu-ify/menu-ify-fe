@@ -4,7 +4,7 @@ import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
 import { useDispatch } from "react-redux"
 import { addMenuItemAsync } from "../features/menu/menuSlice"
-// import { postData } from '../apiCalls'
+
 
 export default function AddMenuItem({ adminSelections, restaurants }) {
   const dispatch = useDispatch()
@@ -16,20 +16,11 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
   const [category, setCategory] = useState('')
-  const [confirmModal, setConfirmModal] = useState(false)
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const restaurantName = adminSelections.selectedRestaurant
   let restaurantId = adminSelections.restaurantId
   const [message, setMessage] = useState('')
-  // const selectedRestaurantId = () => {
-  //   if (selectedRestaurant === "Pho Kyah") {
-  //     return 100
-  //   } else if (selectedRestaurant === "Tim's Tiki Bar") {
-  //     return 200
-  //   } else {
-  //     return 300
-  //   }
-  // }
+
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {
@@ -57,6 +48,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     setDescription('')
     setSearch('')
     setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
+    setMessage("")
   }
 
   const submitNewItem = (event) => {
@@ -84,12 +76,16 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       dispatch(addMenuItemAsync(newMenuItem, restaurantId))
       clearForm()
       setMessage('Menu item added! 🎉')
-      setConfirmModal(true)
       window.scrollTo(0, 0)
+      setTimeout(() => {
+        clearForm()
+      }, 4000)
     } else {
       setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
-      setConfirmModal(true)
       window.scrollTo(0, 0)
+      setTimeout(() => {
+        setMessage("")
+      }, 4000)
     }
   }
 
@@ -123,6 +119,20 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       <h3 className="rpc-instructions">
         Build a new menu item for {restaurantName}:
       </h3>
+
+      {message &&
+        <div
+          className="restaurant-admin-error-message text-container"
+          onClick={() => setMessage("")}>
+          <div
+            className="text-container"
+          >
+            {message}
+          </div >
+          (Click to close)
+        </div>}
+
+
       <form className="form">
 
         {!restaurantId && <div className="add-select">
@@ -188,15 +198,6 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         </div>
 
       </form>
-
-      {confirmModal &&
-        <div className="confirm-modal">
-          <p>{message}</p>
-          <button
-            className="admin-button"
-            onClick={() => { setConfirmModal(false) }}>Close
-          </button>
-        </div>}
 
     </div>
   )

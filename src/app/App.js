@@ -6,7 +6,7 @@ import { getData } from "../apiCalls"
 import { Route, Routes } from 'react-router-dom'
 import NotFound from '../NotFound/NotFound'
 import NavBar from '../NavBar/NavBar'
-import Admin from "../Admin/Admin"
+// import Admin from "../Admin/Admin"
 import DeleteMenuItem from '../DeleteMenuItem/DeleteMenuItem'
 import AddMenuItem from '../AddMenuItem/AddMenuItem'
 import RestaurantAdmin from '../RestaurantAdmin/RestaurantAdmin'
@@ -62,14 +62,14 @@ const App = () => {
               element={<AddMenuItem adminSelections={adminSelections} restaurants={restaurants} />}
             />
             <Route path="/admin/delete"
-              element={<DeleteMenuItem adminSelections={adminSelections} />}
+              element={<DeleteMenuItem restaurants={restaurants}/>}
             />
             <Route path="/admin/restaurant"
               element={<RestaurantAdmin setAdminSelections={setAdminSelections} restaurants={restaurants} setRestaurants={setRestaurants} URLRestaurants={URLRestaurants} />}
             />
-            <Route path="/admin"
+            {/* <Route path="/admin"
               element={<Admin setAdminSelections={setAdminSelections} restaurants={restaurants} />}
-            />
+            /> */}
             <Route path="/*" element={<NotFound />} status={404} />
           </Routes>
         </main>)
