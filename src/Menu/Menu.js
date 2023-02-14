@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useMemo, useCallback } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
@@ -14,9 +14,12 @@ const Menu = ({ restaurants, setError, setLogo, setRestaurantName }) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
   const { id } = useParams()
-  const getRestaurant = () => {
-    return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
-  }
+  // const getRestaurant = () => {
+  //   return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
+  // }
+  const getRestaurant = useCallback(() => {
+    return restaurants.find(restaurant => Number(restaurant.id) === Number(id));
+    }, [id, restaurants]);
 
 
   const isValidId = checkIfValid(id)
