@@ -33,7 +33,7 @@ const Menu = ({ restaurants, setError, setLogo, setRestaurantName }) => {
       .catch(error => {
         setError(error)
       })
-  }, [id, dispatch, setError])
+  }, [id, dispatch, setError, setLogo, setRestaurantName, getRestaurant])
 
   const filterByCategory = (category) => {
     return menuItems.filter(menuItem => menuItem.attributes && menuItem.attributes.category.toLowerCase() === category.toLowerCase())

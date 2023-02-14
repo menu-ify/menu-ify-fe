@@ -70,6 +70,7 @@ const App = () => {
                 setLogo={setLogo}
                 setRestaurantName={setRestaurantName}
                 restaurants={restaurants}
+                setAdminSelections={setAdminSelections}
               />}
             />
             <Route path="/admin/add-menu-item"

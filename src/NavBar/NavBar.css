@@ -114,6 +114,7 @@
   top: 0;
   /* border-radius: 60px 7px 60px 7px; */
   height: 24vh;
+  /* height: fit-content; */
   width: 100%;
   background-position: center;
   flex-direction: column;
