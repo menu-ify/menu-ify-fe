@@ -64,6 +64,9 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         .then((response) => {
           setRestaurants([...restaurants, response.data])
           setMessage(`Congrats! 🎉 Here is the link to your new restaurant menu: https://menu-ify.vercel.app/restaurant/${response.data.id}`)
+          setTimeout(() => {
+            clearInputs()
+          }, 4000)
         })
     } else {
       setMessage("Error: Please ensure all fields are completed and/or refresh.")
@@ -79,6 +82,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
     setDescription("")
     setLink("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png")
     setMessage("")
+    setSearch("")
   }
   const searchImage = (event) => {
     event.preventDefault()
