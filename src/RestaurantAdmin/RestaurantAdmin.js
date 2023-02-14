@@ -59,15 +59,17 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         description: description,
         logo: link,
       }
-      setMessage("Restaurant added! 🎉")
       window.scrollTo(0, 0)
       postData(newRestaurant, `https://menu-ify-be.herokuapp.com/api/v1/restaurants/`)
-        .then((response) => {
-          setRestaurants([...restaurants, response.data])
-        })
-      setTimeout(() => {
-        clearInputs()
-      }, 4000)
+      .then((response) => {
+        console.log("ID", response.data.id)
+        setRestaurants([...restaurants, response.data])
+        setMessage(`Congrats! 🎉 Here is the link to your new restaurant menu: https://menu-ify.vercel.app/restaurant/${response.data.id}`)
+      }).then(()=> {
+      })
+      // setTimeout(() => {
+      //   clearInputs()
+      // }, 4000)
 
     } else {
       setMessage("Error: Please check all  are completed and/or refresh.")
@@ -94,13 +96,13 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         {message &&
           <div
             className="restaurant-admin-error-message text-container"
-            onClick={() => clearInputs()}>
+            ondblClick={() => clearInputs()}>
             <div
               className="text-container"
             >
               {message}
             </div >
-            Click to close
+            (Double click to close)
           </div>}
 
         <input
