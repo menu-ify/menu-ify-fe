@@ -7,6 +7,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const [description, setDescription] = useState("")
   const [link, setLink] = useState("")
   const [message, setMessage] = useState("")
+  const [createdRestaurantID, setCreatedRestaurantID] = useState("")
   let restaurantID
 
   const restaurantDeleteCards = () => {
@@ -59,12 +60,13 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         description: description,
         logo: link,
       }
-      setMessage("Restaurant added! 🎉")
       window.scrollTo(0, 0)
       postData(newRestaurant, `https://menu-ify-be.herokuapp.com/api/v1/restaurants/`)
-        .then((response) => {
-          setRestaurants([...restaurants, response.data])
-        })
+      .then((response) => {
+        setCreatedRestaurantID(response.data.id)
+        setRestaurants([...restaurants, response.data])
+        setMessage(`Restaurant added! 🎉 Please use https://menu-ify.vercel.app/restaurant/${createdRestaurantID} to view your restaurant's menu.`)
+      })
       setTimeout(() => {
         clearInputs()
       }, 4000)
@@ -83,6 +85,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
     setDescription("")
     setLink("")
     setMessage("")
+    setCreatedRestaurantID("")
   }
 
   return (
