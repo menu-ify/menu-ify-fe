@@ -1,5 +1,6 @@
 import "./NavBar.css"
 import React, { useState } from "react"
+import { NavLink, Link } from "react-router-dom"
 import Dropdown from "../Dropdown/Dropdown"
 
 export default function NavBar({ restaurants }) {
@@ -30,11 +31,13 @@ export default function NavBar({ restaurants }) {
             }
           </button>
         </div>
-        {menuStatus && <Dropdown restaurants={restaurants}  />}
+        {menuStatus && <Dropdown restaurants={restaurants} />}
 
-        <div className="nav-title-container">
-          <h1 className="name1">Menu</h1><h1 className="name2">ify</h1>
-        </div>
+        <NavLink to="/" as="div" className="nav-link">
+          <div className="nav-title-container">
+            <h1 className="name1">Menu</h1><h1 className="name2">ify</h1>
+          </div>
+        </NavLink>
 
       </div>
     </>
