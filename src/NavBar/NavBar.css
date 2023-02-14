@@ -12,7 +12,9 @@
   max-width: 800px;
   flex-direction: column;
   margin-bottom: 2%;
+  /* padding-bottom: 1%; */
   /* margin-top: 2%; */
+  padding-bottom: 2%;
 }
 
 .button-container {
@@ -49,6 +51,7 @@
   color: rgb(51, 51, 51, .95);
   /* color: #006775; */
   padding-bottom: 5%;
+  /* margin-bottom: 5%; */
   /* left: 40%; */
   /* transform: translateX(-50%); */
   letter-spacing: .1vw;
@@ -101,17 +104,62 @@
   animation: spin-wobble 1s ease-out forwards;
 }
 
+.restaurant-name-nav {
+  font-size: 7vh;
+  color: rgb(255, 255, 255, .95);
+  letter-spacing: .3vw;
+}
+
+.menu-nav-container {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  /* border-radius: 60px 7px 60px 7px; */
+    /* border-radius: 0px 0px 60px 0px; */
+  height: 24vh;
+  /* height: fit-content; */
+  width: 100%;
+  background-position: center;
+  flex-direction: column;
+  margin-bottom: 2%;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255, .4);
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5) inset;
+  /* background-image: fill; */
+  /* box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5) inset, 0 4px 2px rgb(0, 0, 0, 0.8); */
+  background-size: cover;
+}
+
+.nav-menu-button-container {
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 7px;
+  letter-spacing: .1vw;
+  padding: 2%;
+}
+
+
+
+
+
 @keyframes spin-wobble {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(360deg);
     animation-timing-function: ease-in;
   }
+
   70% {
     transform: rotate(360deg);
   }
+
   100% {
     transform: rotate(375deg);
   }

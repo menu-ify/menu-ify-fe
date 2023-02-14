@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useMemo, useCallback } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from "react-router"
 import { getData } from "../apiCalls"
@@ -7,24 +7,36 @@ import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 import { setInitialMenu } from "../features/menu/menuSlice"
 
-const Menu = ({ restaurants, setMessage }) => {
+const Menu = ({ restaurants, setMessage, setLogo, setRestaurantName }) => {
   const menuItems = useSelector((state) => state.menu)
   const dispatch = useDispatch()
   const checkIfValid = (id) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
   const { id } = useParams()
+  // const getRestaurant = () => {
+  //   return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
+  // }
+  const getRestaurant = useCallback(() => {
+    return restaurants.find(restaurant => Number(restaurant.id) === Number(id));
+    }, [id, restaurants]);
+
+
   const isValidId = checkIfValid(id)
+
+  console.log("GET REST", getRestaurant())
 
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
         dispatch(setInitialMenu(data.data))
+        setLogo(getRestaurant().attributes.logo)
+        setRestaurantName(getRestaurant().attributes.name)
       })
       .catch(error => {
         setMessage(error)
       })
-  }, [id, dispatch, setMessage])
+  }, [id, dispatch, setMessage, setLogo, setRestaurantName, getRestaurant])
 
   const filterByCategory = (category) => {
     return menuItems.filter(menuItem => menuItem.attributes && menuItem.attributes.category.toLowerCase() === category.toLowerCase())
@@ -43,7 +55,9 @@ const Menu = ({ restaurants, setMessage }) => {
   })
   return (
     <>
+
       {isValidId ? (
+
         <section className="menu-container">
           <div className="category-container">
             <h2 className="category-title">Appetizers</h2>
