@@ -60,8 +60,7 @@ const App = () => {
             />
             <Route path="/restaurant/:id"
               element={<Menu
-                error={error}
-                setError={setError}
+                setMessage={setMessage}
                 setLogo={setLogo}
                 setRestaurantName={setRestaurantName}
                 restaurants={restaurants}
