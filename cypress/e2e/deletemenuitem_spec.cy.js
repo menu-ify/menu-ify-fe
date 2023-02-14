@@ -53,17 +53,8 @@ describe('The delete menu item user flow', () => {
     cy.url().should('eq', 'http://localhost:3000/admin/delete')
       
     cy.get('.delete-container > :nth-child(12)').contains('Tiger Asian Lager')
-
-    // cy.get('.delete-container > :nth-child(13)').should('not.exist')
   })
-
-
-
-
-
-
-
-
+  
   it('should no longer display the deleted menu item after it is deleted', () => {
     cy.get('.material-symbols-outlined').click()
    
