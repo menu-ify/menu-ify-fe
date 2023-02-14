@@ -84,27 +84,27 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const searchImage = (event) => {
     event.preventDefault()
     getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
-    .then(data => {
-      setImageSearchResults(data.results)
-    })
-    .catch(error=> {
-      console.log("Search Error", error)
-    })
+      .then(data => {
+        setImageSearchResults(data.results)
+      })
+      .catch(error => {
+        console.log("Search Error", error)
+      })
   }
 
   const displayImages = () => {
-      return imageSearchResults.map((image, index)=> {
-        return <img
-          className="image-preview"
-          key={index} id={index}
-          src={image}
-          alt={`search result for "${link}"`}
-          onClick={()=> {
-            setLink(image)
-          }}/>
-      })
-    }
-  
+    return imageSearchResults.map((image, index) => {
+      return <img
+        className="image-preview"
+        key={index} id={index}
+        src={image}
+        alt={`search result for "${link}"`}
+        onClick={() => {
+          setLink(image)
+        }} />
+    })
+  }
+
   return (
     <>
       <section className="restaurantMenuContainer">
@@ -137,11 +137,19 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
           placeholder="Search for image..."
           className="form__input">
         </input>
-        <button className='search-button' onClick={(event)=> {searchImage(event)}}>Start image search</button>
-        <h3>Preview</h3>
-        <section className="card-container preview-margin">
+        <button
+          className='search-button'
+          onClick={(event) => { searchImage(event) }}>
+            Start image search
+        </button>
+        <h3>Search Results</h3>
         <div className="search-results">
           {displayImages()}
+        </div>
+        <h3>Preview</h3>
+        <section className="card-container preview-margin">
+        <div className="restaurant-image-container">
+          <img src={link} alt={name} className="restaurant-image" />
         </div>
           <div className="nav-link">
             <h2 className="RPC-title">{name}</h2>
@@ -151,7 +159,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         <div className="search-button-container">
           <button className="search-button"
             onClick={(event) => { handleAdd(event) }}>
-              Add new restaurant
+            Add new restaurant
           </button>
         </div>
       </section>
