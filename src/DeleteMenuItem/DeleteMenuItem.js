@@ -9,7 +9,6 @@ const DeleteMenuItem = ({ restaurants }) => {
   const menuItems = useSelector((state) => state.menu)
   const dispatch = useDispatch()
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
-  const [restaurantId, setRestaurantId] = useState("")
   const [message, setMessage] = useState('')
 
   const restaurantOptions = () => {
@@ -25,35 +24,21 @@ const DeleteMenuItem = ({ restaurants }) => {
     })
   }
 
- 
-  // const getRestaurantId = () => {
-  //   if (!selectedRestaurant || selectedRestaurant === "Select a restaurant...") { return }
-  //   const restaurant = restaurants.find((restaurant) => {
-  //     return restaurant.attributes.name === selectedRestaurant
-  //   })
-  //   if (restaurant) {
-  //     setRestaurantId(restaurant.id)
-  //   }
-  // }
-
-  const getRestaurantId = useCallback(() => {
-    if (!selectedRestaurant || selectedRestaurant === "Select a restaurant...") { return }
-    const restaurant = restaurants.find((restaurant) => {
-      return restaurant.attributes.name === selectedRestaurant
-    })
-    if (restaurant) {
-      setRestaurantId(restaurant.id)
-    }
-  }, [restaurants, selectedRestaurant])
+  const getRestaurantId = () => {
+    return restaurants.reduce((id, restaurant)=>{
+      if(restaurant.attributes.name === selectedRestaurant) {
+        id = restaurant.id 
+      }
+      return id
+    }, 0)
+  }
 
   useEffect(() => {
-    if (!selectedRestaurant) {
+    if (!getRestaurantId()) {
       return
     }
-
-    getRestaurantId()
-
-    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantId}/menu_items`)
+    console.log(getRestaurantId())
+    getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${getRestaurantId()}/menu_items`)
       .then(data => {
         dispatch(setInitialMenu(data.data))
       })
@@ -65,10 +50,9 @@ const DeleteMenuItem = ({ restaurants }) => {
         }, 4000)
         console.log("Fetch error: ", error)
       })
-  }, [selectedRestaurant, restaurantId, dispatch, getRestaurantId])
+  }, [selectedRestaurant, dispatch])
 
   const menuItemsArray = menuItems.map((menuItem) => {
-      console.log("menuItem", menuItem)
     return (
       <MenuItemDeleteCard
         key={menuItem.id}
@@ -78,7 +62,6 @@ const DeleteMenuItem = ({ restaurants }) => {
       />
     )
   })
-
 
   return (
     <div className="delete-container">
@@ -104,11 +87,9 @@ const DeleteMenuItem = ({ restaurants }) => {
         placeholder="Select a restaurant..."
         onChange={event => {
           setSelectedRestaurant(event.target.value)
-          getRestaurantId()
         }}>
 
-        <option>Select a restaurant...</option>
-
+        <option value="" disabled defaultValue="">Select a restaurant...</option>
         {restaurantOptions()}
       </select>
 
