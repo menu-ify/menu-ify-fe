@@ -1,5 +1,3 @@
-// npx nyc --reporter=text --reporter=lcov npm run test:cypress //
-
 describe('The Admin page', () => {
   beforeEach(() => {
     cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants', {
