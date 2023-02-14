@@ -55,7 +55,7 @@ const DeleteMenuItem = ({ restaurants }) => {
         }, 4000)
         console.log("Fetch error: ", error)
       })
-  }, [selectedRestaurant, restaurantId, dispatch])
+  }, [selectedRestaurant, restaurantId, dispatch, getRestaurantId])
 
   const menuItemsArray = menuItems.map((menuItem) => {
       console.log("menuItem", menuItem)
