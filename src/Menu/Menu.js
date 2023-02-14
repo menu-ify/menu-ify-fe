@@ -7,19 +7,28 @@ import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 import { setInitialMenu } from "../features/menu/menuSlice"
 
-const Menu = ({ restaurants, setError }) => {
+const Menu = ({ restaurants, setError, setLogo, setRestaurantName }) => {
   const menuItems = useSelector((state) => state.menu)
   const dispatch = useDispatch()
   const checkIfValid = (id) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
   const { id } = useParams()
+  const getRestaurant = () => {
+    return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
+  }
+
+
   const isValidId = checkIfValid(id)
+
+  console.log("GET REST", getRestaurant())
 
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
         dispatch(setInitialMenu(data.data))
+        setLogo(getRestaurant().attributes.logo)
+        setRestaurantName(getRestaurant().attributes.name)
       })
       .catch(error => {
         setError(error)
@@ -43,7 +52,9 @@ const Menu = ({ restaurants, setError }) => {
   })
   return (
     <>
+
       {isValidId ? (
+
         <section className="menu-container">
           <div className="category-container">
             <h2 className="category-title">Appetizers</h2>
