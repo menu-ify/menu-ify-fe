@@ -1,6 +1,6 @@
 import "./NavBar.css"
 import React, { useState } from "react"
-import { NavLink, Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import Dropdown from "../Dropdown/Dropdown"
 
 export default function NavBar({ restaurants }) {
