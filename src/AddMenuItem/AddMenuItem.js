@@ -20,6 +20,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   const restaurantName = adminSelections.selectedRestaurant
   let restaurantId = adminSelections.restaurantId
   const [message, setMessage] = useState('')
+  const [loadingImage, setLoadingImage] = useState(false)
 
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {
@@ -91,6 +92,8 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
 
   const getSearchResults = (event) => {
     event.preventDefault()
+    setLoadingImage(true)
+    setSearchResults([])
     getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
         setImages(data)
@@ -98,12 +101,15 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         return data
       })
       .then(data => {
+       
         if (data.results.length > 0) {
+          setLoadingImage(false)
           setSearchResults(data.results.map((image, index) => {
             return <img className="image-preview" key={index} id={index} src={image} alt={`search result for "${search}"`} onClick={() => {
               setImage(image)
             }} />
-         }))
+       
+          }))
         } else {
           setSearchResults(<p>No Results Found</p>)
         }
@@ -178,11 +184,13 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         }}></input>
 
         <div className='search-button-container'>
-          <button className='search-button' onClick={(event) => {getSearchResults(event)}}>Start image search</button>
+          <button className='search-button' onClick={(event) => { getSearchResults(event) }}>Start image search</button>
         </div>
 
         <h3 className="form-header">Search results</h3>
         <div className="search-results">
+          {loadingImage && <h2 className="loading-text">Loading...</h2>}
+
           {images && searchResults}
         </div>
 
