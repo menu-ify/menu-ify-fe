@@ -23,7 +23,7 @@ describe('The add/delete restaurant user flow', () => {
     cy.get('.RPC-description').contains('test description')
   })
 
-  it.only('should show the current restaurants and have buttons to delete them', () => {
+  it('should show the current restaurants and have buttons to delete them', () => {
     cy.get(':nth-child(3) > .delete-header').contains('Pho Kyah')
     cy.get('.delete-margin > :nth-child(3)').contains('Delete')
     cy.get(':nth-child(4) > .delete-header').contains('Tim\'s Tiki Bar')
@@ -32,12 +32,31 @@ describe('The add/delete restaurant user flow', () => {
     cy.get('.delete-margin > :nth-child(5)').contains('Delete')
   })
 
-  it('should add a new restaurant to the home page', () => {
+  it('should add a new restaurant to the admin page', () => {
     cy.get('[placeholder="Enter name..."]').type('test title')
     cy.get('[placeholder="Enter description..."]').type('test description')
     cy.get('[placeholder="Enter URL to image..."]').type('https://s3.memeshappen.com/memes/Testing-.jpg')
-    cy.get('.search-button').click()
-    // cy.intercept('POST', 'https://menu-ify-be.herokuapp.com/api/v1/restaurants/', { fixture: '../fixtures/add_restaurant_data.json' })
+    cy.intercept('POST', url, { fixture: '../fixtures/add_restaurant_data.json' })
+    cy.get('.search-button-container').click()
+  })
+
+  it('should display the newly-added restaurant', () => {
+    cy.intercept(url, { fixture: '../fixtures/add_restaurant_data.json' })
+    cy.visit('http://localhost:3000/admin/restaurant')
+    cy.get(':nth-child(6) > .delete-header').contains('test title')
+  })
+
+  it('should delete the newly-added restaurant', () => {
+    cy.intercept(url, { fixture: '../fixtures/add_restaurant_data.json' })
+    cy.visit('http://localhost:3000/admin/restaurant')
+    cy.get(':nth-child(6) > .delete-header').contains('test title')
+    cy.intercept('DELETE', `${url}/400`, { fixture: '../fixtures/restaurant_data.json' })
+    cy.get(':nth-child(6) > button').click()
+  })
+
+  it.only('should display the remaining restaurants after a restaurant is deleted', () => {
+    cy.get(':nth-child(5) > .delete-header').contains('Ruthy\'s')
+    cy.get(':nth-child(6) > .delete-header').should('not.exist')
   })
 
 })
