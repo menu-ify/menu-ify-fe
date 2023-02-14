@@ -8,7 +8,7 @@ const menuSlice = createSlice({
   initialState,
   reducers: {
     addMenuItem: (state, action) => {
-      return [...state, action.payload]
+      return [...state, action.payload.data]
     },
     deleteMenuItem: (state, action) => {
       return state.filter(menuItem => menuItem.id !== action.payload)
@@ -27,7 +27,7 @@ const menuSlice = createSlice({
 
 export const deleteMenuItemAsync = (restaurantid, menuId) => dispatch => {
   deleteData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${restaurantid}/menu_items/${menuId}`)
-    .then(data=> {
+    .then(data => {
       if (data.message === 'Menu item has successfully been deleted at this restaurant') {
         console.log("DATADELETE", data)
         dispatch(deleteMenuItem(menuId))

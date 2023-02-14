@@ -62,7 +62,7 @@ const App = () => {
               element={<AddMenuItem adminSelections={adminSelections} restaurants={restaurants} />}
             />
             <Route path="/admin/delete"
-              element={<DeleteMenuItem adminSelections={adminSelections} restaurants={restaurants}/>}
+              element={<DeleteMenuItem restaurants={restaurants}/>}
             />
             <Route path="/admin/restaurant"
               element={<RestaurantAdmin setAdminSelections={setAdminSelections} restaurants={restaurants} setRestaurants={setRestaurants} URLRestaurants={URLRestaurants} />}

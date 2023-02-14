@@ -36,7 +36,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
             ("Error: First, delete all menu items for this restaurant in the Admin screen and try again.")
           window.scrollTo(0, 0)
           setTimeout(() => {
-            clearInputs()
+            // clearInputs()
           }, 4000)
         } else {
           setMessage("Restaurant deleted! 🎉")
@@ -70,10 +70,10 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
       }, 4000)
 
     } else {
-      setMessage("Error: Please check all  are completed and/or refresh.")
+      setMessage("Error: Please ensure all fields are completed and/or refresh.")
       window.scrollTo(0, 0)
       setTimeout(() => {
-        clearInputs()
+        setMessage("")
       }, 4000)
     }
   }
@@ -81,7 +81,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const clearInputs = () => {
     setName("")
     setDescription("")
-    setLink("")
+    setLink("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png")
     setMessage("")
   }
 
@@ -94,7 +94,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         {message &&
           <div
             className="restaurant-admin-error-message text-container"
-            onClick={() => clearInputs()}>
+            onClick={() => setMessage("")}>
             <div
               className="text-container"
             >
