@@ -17,7 +17,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cypress run",
+    "test:cypress": "cypress run",
+    "test:nyc": "nyc --reporter=text --reporter=lcov npm run test:cypress",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "eject": "react-scripts eject",
     "cypress": "cypress open"
   },
@@ -40,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^12.5.1"
+    "cypress": "^12.5.1",
+    "nyc": "^15.1.0"
   }
 }
