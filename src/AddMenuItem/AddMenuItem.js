@@ -79,13 +79,13 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       window.scrollTo(0, 0)
       setTimeout(() => {
         clearForm()
-      }, 4000)
+      }, 6000)
     } else {
       setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
       window.scrollTo(0, 0)
       setTimeout(() => {
         setMessage("")
-      }, 4000)
+      }, 6000)
     }
   }
 
