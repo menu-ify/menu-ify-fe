@@ -99,7 +99,6 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       .then(data => {
         setImages(data)
       })
-
   })
 
   useEffect(() => {
