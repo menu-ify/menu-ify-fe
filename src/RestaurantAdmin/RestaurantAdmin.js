@@ -6,7 +6,9 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [link, setLink] = useState("")
+  const [search, setSearch] = useState("")
   const [message, setMessage] = useState("")
+  const [imageSearchResults, setImageSearchResults] = useState([])
   let restaurantID
 
   const restaurantDeleteCards = () => {
@@ -17,8 +19,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
           <button
             id={restaurant.id}
             className="delete-button"
-            onClick={(event) => handleDelete(event)}
-          >
+            onClick={(event) => handleDelete(event)}>
             Delete
           </button>
         </div>
@@ -36,7 +37,6 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
             ("Error: First, delete all menu items for this restaurant in the Admin screen and try again.")
           window.scrollTo(0, 0)
           setTimeout(() => {
-            // clearInputs()
           }, 4000)
         } else {
           setMessage("Restaurant deleted! 🎉")
@@ -61,16 +61,11 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
       }
       window.scrollTo(0, 0)
       postData(newRestaurant, `https://menu-ify-be.herokuapp.com/api/v1/restaurants/`)
-      .then((response) => {
-        console.log("ID", response.data.id)
-        setRestaurants([...restaurants, response.data])
-        setMessage(`Congrats! 🎉 Here is the link to your new restaurant menu: https://menu-ify.vercel.app/restaurant/${response.data.id}`)
-      }).then(()=> {
-      })
-      // setTimeout(() => {
-      //   clearInputs()
-      // }, 4000)
-
+        .then((response) => {
+          console.log("ID", response.data.id)
+          setRestaurants([...restaurants, response.data])
+          setMessage(`Congrats! 🎉 Here is the link to your new restaurant menu: https://menu-ify.vercel.app/restaurant/${response.data.id}`)
+        })
     } else {
       setMessage("Error: Please ensure all fields are completed and/or refresh.")
       window.scrollTo(0, 0)
@@ -86,75 +81,84 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
     setLink("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png")
     setMessage("")
   }
+  const searchImage = (event) => {
+    event.preventDefault()
+    getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
+    .then(data => {
+      setImageSearchResults(data.results)
+    })
+    .catch(error=> {
+      console.log("Search Error", error)
+    })
+  }
 
+  const displayImages = () => {
+      return imageSearchResults.map((image, index)=> {
+        return <img
+          className="image-preview"
+          key={index} id={index}
+          src={image}
+          alt={`search result for "${link}"`}
+          onClick={()=> {
+            setLink(image)
+          }}/>
+      })
+    }
+  
   return (
     <>
       <section className="restaurantMenuContainer">
         <h2 className="rpc-title">Admin View</h2>
         <p className="rpc-instructions">Add a restaurant</p>
-
         {message &&
           <div
             className="restaurant-admin-error-message text-container"
             onClick={() => setMessage("")}>
-            <div
-              className="text-container"
-            >
+            <div className="text-container">
               {message}
             </div >
             (Click to close)
           </div>}
-
         <input
           value={name}
           onChange={(e) => { setName(e.target.value) }}
           placeholder="Enter name..."
-          className="form__input"
-        >
+          className="form__input">
         </input>
-
         <input
           value={description}
           onChange={(e) => { setDescription(e.target.value) }}
           placeholder="Enter description..."
-          className="form__input"
-        >
+          className="form__input">
         </input>
-
         <input
-          value={link}
-          onChange={(e) => { setLink(e.target.value) }}
-          placeholder="Enter URL to image..."
-          className="form__input"
-        >
+          value={search}
+          onChange={(e) => { setSearch(e.target.value) }}
+          placeholder="Search for image..."
+          className="form__input">
         </input>
-
+        <button className='search-button' onClick={(event)=> {searchImage(event)}}>Start image search</button>
         <h3>Preview</h3>
-
         <section className="card-container preview-margin">
-          <div className="restaurant-image-container">
-            <img src={link} alt={name} className="restaurant-image" />
-          </div>
+        <div className="search-results">
+          {displayImages()}
+        </div>
           <div className="nav-link">
             <h2 className="RPC-title">{name}</h2>
           </div>
           <p className="RPC-description">{description}</p>
         </section>
-
         <div className="search-button-container">
           <button className="search-button"
-            onClick={(event) => { handleAdd(event) }}
-          >Add new restaurant
+            onClick={(event) => { handleAdd(event) }}>
+              Add new restaurant
           </button>
         </div>
       </section>
-
       <section className="restaurantMenuContainer delete-margin">
         <h2 className="rpc-title">Admin View</h2>
         <p className="rpc-instructions">Delete a restaurant</p>
-
         {restaurantDeleteCards()}
-
       </section>
     </>
   )
