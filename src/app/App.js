@@ -9,7 +9,6 @@ import NavBar from '../NavBar/NavBar'
 import DeleteMenuItem from '../DeleteMenuItem/DeleteMenuItem'
 import AddMenuItem from '../AddMenuItem/AddMenuItem'
 import RestaurantAdmin from '../RestaurantAdmin/RestaurantAdmin'
-
 const URLRestaurants = "https://menu-ify-be.herokuapp.com/api/v1/restaurants"
 
 const App = () => {
@@ -19,7 +18,6 @@ const App = () => {
   useEffect(() => {
     getData(URLRestaurants)
       .then(data => {
-        console.log('RESTAURANTS', data)
         setRestaurants(data.data)
         setMessage('')
       })
@@ -35,7 +33,7 @@ const App = () => {
       .then(data => {
         setRestaurants(data.data)
       })
-  }, []) // Add this line to make sure the hook runs whenever the `restaurants` state changes
+  }, [])
 
 
   return (

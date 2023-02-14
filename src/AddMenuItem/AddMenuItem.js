@@ -89,11 +89,8 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     }
   }
 
-  const getSearchResults = async (event) => {
+  const getSearchResults = (event) => {
     event.preventDefault()
-
-    console.log(search)
-
     getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
         setImages(data)
