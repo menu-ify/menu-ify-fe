@@ -44,9 +44,6 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
           getData(URLRestaurants).then(updatedRestaurants => {
             setRestaurants([...updatedRestaurants.data])
           })
-          setTimeout(() => {
-            clearInputs()
-          }, 4000)
         }
       })
   }
@@ -64,9 +61,6 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         .then((response) => {
           setRestaurants([...restaurants, response.data])
           setMessage(`Congrats! 🎉 Here is the link to your new restaurant menu: https://menu-ify.vercel.app/restaurant/${response.data.id}`)
-          setTimeout(() => {
-            clearInputs()
-          }, 4000)
         })
     } else {
       setMessage("Error: Please ensure all fields are completed and/or refresh.")
@@ -117,7 +111,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         {message &&
           <div
             className="restaurant-admin-error-message text-container"
-            onClick={() => setMessage("")}>
+            onClick={() => clearInputs()}>
             <div className="text-container">
               {message}
             </div >
