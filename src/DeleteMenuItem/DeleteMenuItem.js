@@ -24,20 +24,19 @@ const DeleteMenuItem = ({ restaurants }) => {
     })
   }
 
-  const getRestaurantId = () => {
+  const getRestaurantId = useCallback(() => {
     return restaurants.reduce((id, restaurant)=>{
       if(restaurant.attributes.name === selectedRestaurant) {
         id = restaurant.id 
       }
       return id
     }, 0)
-  }
+  }, [restaurants, selectedRestaurant])
 
   useEffect(() => {
     if (!getRestaurantId()) {
       return
     }
-    console.log(getRestaurantId())
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${getRestaurantId()}/menu_items`)
       .then(data => {
         dispatch(setInitialMenu(data.data))
@@ -50,7 +49,7 @@ const DeleteMenuItem = ({ restaurants }) => {
         }, 4000)
         console.log("Fetch error: ", error)
       })
-  }, [selectedRestaurant, dispatch])
+  }, [selectedRestaurant, dispatch, getRestaurantId])
 
   const menuItemsArray = menuItems.map((menuItem) => {
     return (
