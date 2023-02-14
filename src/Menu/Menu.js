@@ -7,7 +7,7 @@ import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 import { setInitialMenu } from "../features/menu/menuSlice"
 
-const Menu = ({ restaurants, setError }) => {
+const Menu = ({ restaurants, setMessage }) => {
   const menuItems = useSelector((state) => state.menu)
   const dispatch = useDispatch()
   const checkIfValid = (id) => {
@@ -22,9 +22,9 @@ const Menu = ({ restaurants, setError }) => {
         dispatch(setInitialMenu(data.data))
       })
       .catch(error => {
-        setError(error)
+        setMessage(error)
       })
-  }, [id, dispatch, setError])
+  }, [id, dispatch, setMessage])
 
   const filterByCategory = (category) => {
     return menuItems.filter(menuItem => menuItem.attributes && menuItem.attributes.category.toLowerCase() === category.toLowerCase())
