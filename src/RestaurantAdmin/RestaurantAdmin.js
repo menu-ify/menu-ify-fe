@@ -83,7 +83,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const clearInputs = () => {
     setName("")
     setDescription("")
-    setLink("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png")
+    setLink("")
     setMessage("")
   }
 
