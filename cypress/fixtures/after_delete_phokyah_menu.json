@@ -1,0 +1,121 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Pho with Beef",
+        "description": "Vietnamese soup with beef and veggies",
+        "tags": ["gluten free"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 15.0
+      }
+    },
+    {
+      "id": 2,
+      "type": "menu_item ",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Fresh Green Salad",
+        "description": "Vegetables and stuff with sauce",
+        "tags": ["dairy", "gluten free"],
+        "category": "appetizer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 5.5
+      }
+    },
+    {
+      "id": 3,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Spring Rolls",
+        "description": "3 fresh spring rolls",
+        "tags": ["gluten free"],
+        "category": "appetizer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 7.5
+      }
+    },
+    {
+      "id": 4,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Pho with Shrimp",
+        "description": "Vietnamese soup with shrimp and veggies",
+        "tags": ["gluten free"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 16.0
+      }
+    },
+    {
+      "id": 5,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Pho with Chicken",
+        "description": "Vietnamese soup with chicken and veggies",
+        "tags": ["gluten free"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 13.50
+      }
+    },
+    {
+      "id": 6,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Pho with Veggies",
+        "description": "Vietnamese soup with veggies",
+        "tags": ["gluten free", "vegetarian"],
+        "category": "entree",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 11.0
+      }
+    },
+    {
+      "id": 7,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Asahi",
+        "description": "Fresh clean beer from Japan",
+        "tags": ["gluten"],
+        "category": "draft beer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 5.5
+      }
+    },
+    {
+      "id": 8,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Purple dragon",
+        "description": "Warm saki with a special blend of fruit juices",
+        "tags": ["gluten free"],
+        "category": "cocktail",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 8.5
+      }
+    },
+    {
+      "id": 9,
+      "type": "menu_item",
+      "attributes": {
+        "restaurant_id": 100,
+        "name": "Tiger Asian Lager",
+        "description": "Easy-drinking Asian pilsner",
+        "tags": ["gluten"],
+        "category": "draft beer",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png",
+        "price": 5.5
+      }
+    }
+  ]
+}
