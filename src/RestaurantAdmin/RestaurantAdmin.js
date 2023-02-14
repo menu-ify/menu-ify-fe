@@ -62,7 +62,6 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
       window.scrollTo(0, 0)
       postData(newRestaurant, `https://menu-ify-be.herokuapp.com/api/v1/restaurants/`)
         .then((response) => {
-          console.log("ID", response.data.id)
           setRestaurants([...restaurants, response.data])
           setMessage(`Congrats! 🎉 Here is the link to your new restaurant menu: https://menu-ify.vercel.app/restaurant/${response.data.id}`)
         })

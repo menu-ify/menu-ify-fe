@@ -1,8 +1,3 @@
-// export const getRestaurants = () => {
-//   return fetch('   ')
-//     .then((res)=> res.json())
-// }
-
 function getData(url) {
   return fetch(url)
     .then((response) => {
@@ -12,9 +7,6 @@ function getData(url) {
         throw Error(response.statusText)
       }
     })
-    // .catch(error => {
-    //   console.log("Fetch error: ", error)
-    // })
 }
 
 function deleteData(url) {
