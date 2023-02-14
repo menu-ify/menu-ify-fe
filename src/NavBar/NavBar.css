@@ -116,3 +116,9 @@
     transform: rotate(375deg);
   }
 }
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+
+}
