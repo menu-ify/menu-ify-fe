@@ -26,7 +26,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {
         return restaurant.id
-      }
+      }ƒ
     }
     return null
   }
@@ -186,7 +186,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
 
         <input className="form__input" name="search" type="text" placeholder="Search for image..." value={search} onChange={(e) => {
           setSearch(e.target.value)
-          { searchResults === "No results found..." && setSearchResults("") }
+          searchResults === "No results found..." && setSearchResults("") 
         }}></input>
 
         <div className='search-button-container'>
@@ -198,7 +198,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
           {loadingImage && <h2 className="loading-text">Loading...</h2>}
 
           {images && searchResults}
-          
+
         </div>
 
         <h3>Preview</h3>
