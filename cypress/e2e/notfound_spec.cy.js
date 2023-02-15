@@ -13,6 +13,7 @@ describe('404 Error page', () => {
 
     cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants/100/menu_items', { fixture: '../fixtures/pho_kyah_menu.json' })
     cy.visit('http://localhost:3000/restaurant/100')
+    cy.get('.restaurant-name-nav').contains("Pho Kyah")
     cy.get(':nth-child(1) > .category-title').contains('Appetizers')
 
     cy.intercept('https://menu-ify-be.herokuapp.com/api/v1/restaurants/200/menu_items', { fixture: '../fixtures/tims_menu.json' })

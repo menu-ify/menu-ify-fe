@@ -7,7 +7,7 @@ import NotFound from "../NotFound/NotFound"
 import './Menu.css'
 import { setInitialMenu } from "../features/menu/menuSlice"
 
-const Menu = ({ restaurants, setError, setLogo, setRestaurantName }) => {
+const Menu = ({ restaurants, setLogo, setRestaurantName }) => {
   const menuItems = useSelector((state) => state.menu)
   const dispatch = useDispatch()
   const checkIfValid = (id) => {
@@ -31,9 +31,9 @@ const Menu = ({ restaurants, setError, setLogo, setRestaurantName }) => {
         setRestaurantName(getRestaurant().attributes.name)
       })
       .catch(error => {
-        setError(error)
+        console.log("Fetch error", error)
       })
-  }, [id, dispatch, setError, setLogo, setRestaurantName, getRestaurant])
+  }, [id, dispatch, setLogo, setRestaurantName, getRestaurant])
 
   const filterByCategory = (category) => {
     return menuItems.filter(menuItem => menuItem.attributes && menuItem.attributes.category.toLowerCase() === category.toLowerCase())

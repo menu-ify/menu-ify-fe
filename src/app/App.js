@@ -51,7 +51,6 @@ const App = () => {
         />
         <Route path="/restaurant/:id"
           element={<Menu
-            setMessage={setMessage}
             setLogo={setLogo}
             setRestaurantName={setRestaurantName}
             restaurants={restaurants}
