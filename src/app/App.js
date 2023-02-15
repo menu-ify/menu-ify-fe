@@ -14,82 +14,68 @@ const URLRestaurants = "https://menu-ify-be.herokuapp.com/api/v1/restaurants"
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
   const [adminSelections, setAdminSelections] = useState({})
-  const [error, setError] = useState('')
+  const [message, setMessage] = useState("")
   const [logo, setLogo] = useState('')
   const [restaurantName, setRestaurantName] = useState('')
   const location = useLocation()
   let menuNavActive = location.pathname.includes('/restaurant/') && logo
 
-  console.log("LOGO", logo)
-  console.log("restaurantName", restaurantName)
-
   useEffect(() => {
     getData(URLRestaurants)
       .then(data => {
         setRestaurants(data.data)
-        setError('')
+        setMessage('')
       })
       .catch(error => {
+        setMessage(`${error.message}: try refreshing the page`)
         console.log("Fetch error: ", error)
-        setError(error)
-      })
-  }, [])
-
-
-  useEffect(() => {
-    getData(URLRestaurants)
-      .then(data => {
-        setRestaurants(data.data)
       })
   }, [])
 
 
   return (
-    <>
-      {error ?
-        (<NotFound />)
-        : (<main className="App">
-          <NavBar
+    <main className="App">
+      {message &&
+        <div className="restaurant-admin-error-message text-container">
+          {message}
+        </div>}
+      <NavBar
+        restaurants={restaurants}
+        logo={logo}
+        restaurantName={restaurantName}
+        menuNavActive={menuNavActive}
+      />
+      <Routes>
+        <Route path="/"
+          element={<RestaurantPreviewContainer restaurants={restaurants} />}
+        />
+        <Route path="/restaurant/:id"
+          element={<Menu
+            setMessage={setMessage}
+            setLogo={setLogo}
+            setRestaurantName={setRestaurantName}
             restaurants={restaurants}
-            logo={logo}
-            restaurantName={restaurantName}
-            menuNavActive={menuNavActive}
-          />
-          <Routes>
-            <Route path="/"
-              element={<RestaurantPreviewContainer restaurants={restaurants} />}
-            />
-            <Route path="/restaurant/:id"
-              element={<Menu
-                error={error}
-                setError={setError}
-                setLogo={setLogo}
-                setRestaurantName={setRestaurantName}
-                restaurants={restaurants}
-                setAdminSelections={setAdminSelections}
-              />}
-            />
-            <Route path="/admin/add-menu-item"
-              element={<AddMenuItem
-                adminSelections={adminSelections}
-                restaurants={restaurants} />}
-            />
-            <Route path="/admin/delete"
-              element={<DeleteMenuItem restaurants={restaurants} />}
-            />
-            <Route path="/admin/restaurant"
-              element={<RestaurantAdmin
-                // setAdminSelections={setAdminSelections} 
-                restaurants={restaurants}
-                setRestaurants={setRestaurants}
-                URLRestaurants={URLRestaurants} />}
-            />
-            <Route path="/*" element={<NotFound />} status={404} />
-          </Routes>
-        </main>)
-      }
-    </>
-  )
+            setAdminSelections={setAdminSelections}
+          />}
+        />
+        <Route path="/admin/add-menu-item"
+          element={<AddMenuItem
+            adminSelections={adminSelections}
+            restaurants={restaurants} />}
+        />
+        <Route path="/admin/delete"
+          element={<DeleteMenuItem restaurants={restaurants} />}
+        />
+        <Route path="/admin/restaurant"
+          element={<RestaurantAdmin
+            // setAdminSelections={setAdminSelections} 
+            restaurants={restaurants}
+            setRestaurants={setRestaurants}
+            URLRestaurants={URLRestaurants} />}
+        />
+        <Route path="/*" element={<NotFound />} status={404} />
+      </Routes>
+    </main>)
 }
 
 export default App
