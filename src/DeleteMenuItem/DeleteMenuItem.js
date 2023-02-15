@@ -25,9 +25,9 @@ const DeleteMenuItem = ({ restaurants }) => {
   }
 
   const getRestaurantId = useCallback(() => {
-    return restaurants.reduce((id, restaurant)=>{
-      if(restaurant.attributes.name === selectedRestaurant) {
-        id = restaurant.id 
+    return restaurants.reduce((id, restaurant) => {
+      if (restaurant.attributes.name === selectedRestaurant) {
+        id = restaurant.id
       }
       return id
     }, 0)

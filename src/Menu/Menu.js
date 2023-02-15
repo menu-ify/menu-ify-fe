@@ -14,12 +14,9 @@ const Menu = ({ restaurants, setError, setLogo, setRestaurantName }) => {
     return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
   }
   const { id } = useParams()
-  // const getRestaurant = () => {
-  //   return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
-  // }
   const getRestaurant = useCallback(() => {
-    return restaurants.find(restaurant => Number(restaurant.id) === Number(id));
-    }, [id, restaurants]);
+    return restaurants.find(restaurant => Number(restaurant.id) === Number(id))
+  }, [id, restaurants])
 
 
   const isValidId = checkIfValid(id)

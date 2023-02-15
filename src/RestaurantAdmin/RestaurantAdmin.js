@@ -10,7 +10,6 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const [message, setMessage] = useState("")
   const [imageSearchResults, setImageSearchResults] = useState([])
   let restaurantID
-  // let loadingImage = false
   const [loadingImage, setLoadingImage] = useState(false)
 
   const restaurantDeleteCards = () => {
@@ -146,8 +145,6 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         </button>
         <h3>Search Results</h3>
         <div className="search-results">
-          {/* {!imageSearchResults.length && search ? {loadingImage} : null} */}
-          {/* {!imageSearchResults.length && search ? <h2 className="loading-text">Loading...</h2> : null} */}
           {loadingImage && <h2 className="loading-text">Loading...</h2>}
           {displayImages()}
         </div>

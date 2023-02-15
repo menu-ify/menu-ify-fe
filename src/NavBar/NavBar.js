@@ -6,10 +6,6 @@ import Dropdown from "../Dropdown/Dropdown"
 export default function NavBar({ restaurants, logo, restaurantName, menuNavActive }) {
   const [menuStatus, setMenuStatus] = useState(false)
 
-  // let menuNavActive = true
-
-  // const restaurantName = "Menuify"
-
   const closeModal = () => {
     if (menuStatus) {
       setMenuStatus(!menuStatus)
@@ -20,7 +16,6 @@ export default function NavBar({ restaurants, logo, restaurantName, menuNavActiv
     <>
       {menuNavActive
         ?
-        // <div className="box-shadow">
         <div
           style={{ backgroundImage: `url(${logo})` }}
 
@@ -51,7 +46,6 @@ export default function NavBar({ restaurants, logo, restaurantName, menuNavActiv
           </NavLink>
 
         </div>
-        // </div>
         :
         <div
           className="frame"
