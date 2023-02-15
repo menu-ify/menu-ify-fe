@@ -11,16 +11,16 @@ Diners can readily find their desired menu with full-color images, descriptions,
  - [Back-end API repo](https://github.com/menu-ify/menu-ify-be-fastapi)
 
 ### Customer Landing Page
-
+![Menuify Landing Page](https://user-images.githubusercontent.com/104015966/219142976-e20ab0e1-05d6-485d-89c2-0b1c99f73729.gif)
 
 ### Admin View
+![Menuify Admin View](https://user-images.githubusercontent.com/104015966/219142892-e443764b-c880-457e-82d0-21cf287b7b88.gif)
 
+### Add and Delete Restaurant
+![Menuify Add and Delete Restaurant](https://user-images.githubusercontent.com/104015966/219142863-c101600f-2bb2-4834-afe6-67ca15a79d14.gif)
 
-### Adding a Restaurant
-
-
-### Adding a Menu Item
-
+### Adding and Delete Menu Item
+![Add and Delete a Menu Item](https://user-images.githubusercontent.com/104015966/219142672-ceb71488-1d1e-49d1-ad99-868a13bb09ed.gif)
 
 
 ## Contributors
