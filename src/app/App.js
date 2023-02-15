@@ -9,7 +9,7 @@ import NavBar from '../NavBar/NavBar'
 import DeleteMenuItem from '../DeleteMenuItem/DeleteMenuItem'
 import AddMenuItem from '../AddMenuItem/AddMenuItem'
 import RestaurantAdmin from '../RestaurantAdmin/RestaurantAdmin'
-const URLRestaurants = "https://menu-ify-be.herokuapp.com/api/v1/restaurantsa"
+const URLRestaurants = "https://menu-ify-be.herokuapp.com/api/v1/restaurants"
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
