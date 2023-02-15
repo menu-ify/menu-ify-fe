@@ -69,3 +69,13 @@ Diners can readily find their desired menu with full-color images, descriptions,
 2. CD into the directory and run `npm install`
 3. Run `npm start`
 4. Navigate to to your local server (listed in your terminal) in your web browser to view the live page
+
+## Documentation
+#### Figma Wireframe
+<img width="863" alt="Screenshot 2023-02-15 at 11 42 19 AM" src="https://user-images.githubusercontent.com/104015966/219110444-6cf3273c-b7d0-4594-ad11-5926231a92ac.png">
+
+#### Miro Board
+<img width="1378" alt="Screenshot 2023-02-15 at 11 37 12 AM" src="https://user-images.githubusercontent.com/104015966/219110502-e933d437-c90b-46ef-b44c-14986a3b98dd.png">
+
+#### GitHub Project Board
+<img width="1356" alt="Screenshot 2023-02-15 at 11 33 17 AM" src="https://user-images.githubusercontent.com/104015966/219110565-97cd9d26-6dbf-4d10-9a96-1ea12c31f62b.png">
