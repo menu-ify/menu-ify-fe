@@ -9,8 +9,8 @@ describe('The add menu item page', () => {
   it('should have a title and instructions', () => {
     cy.get('.rpc-title').contains('Admin View')
     cy.get('.rpc-instructions').contains('Build a new menu item for :')
-    cy.get(':nth-child(1) > .form-select').contains('Restaurant')
-    cy.get(':nth-child(2) > .form-select').contains('Category...')
+    cy.get(':nth-child(1) > .form-select').contains('Select restaurant')
+    cy.get(':nth-child(2) > .form-select').contains('Select category...')
     cy.get('[name="name"]').should('have.attr', 'placeholder', 'Enter name...')
     cy.get('[name="price"]').should(
       'have.attr',
@@ -175,5 +175,14 @@ describe('The add menu item page', () => {
     cy.get(
       ':nth-child(1) > :nth-child(2) > :nth-child(3) > .menu-item-container-info > .menu-item-description'
     ).contains('Test')
+  })
+
+  it('should be able to search images for new item', () => {
+    cy.intercept('GET', "https://menu-ify-fastapi.herokuapp.com/photos/test%20title", { fixture: '../fixtures/search_results_data.json' })
+    cy.get('[placeholder="Search for image..."]').type('test title')
+    cy.get(':nth-child(7) > .search-button').click()
+    cy.get('.search-results')
+      .find('img')
+      .should('have.length', 10)
   })
 })
