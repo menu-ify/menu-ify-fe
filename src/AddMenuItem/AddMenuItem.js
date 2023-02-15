@@ -26,7 +26,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {
         return restaurant.id
-      }ƒ
+      }
     }
     return null
   }
