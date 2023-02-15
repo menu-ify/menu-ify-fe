@@ -1,18 +1,27 @@
-## About
-The Menuify app allows restaurant owners to easily create mobile-friendly restaurant menus, because zooming in and out on a PDF menu can take away from the dining experience. This group project was completed in 2 1/2 weeks at the Turing School of Software and Design. Front- and Back-end teams collaborated on the design, development, and deployment processes throughout the course of the project. 
+# Menuify
+The Menuify app allows restaurant owners to easily create mobile-friendly restaurant menus so diners can enjoy the best possible experience. This group project was completed in 2 1/2 weeks at the Turing School of Software and Design. Front- and Back-end teams collaborated on the design, development, and deployment processes throughout the course of the project.
 
-Restaurant owners can easily add/delete menus and individual menu items. While diners can easily find their desired menu with full-color images, descriptions, and prices. By placing QR codes on the tables, customers need only use their phone camera to access the menu.
+Restaurant owners can easily add or delete menus and individual menu items. Images can be added by url, or by searching a collection of images sourced from the Photo Unsplash API.
+
+Diners can readily find their desired menu with full-color images, descriptions, and prices. By placing QR codes on the tables, customers need only use their mobile device to access the user-friendly, aesthetically pleasing menu.
 
  - [Deployed app](https://menu-ify.vercel.app/) 
  - [Front-end repo](https://github.com/menu-ify/menu-ify-fe)
  - [Back-end repo](https://github.com/menu-ify/menu-ify-rails-be)
  - [Back-end API repo](https://github.com/menu-ify/menu-ify-be-fastapi)
 
-### Mobile preview
-![mobile-demo](UPDATE)
+### Customer Landing Page
 
-### Desktop preview
-![desktop-preview](UPDATE)
+
+### Admin View
+
+
+### Adding a Restaurant
+
+
+### Adding a Menu Item
+
+
 
 ## Contributors
 - [Tim Thomas](https://github.com/nalito223)
@@ -23,24 +32,40 @@ Restaurant owners can easily add/delete menus and individual menu items. While d
 - [Yuji Kosakowski](https://github.com/Yuji3000)
 - [Gabe Nuñez](https://github.com/MisterJackpots)
 
-## Tech highlights
+
+## Technologies
 - React
 - Javascript
-- Html 
+- HTML 
 - CSS
-- Node.js
-
-## Libraries and frameworks
 - React Router
-- Cypress e2e testing
+- Cypress E2E testing
 - Redux
 - CircleCI
+- Webpack module bundler
+- Fetch API
+- Git/GitHub
+- GitHub project board
+- Miro
+- Slack
+- Zoom
+
+
+## Methodologies
+- End-to-end testing
+- Error handling the user experience and network errors
+- React component architecture
+- Asynchronous JS
+- Create a user interface that is easy to use and clearly displays information
+- Modular code following SRP (Single Responsibility Principle)
+- Network requests to create, read, update, and destroy data
+- DRY principles (Don't Repeat Yourself)
+- Agile/Scrum project management
+- User stories and subsequent acceptance criteria tickets
+
 
 ## Installation instructions
 1. [Clone the frontend repository](https://github.com/menu-ify/menu-ify-fe)
-2. CD into the directory and run `yarn install`
+2. CD into the directory and run `npm install`
 3. Run `npm start`
-4. [Clone the backend API respository](https://github.com/menu-ify/menu-ify-rails-be)
-5. CD into the directory and run `npm install`
-6. Run `node server.js`
-7. Navigate to to your local server (listed in your terminal) in your web browser to view the live page
+4. Navigate to to your local server (listed in your terminal) in your web browser to view the live page
