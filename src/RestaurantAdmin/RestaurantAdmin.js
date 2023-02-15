@@ -10,6 +10,8 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const [message, setMessage] = useState("")
   const [imageSearchResults, setImageSearchResults] = useState([])
   let restaurantID
+  // let loadingImage = false
+  const [loadingImage, setLoadingImage] = useState(false)
 
   const restaurantDeleteCards = () => {
     return restaurants.map((restaurant) => {
@@ -81,9 +83,11 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   }
   const searchImage = (event) => {
     event.preventDefault()
+    setLoadingImage(true)
     getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
         setImageSearchResults(data.results)
+        setLoadingImage(false)
       })
       .catch(error => {
         console.log("Search Error", error)
@@ -138,17 +142,20 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         <button
           className='search-button'
           onClick={(event) => { searchImage(event) }}>
-            Start image search
+          Start image search
         </button>
         <h3>Search Results</h3>
         <div className="search-results">
+          {/* {!imageSearchResults.length && search ? {loadingImage} : null} */}
+          {/* {!imageSearchResults.length && search ? <h2 className="loading-text">Loading...</h2> : null} */}
+          {loadingImage && <h2 className="loading-text">Loading...</h2>}
           {displayImages()}
         </div>
         <h3>Preview</h3>
         <section className="card-container preview-margin">
-        <div className="restaurant-image-container">
-          <img src={link} alt={name} className="restaurant-image" />
-        </div>
+          <div className="restaurant-image-container">
+            <img src={link} alt={name} className="restaurant-image" />
+          </div>
           <div className="nav-link">
             <h2 className="RPC-title">{name}</h2>
           </div>

@@ -81,3 +81,26 @@
 .delete-button:hover {
   color: rgb(255, 183, 0, 0.9)
 }
+
+.loading-text {
+  /* font-size: 20px;
+  color: #000; */
+  color: rgb(51, 51, 51, .95);
+  text-align: center;
+  animation: loading 2s infinite ease-in-out;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}

@@ -44,6 +44,9 @@ describe('The add menu item page', () => {
     cy.get('[name="price"]').type('1')
     cy.get('.form > [name="description"]').type('Test')
     cy.get('.form > [name="search"]').type('Test')
+
+    // cy.get('.search-results > p').contains('No results')
+
     cy.get('.menu-item-image').should(
       'have.attr',
       'src',
@@ -113,6 +116,7 @@ describe('The add menu item page', () => {
     cy.get('[name="price"]').type('2')
     cy.get('.form > [name="description"]').type('Test')
     cy.get('.form > [name="search"]').type('Test')
+    // cy.get('.search-results > p').contains('No results')
     cy.get('.menu-item-image').should(
       'have.attr',
       'src',
@@ -147,6 +151,7 @@ describe('The add menu item page', () => {
       }
     )
     cy.get(':nth-child(12) > .search-button').click()
+
     cy.get('.restaurant-admin-error-message > .text-container').contains('Menu item added!')
     cy.get('.restaurant-admin-error-message').click()
     cy.intercept(
