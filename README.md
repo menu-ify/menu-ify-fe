@@ -19,7 +19,7 @@ Diners can readily find their desired menu with full-color images, descriptions,
 ### Add and Delete Restaurant
 ![Menuify Add and Delete Restaurant](https://user-images.githubusercontent.com/104015966/219142863-c101600f-2bb2-4834-afe6-67ca15a79d14.gif)
 
-### Adding and Delete Menu Item
+### Add and Delete Menu Item
 ![Add and Delete a Menu Item](https://user-images.githubusercontent.com/104015966/219142672-ceb71488-1d1e-49d1-ad99-868a13bb09ed.gif)
 
 
