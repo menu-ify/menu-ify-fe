@@ -1,8 +1,6 @@
 import React, { NavLink } from "react-router-dom"
 import "./Dropdown.css"
 
-// This component will need access to the data storing all menus so it can update them dynamically.
-
 export default function Dropdown({ restaurants }) {
   const restaurantLinks = restaurants.map((restaurant) => {
     return (
@@ -31,13 +29,11 @@ export default function Dropdown({ restaurants }) {
 
       {restaurantLinks}
 
-      {/* <NavLink to={`/admin`}> */}
       <li className="dropdown__menu-item">
         <button className="dropdown__button">
           <big><b style={{ letterSpacing: '4px' }}>Admin</b></big>
         </button>
       </li>
-      {/* </NavLink> */}
 
       <NavLink to="/admin/add-menu-item">
         <li className="dropdown__menu-item">
@@ -68,7 +64,6 @@ export default function Dropdown({ restaurants }) {
           </button>
         </li>
       </NavLink>
-
 
     </ul>
   )

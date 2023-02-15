@@ -13,7 +13,6 @@
   padding-right: 2%;
   text-align: left;
   color: rgb(51, 51, 51, .95);
-
 }
 
 .form-select {
@@ -67,6 +66,4 @@
   height: auto;
   padding: 0;
   margin: 0;
-  /* align-items: center; */
 }
-
