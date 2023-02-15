@@ -4,7 +4,7 @@ describe('404 Error page', () => {
     cy.visit('http://localhost:3000/socks')
   })
 
-  it.only('should only be visible on undesignated routes', () => {
+  it('should only be visible on undesignated routes', () => {
     cy.get('.nf-title').should('be.visible')
     cy.visit('http://localhost:3000/')
     cy.get('.rpc-title').should('be.visible')
