@@ -92,6 +92,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
 
   const getSearchResults = (event) => {
     event.preventDefault()
+    if (!search) { return }
     setLoadingImage(true)
     setSearchResults([])
     getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
@@ -111,8 +112,12 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
 
           }))
         } else {
-          setSearchResults(<p>No Results Found</p>)
+          setLoadingImage(false)
+          setSearchResults("No results found...")
         }
+      })
+      .catch(error => {
+        console.log("Search error: ", error)
       })
   }
 
@@ -143,7 +148,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
             value={selectedRestaurant}
             onChange={event => setSelectedRestaurant(event.target.value)}
           >
-            <option>Restaurant</option>
+            <option value="" disabled defaultValue="">Select restaurant</option>
             {restaurantOptions()}
           </select>
         </div>}
@@ -156,7 +161,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
             value={category}
             onChange={event => setCategory(event.target.value)}
           >
-            <option>Category...</option>
+            <option value="" disabled defaultValue="">Select category...</option>
             <option>appetizer</option>
             <option>entree</option>
             <option>draft beer</option>
@@ -181,6 +186,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
 
         <input className="form__input" name="search" type="text" placeholder="Search for image..." value={search} onChange={(e) => {
           setSearch(e.target.value)
+          { searchResults === "No results found..." && setSearchResults("") }
         }}></input>
 
         <div className='search-button-container'>
@@ -192,6 +198,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
           {loadingImage && <h2 className="loading-text">Loading...</h2>}
 
           {images && searchResults}
+          
         </div>
 
         <h3>Preview</h3>
