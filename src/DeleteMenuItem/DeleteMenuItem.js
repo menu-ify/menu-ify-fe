@@ -93,7 +93,7 @@ const DeleteMenuItem = ({ restaurants }) => {
       </select>
 
 
-      {menuItems.length > 0 && menuItemsArray}
+      {menuItems.length > 0 && selectedRestaurant ? menuItemsArray : null}
 
     </div>
   )
