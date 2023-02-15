@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import "./AddMenuItem.css"
 import MenuItems from '../MenuItems/MenuItems'
 import { getData } from '../apiCalls'
 import { useDispatch } from "react-redux"
 import { addMenuItemAsync } from "../features/menu/menuSlice"
-// import { postData } from '../apiCalls'
+
 
 export default function AddMenuItem({ adminSelections, restaurants }) {
   const dispatch = useDispatch()
@@ -16,20 +16,12 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
   const [searchResults, setSearchResults] = useState(null)
   const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
   const [category, setCategory] = useState('')
-  const [confirmModal, setConfirmModal] = useState(false)
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const restaurantName = adminSelections.selectedRestaurant
   let restaurantId = adminSelections.restaurantId
   const [message, setMessage] = useState('')
-  // const selectedRestaurantId = () => {
-  //   if (selectedRestaurant === "Pho Kyah") {
-  //     return 100
-  //   } else if (selectedRestaurant === "Tim's Tiki Bar") {
-  //     return 200
-  //   } else {
-  //     return 300
-  //   }
-  // }
+  const [loadingImage, setLoadingImage] = useState(false)
+
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {
@@ -57,6 +49,7 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
     setDescription('')
     setSearch('')
     setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pictograms-nps-food_service.svg/640px-Pictograms-nps-food_service.svg.png')
+    setMessage("")
   }
 
   const submitNewItem = (event) => {
@@ -84,46 +77,44 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       dispatch(addMenuItemAsync(newMenuItem, restaurantId))
       clearForm()
       setMessage('Menu item added! 🎉')
-      setConfirmModal(true)
       window.scrollTo(0, 0)
+      setTimeout(() => {
+        clearForm()
+      }, 4000)
     } else {
       setMessage('Hmmm... 🧐 There appears to be an issue. Please ensure all fields are complete. NOTE: Price field must be a number.')
-      setConfirmModal(true)
       window.scrollTo(0, 0)
+      setTimeout(() => {
+        setMessage("")
+      }, 4000)
     }
   }
 
-  useEffect(() => {
-    if (images) return
-    getData('https://menu-ify-be.herokuapp.com/api/v1/restaurants')
+  const getSearchResults = (event) => {
+    event.preventDefault()
+    setLoadingImage(true)
+    setSearchResults([])
+    getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
         setImages(data)
+        console.log('fetch results', data)
+        return data
       })
+      .then(data => {
 
-  })
+        if (data.results.length > 0) {
+          setLoadingImage(false)
+          setSearchResults(data.results.map((image, index) => {
+            return <img className="image-preview" key={index} id={index} src={image} alt={`search result for "${search}"`} onClick={() => {
+              setImage(image)
+            }} />
 
-  useEffect(() => {
-    if (!images) {
-      setSearchResults(<p>Error loading preview images, please refresh.</p>)
-    };
-
-    if (images) {
-      const filteredSearch = images.data.filter(image => {
-        return image.attributes.description.includes(search)
+          }))
+        } else {
+          setSearchResults(<p>No Results Found</p>)
+        }
       })
-
-      if (filteredSearch.length > 0) {
-        setSearchResults(filteredSearch.map(image => {
-          return <img className="image-preview" key={image.id} id={image.id} src={image.attributes.logo} alt={image.attributes.description} onClick={() => {
-            setImage(image.attributes.logo)
-          }} />
-        }))
-      }
-      else {
-        setSearchResults(<p>No results</p>)
-      }
-    }
-  }, [search, images])
+  }
 
   return (
     <div className="add-item-container">
@@ -131,6 +122,20 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
       <h3 className="rpc-instructions">
         Build a new menu item for {restaurantName}:
       </h3>
+
+      {message &&
+        <div
+          className="restaurant-admin-error-message text-container"
+          onClick={() => setMessage("")}>
+          <div
+            className="text-container"
+          >
+            {message}
+          </div >
+          (Click to close)
+        </div>}
+
+
       <form className="form">
 
         {!restaurantId && <div className="add-select">
@@ -179,12 +184,14 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         }}></input>
 
         <div className='search-button-container'>
-          <button className='search-button'>Start image search</button>
+          <button className='search-button' onClick={(event) => { getSearchResults(event) }}>Start image search</button>
         </div>
 
         <h3 className="form-header">Search results</h3>
         <div className="search-results">
-          {searchResults}
+          {loadingImage && <h2 className="loading-text">Loading...</h2>}
+
+          {images && searchResults}
         </div>
 
         <h3>Preview</h3>
@@ -196,15 +203,6 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         </div>
 
       </form>
-
-      {confirmModal &&
-        <div className="confirm-modal">
-          <p>{message}</p>
-          <button
-            className="admin-button"
-            onClick={() => { setConfirmModal(false) }}>Close
-          </button>
-        </div>}
 
     </div>
   )

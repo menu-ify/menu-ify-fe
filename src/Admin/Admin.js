@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-// import { useHistory } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import "../Admin/Admin.css"
 
@@ -7,8 +6,6 @@ const Admin = ({ setAdminSelections, restaurants }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState("")
   const [selectedAction, setSelectedAction] = useState("")
   const navigate = useNavigate()
-
-  console.log(restaurants)
 
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {

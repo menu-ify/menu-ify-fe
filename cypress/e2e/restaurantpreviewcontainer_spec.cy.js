@@ -34,3 +34,5 @@ describe('RestaurantPreviewContainer', () => {
     cy.get(':nth-child(5) > .card-container > .RPC-description').contains('Emotional support food for all the seasons of life')
   })
 })
+
+//test

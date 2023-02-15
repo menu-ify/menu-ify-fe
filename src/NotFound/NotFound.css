@@ -8,9 +8,7 @@
   padding-bottom: 10%;
   position: absolute;
   top: 13vh;
-  /* Height may need to change based on the header size */
   height: 70%;
-
 }
 
 .nf-title {
@@ -39,7 +37,6 @@
 
 .container-link:link {
   text-decoration: none;
-  /* color: black; */
   color: rgb(51, 51, 51, .95);
 }
 
