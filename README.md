@@ -1,46 +1,71 @@
-# Getting Started with Create React App and Redux
+# Menuify
+The Menuify app allows restaurant owners to easily create mobile-friendly restaurant menus so diners can enjoy the best possible experience. This group project was completed in 2 1/2 weeks at the Turing School of Software and Design. Front- and Back-end teams collaborated on the design, development, and deployment processes throughout the course of the project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+Restaurant owners can easily add or delete menus and individual menu items. Images can be added by url, or by searching a collection of images sourced from the Photo Unsplash API.
 
-## Available Scripts
+Diners can readily find their desired menu with full-color images, descriptions, and prices. By placing QR codes on the tables, customers need only use their mobile device to access the user-friendly, aesthetically pleasing menu.
 
-In the project directory, you can run:
+ - [Deployed app](https://menu-ify.vercel.app/) 
+ - [Front-end repo](https://github.com/menu-ify/menu-ify-fe)
+ - [Back-end repo](https://github.com/menu-ify/menu-ify-rails-be)
+ - [Back-end API repo](https://github.com/menu-ify/menu-ify-be-fastapi)
 
-### `npm start`
+### Customer Landing Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Admin View
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Adding a Restaurant
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Adding a Menu Item
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Contributors
+- [Tim Thomas](https://github.com/nalito223)
+- [Eleanor Ruth](https://github.com/Eleanorgruth)
+- [James Wasmer](https://github.com/jwasmer)
+- [Justen Anderson](https://github.com/justenanderson-commits)
+- [Emily Port](https://github.com/eport01) 
+- [Yuji Kosakowski](https://github.com/Yuji3000)
+- [Gabe Nuñez](https://github.com/MisterJackpots)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies
+- React
+- Javascript
+- HTML 
+- CSS
+- React Router
+- Cypress E2E testing
+- Redux
+- CircleCI
+- Webpack module bundler
+- Fetch API
+- Git/GitHub
+- GitHub project board
+- Miro
+- Slack
+- Zoom
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Methodologies
+- End-to-end testing
+- Error handling the user experience and network errors
+- React component architecture
+- Asynchronous JS
+- Create a user interface that is easy to use and clearly displays information
+- Modular code following SRP (Single Responsibility Principle)
+- Network requests to create, read, update, and destroy data
+- DRY principles (Don't Repeat Yourself)
+- Agile/Scrum project management
+- User stories and subsequent acceptance criteria tickets
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation instructions
+1. [Clone the frontend repository](https://github.com/menu-ify/menu-ify-fe)
+2. CD into the directory and run `npm install`
+3. Run `npm start`
+4. Navigate to to your local server (listed in your terminal) in your web browser to view the live page
