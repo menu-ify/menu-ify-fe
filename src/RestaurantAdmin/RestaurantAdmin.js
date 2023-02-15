@@ -11,6 +11,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   const [imageSearchResults, setImageSearchResults] = useState([])
   let restaurantID
   const [loadingImage, setLoadingImage] = useState(false)
+  const [noResultsMessage, setNoResultsMessage] = useState(false)
 
   const restaurantDeleteCards = () => {
     return restaurants.map((restaurant) => {
@@ -82,14 +83,21 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
   }
   const searchImage = (event) => {
     event.preventDefault()
+    if (!search) { return }
     setLoadingImage(true)
+    setNoResultsMessage(false)
     getData(`https://menu-ify-fastapi.herokuapp.com/photos/${search}`)
       .then(data => {
+        console.log(data)
         setImageSearchResults(data.results)
         setLoadingImage(false)
+        if (data.results < 1) {
+          setNoResultsMessage(true)
+        }
       })
       .catch(error => {
         console.log("Search Error", error)
+        setLoadingImage(false)
       })
   }
 
@@ -134,7 +142,10 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         </input>
         <input
           value={search}
-          onChange={(e) => { setSearch(e.target.value) }}
+          onChange={(e) => {
+            setSearch(e.target.value)
+            setNoResultsMessage(false)
+          }}
           placeholder="Search for image..."
           className="form__input">
         </input>
@@ -146,6 +157,7 @@ const RestaurantAdmin = ({ restaurants, setRestaurants, URLRestaurants }) => {
         <h3>Search Results</h3>
         <div className="search-results">
           {loadingImage && <h2 className="loading-text">Loading...</h2>}
+          {noResultsMessage && <h1>No results found</h1>}
           {displayImages()}
         </div>
         <h3>Preview</h3>

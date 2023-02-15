@@ -21,8 +21,6 @@ const Menu = ({ restaurants, setLogo, setRestaurantName }) => {
 
   const isValidId = checkIfValid(id)
 
-  console.log("GET REST", getRestaurant())
-
   useMemo(() => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
