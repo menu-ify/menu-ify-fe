@@ -7,8 +7,6 @@ const Admin = ({ setAdminSelections, restaurants }) => {
   const [selectedAction, setSelectedAction] = useState("")
   const navigate = useNavigate()
 
-  console.log(restaurants)
-
   const getRestaurantId = (restaurantName) => {
     for (const restaurant of restaurants) {
       if (restaurant.attributes.name === restaurantName) {

@@ -101,14 +101,14 @@ export default function AddMenuItem({ adminSelections, restaurants }) {
         return data
       })
       .then(data => {
-       
+
         if (data.results.length > 0) {
           setLoadingImage(false)
           setSearchResults(data.results.map((image, index) => {
             return <img className="image-preview" key={index} id={index} src={image} alt={`search result for "${search}"`} onClick={() => {
               setImage(image)
             }} />
-       
+
           }))
         } else {
           setSearchResults(<p>No Results Found</p>)

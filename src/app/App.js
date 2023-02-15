@@ -67,7 +67,6 @@ const App = () => {
         />
         <Route path="/admin/restaurant"
           element={<RestaurantAdmin
-            // setAdminSelections={setAdminSelections} 
             restaurants={restaurants}
             setRestaurants={setRestaurants}
             URLRestaurants={URLRestaurants} />}
