@@ -34,7 +34,9 @@ const App = () => {
 
 
   return (
-    <main className="App">
+    <main className="App"
+    style={{ backgroundColor: menuNavActive  && 'rgba(0, 0, 0, 0.87)' }}
+    >
       {message &&
         <div className="restaurant-admin-error-message text-container">
           {message}
