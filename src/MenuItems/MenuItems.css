@@ -3,10 +3,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgb(255, 255, 255, 0.05);
   margin-bottom: 5%;
   border-radius: 5px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .menu-image-container {
@@ -41,6 +40,7 @@ section {
 }
 
 .menu-item-name {
+  color: rgb(255, 255, 255, 0.9);
   width: 98%;
   text-align: left;
   margin: 0;
@@ -48,9 +48,12 @@ section {
   font-size: 2.75vh;
   margin-bottom: 2%;
   margin-top: 2%;
+  letter-spacing: 2px;
 }
 
 .menu-item-description {
+  color: rgb(255, 255, 255, 0.9);
+
   width: 98%;
   text-align: left;
   margin: 0;
