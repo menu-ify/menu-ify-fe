@@ -25,8 +25,11 @@ const Menu = ({ restaurants, setLogo, setRestaurantName }) => {
     getData(`https://menu-ify-be.herokuapp.com/api/v1/restaurants/${id}/menu_items`)
       .then(data => {
         dispatch(setInitialMenu(data.data))
-        setLogo(getRestaurant().attributes.logo)
-        setRestaurantName(getRestaurant().attributes.name)
+        const restaurant = getRestaurant();
+        if (restaurant) {
+          setLogo(restaurant.attributes.logo)
+          setRestaurantName(restaurant.attributes.name)
+        }
       })
       .catch(error => {
         console.log("Fetch error", error)
@@ -39,12 +42,20 @@ const Menu = ({ restaurants, setLogo, setRestaurantName }) => {
 
   const filteredMenuItems = (category) => filterByCategory(category).map(menuItems => {
     return (
+      // <MenuItems
+      //   key={menuItems.id}
+      //   name={menuItems.attributes.name}
+      //   image={menuItems.attributes.image}
+      //   price={menuItems.attributes.price}
+      //   description={menuItems.attributes.description}
+      // />
+
       <MenuItems
         key={menuItems.id}
-        name={menuItems.attributes.name}
-        image={menuItems.attributes.image}
-        price={menuItems.attributes.price}
-        description={menuItems.attributes.description}
+        name={menuItems.attributes ? menuItems.attributes.name : ''}
+        image={menuItems.attributes ? menuItems.attributes.image : ''}
+        price={menuItems.attributes ? menuItems.attributes.price : ''}
+        description={menuItems.attributes ? menuItems.attributes.description : ''}
       />
     )
   })
