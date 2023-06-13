@@ -30,7 +30,7 @@ Diners can readily find their desired menu with full-color images, descriptions,
 - [Justen Anderson](https://github.com/justenanderson-commits)
 - [Emily Port](https://github.com/eport01) 
 - [Yuji Kosakowski](https://github.com/Yuji3000)
-- [Gabe Nuñez](https://github.com/MisterJackpots)
+- [Gabe Nuñez](https://github.com/gabrielcnunez)
 
 
 ## Technologies
